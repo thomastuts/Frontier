@@ -26,9 +26,12 @@ angular.module('frontierApp')
 
       $scope.showDetail = function (fruit) {
         $scope.fruit = fruit;
-        console.log($scope.fruit);
+        $scope.views = {
+          detail: {
+            result: _.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; })
+          }
+        };
         $scope.view = 'views/modules/fruit/detail.html';
-        console.log($scope.view);
         $scope.testje = 'wutwut';
       };
 

@@ -7,5 +7,9 @@
 
 body {
   background-color: $darkgrey;
-  color: #fff;
+  font-family: $osr, "sans serif";
+}
+
+.column {
+  width: 50%;
 }

@@ -17,6 +17,20 @@
   </head>
   <body ng-app="frontierApp">
 
+    <header>
+      <div ng-controller="HeaderCtrl" class="container">
+        <ul class="left">
+          <li>Frontier {{data.meta.version}}</li>
+        </ul>
+
+        <ul class="right">
+          <li>Hello, {{data.config.general.username}}</li>
+        </ul>
+
+        <div style="clear: both;"></div>
+      </div>
+    </header>
+
     <div class="container">
       <div ng-view></div>
     </div>
@@ -32,6 +46,8 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/fruit.js"></script>
+    <script src="scripts/controllers/header.js"></script>
+    <script src="scripts/services/Data.js"></script>
     <!-- endbuild -->
   </body>
 </html>

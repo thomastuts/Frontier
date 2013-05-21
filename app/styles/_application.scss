@@ -8,7 +8,6 @@
 body {
   background-color: $darkgrey;
   font-family: $osr, "sans serif";
-  padding-top: 35px;
 }
 
 .container {
@@ -18,4 +17,17 @@ body {
 
 .column {
   width: 50%;
+}
+
+header {
+  background-color: $red;
+  color: #fff;
+  margin-bottom: 30px;
+  padding: 15px 0;
+  font-size: 24px;
+  font-family: $osl;
+
+  ul {
+    list-style-type: none;
+  }
 }

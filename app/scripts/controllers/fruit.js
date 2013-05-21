@@ -2,7 +2,17 @@
 
 angular.module('frontierApp')
   .controller('FruitCtrl', function ($scope) {
-    $scope.view = 'views/modules/fruit/overview.html';
+    $scope.module = {
+      meta: {
+        version: '0.1',
+        name: 'fruit'
+      },
+      menubar: {
+        title: 'Fruit Module',
+        icon: 'icon-ambulance'
+      },
+      view: 'views/modules/fruit/overview.html'
+    };
 
     $scope.fruits = [
       {
@@ -20,13 +30,7 @@ angular.module('frontierApp')
     ];
 
     $scope.showDetail = function (fruit) {
+      $scope.module.view = 'views/modules/fruit/detail.html';
       $scope.fruit = fruit;
-      $scope.views = {
-        detail: {
-          result: _.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; })
-        }
-      };
-      $scope.view = 'views/modules/fruit/detail.html';
-      $scope.testje = 'wutwut';
     };
   });

@@ -1,0 +1,23 @@
+<div class="module {{module.meta.name}}">
+  <div class="titlebar clearfix">
+    <ul class="left">
+      <li><i class="{{module.menubar.icon}}"></i></li>
+      <li><h1>{{module.menubar.title}}</h1></li>
+    </ul>
+    <ul class="right">
+      <li>
+        <i class="icon-ellipsis-horizontal"></i>
+      </li>
+      <li>
+        <i class="icon-chevron-up"></i>
+      </li>
+      <li>
+        <i class="icon-remove"></i>
+      </li>
+    </ul>
+    <div style="clear: both"></div>
+  </div>
+  <div class="content">
+    <div ng-include="module.view"></div>
+  </div>
+</div>

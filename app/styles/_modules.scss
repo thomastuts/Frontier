@@ -7,10 +7,13 @@
   .titlebar {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    background: $darkblue;
   }
 
   .content {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    background: #fff;
+    color: $darkgrey;
   }
 }

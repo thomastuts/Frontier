@@ -3,11 +3,22 @@
 
 .module {
 
+  margin-bottom: 20px;
+
+  .titlebar, .content {
+    padding: 10px;
+  }
+
   .titlebar {
+    text-transform: uppercase;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background: $darkblue;
     color: #fff;
+
+    h1 {
+      font-size: 12px;
+    }
   }
 
   .content {
@@ -15,5 +26,6 @@
     border-bottom-right-radius: 5px;
     background: #fff;
     color: $darkgrey;
+    font-size: 14px;
   }
 }

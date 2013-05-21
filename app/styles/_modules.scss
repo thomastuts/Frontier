@@ -1,0 +1,16 @@
+@import "variables";
+@import "mixins";
+
+.module {
+  width: 50%;
+
+  .titlebar {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .content {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}

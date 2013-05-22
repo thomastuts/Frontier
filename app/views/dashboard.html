@@ -1,7 +1,8 @@
-<div ng-controller="DashboardCtrl">
+<div>
   <div class="column left">
-    <div ng-include="'views/modules/fruit/main.html'"></div>
-    <div ng-include="'views/modules/fruit/main.html'"></div>
+    <div ng-controller="FruitCtrl">
+      <div ng-include="'views/modules/template.html'"></div>
+    </div>
   </div>
   <div class="column right">
 

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('frontierApp')
-  .controller('GithubCtrl', function ($scope, Data) {
+  .controller('GithubCtrl', function ($scope, storageService) {
     $scope.module = {
       meta: {
         version: '0.1',
@@ -14,8 +14,5 @@ angular.module('frontierApp')
       view: 'views/modules/github/overview.html'
     };
 
-    Data.loadData().then(function(data) {
-      $scope.module.data = data.data.modules.github;
-      console.log($scope.module);
-    });
+    console.log(storageService.export());
   });

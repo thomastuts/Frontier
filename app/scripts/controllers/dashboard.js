@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('frontierApp')
-  .controller('DashboardCtrl', function ($scope, Data) {
+  .controller('DashboardCtrl', function ($scope) {
     var $module = $('<div></div>');
     $module.attr('ng-controller', 'FruitCtrl');
     var $include = $('<div></div>');

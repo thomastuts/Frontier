@@ -5,6 +5,11 @@
   "config": {
     "general": {
       "username": "Thomas"
+    },
+    "apis": {
+      "github": {
+        "user": "https://api.github.com/users/"
+      }
     }
   },
   "data": {

@@ -2,10 +2,17 @@
 @import "mixins";
 
 @import "modules/fruit";
+@import "modules/github";
 
 .module {
 
   margin-bottom: 20px;
+
+  h2 {
+    font-family: $osl;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
 
   .titlebar, .content {
     padding: 10px;

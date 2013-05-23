@@ -23,6 +23,7 @@ angular.module('frontierApp')
       },
       set: function (content) {
         localStorage.setItem('frontier', stringify(content));
+        console.log('Done setting localStorage.frontier');
       },
 
       // exports to string

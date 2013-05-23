@@ -1,7 +1,10 @@
-<h3>Overview for <a href="{{user.html_url}}">{{user.name}} ({{user.login}})</a></h3>
-<img ng-src="{{user.avatar_url}}" alt=""/>
+<div class="avatar">
+  <img class="left" ng-src="{{overview.user.avatar_url}}" alt=""/>
+  <h2 class="left"><a href="{{overview.user.html_url}}">{{overview.user.name}} <span class="text-light">({{overview.user.login}})</span></a></h2>
+  <div style="clear: both"></div>
+</div>
 
-<h4>My repositories</h4>
+<h3>My repositories</h3>
 <table>
   <thead>
     <tr>
@@ -9,7 +12,7 @@
       <td>Open issues</td>
     </tr>
   </thead>
-  <tr ng-repeat="repo in repos">
+  <tr ng-repeat="repo in overview.repos" ng-click="showRepo(repo.name)">
     <td>
       {{repo.name}}
     </td>

@@ -19,6 +19,11 @@ body {
   width: 49%;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 header {
   background-color: $red;
   color: #fff;
@@ -30,4 +35,8 @@ header {
   ul {
     list-style-type: none;
   }
+}
+
+.text-light {
+  color: #AAA;
 }

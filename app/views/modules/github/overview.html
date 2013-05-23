@@ -1,1 +1,20 @@
-<p>This is an overview of your Github account.</p>
+<h3>Overview for <a href="{{user.html_url}}">{{user.name}} ({{user.login}})</a></h3>
+<img ng-src="{{user.avatar_url}}" alt=""/>
+
+<h4>My repositories</h4>
+<table>
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Open issues</td>
+    </tr>
+  </thead>
+  <tr ng-repeat="repo in repos">
+    <td>
+      {{repo.name}}
+    </td>
+    <td>
+      {{repo.open_issues}}
+    </td>
+  </tr>
+</table>

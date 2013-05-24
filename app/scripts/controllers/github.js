@@ -39,6 +39,15 @@ angular.module('frontierApp')
       }
     };
 
+    $scope.goBack = function () {
+      if($scope.module.views.previousView != null) {
+        var temp = $scope.module.views.previousView;
+        $scope.module.views.previousView = $scope.module.views.currentView;
+        $scope.module.views.currentView = temp;
+        console.log("Going back.");
+      }
+    };
+
     var api_user = $scope.module.config.apis.user;
     $.get(api_user, function (data) {
       $scope.$apply(function () {
@@ -57,11 +66,14 @@ angular.module('frontierApp')
 
     $scope.showRepo = function (repo) {
       console.log("Showing repo: " + repo);
+
+      $scope.module.views.previousView = $scope.module.views.currentView;
+      $scope.module.views.currentView = 'views/modules/github/repo.html';
+
       var api_repo = $scope.module.config.apis.repo + repo;
       $.get(api_repo, function (data) {
         $scope.$apply(function () {
           $scope.showRepo.repo = data;
-          $scope.module.view = 'views/modules/github/repo.html';
           console.log(data);
         });
       });

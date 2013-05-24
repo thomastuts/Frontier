@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 * {
   margin: 0;
@@ -39,4 +40,24 @@ header {
 
 .text-light {
   color: #AAA;
+}
+
+.code {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid black;
+  width: 100%;
+  padding: 10px;
+}
+
+.button {
+  color: #fff;
+  background-color: $red;
+  @include border-radius(5px);
+  padding: 10px;
+  display: inline-block;
+
+  &:hover {
+    background-color: darken($red, 5%);
+  }
 }

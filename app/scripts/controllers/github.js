@@ -7,7 +7,7 @@
  */
 
 angular.module('frontierApp')
-  .controller('GithubCtrl', function ($scope, storageService, viewer) {
+  .controller('GithubCtrl', function ($scope, storageService, viewer, ui) {
 
     var username = storageService.get().data.modules.github.username;
     console.log(username);
@@ -28,6 +28,9 @@ angular.module('frontierApp')
         title: 'Github',
         icon: 'icon-github'
       },
+      ui: {
+        open: true // true for full window, false for minimized version
+      },
       views: {
         currentView: 'views/modules/github/overview.html',
         previousView: null
@@ -43,6 +46,10 @@ angular.module('frontierApp')
 
     $scope.goBack = function () {
       viewer.goBack($scope);
+    };
+
+    $scope.toggle = function () {
+        ui.toggle($scope.module);
     };
 
     var api_user = $scope.module.config.apis.user;

@@ -4,7 +4,8 @@
   },
   "config": {
     "general": {
-      "username": "Thomas"
+      "username": "Thomas",
+      "datetime_format": "dddd DD/MM | H:mm:ss"
     }
   },
   "data": {

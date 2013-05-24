@@ -12,7 +12,10 @@ angular.module('frontierApp')
         title: 'localStorage',
         icon: 'icon-cogs'
       },
-      view: 'views/modules/localstorage/overview.html'
+      views: {
+        currentView: 'views/modules/localstorage/overview.html',
+        previousView: null
+      }
     };
 
     $scope.localStorage = JSON.stringify(storageService.get(), null, 2);

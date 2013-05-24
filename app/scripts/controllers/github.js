@@ -26,7 +26,10 @@ angular.module('frontierApp')
         title: 'Github',
         icon: 'icon-github'
       },
-      view: 'views/modules/github/overview.html',
+      views: {
+        currentView: 'views/modules/github/overview.html',
+        previousView: null
+      },
       config: {
         apis: {
           user: 'https://api.github.com/users/' + username,
@@ -57,7 +60,8 @@ angular.module('frontierApp')
       var api_repo = $scope.module.config.apis.repo + repo;
       $.get(api_repo, function (data) {
         $scope.$apply(function () {
-          $scope.repo = data;
+          $scope.showRepo.repo = data;
+          $scope.module.view = 'views/modules/github/repo.html';
           console.log(data);
         });
       });

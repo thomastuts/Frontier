@@ -1,13 +1,8 @@
 'use strict';
 
 angular.module('frontierApp')
-  .controller('HeaderCtrl', function ($scope) {
-    var url = 'data/frontier.json';
+  .controller('HeaderCtrl', function ($scope, storageService) {
 
-    // todo: change this to storageservice
-    $.get(url, function(data) {
-      $scope.$apply(function () {
-        $scope.data = data;
-      });
-    });
+    $scope.data = storageService.get();
+
   });

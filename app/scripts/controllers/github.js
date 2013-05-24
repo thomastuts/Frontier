@@ -7,7 +7,7 @@
  */
 
 angular.module('frontierApp')
-  .controller('GithubCtrl', function ($scope, storageService) {
+  .controller('GithubCtrl', function ($scope, storageService, viewer) {
 
     var username = storageService.get().data.modules.github.username;
     console.log(username);
@@ -42,12 +42,7 @@ angular.module('frontierApp')
     };
 
     $scope.goBack = function () {
-      if ($scope.module.views.previousView != null) {
-        var temp = $scope.module.views.previousView;
-        $scope.module.views.previousView = $scope.module.views.currentView;
-        $scope.module.views.currentView = temp;
-        console.log("Going back.");
-      }
+      viewer.goBack($scope);
     };
 
     var api_user = $scope.module.config.apis.user;
@@ -66,22 +61,10 @@ angular.module('frontierApp')
       });
     });
 
-    $scope.goToView = function (view, dataContainer) {
-      console.log("Switching page to " + view + " with dataContainer " + dataContainer);
-
-      if (dataContainer) {
-        // clear data to prevent old data being showed while new one is loading
-        $scope.data[dataContainer] = {};
-      }
-
-      $scope.module.views.previousView = $scope.module.views.currentView;
-      $scope.module.views.currentView = view;
-    };
-
     $scope.showRepo = function (repo) {
       console.log("Showing repo: " + repo);
 
-      $scope.goToView('views/modules/github/repo.html', 'repo');
+      viewer.goToView($scope, 'views/modules/github/repo.html', 'repo');
 
       var api_repo = $scope.module.config.apis.repo + repo;
       $.get(api_repo, function (data) {

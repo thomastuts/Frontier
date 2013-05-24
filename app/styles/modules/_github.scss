@@ -1,7 +1,13 @@
 @import "../variables";
+@import "../mixins";
 
 .github {
   .avatar {
+
+    width: 100%;
+    background-color: #ededed;
+    padding: 10px;
+    @include border-radius(3px);
 
     img {
       border-radius: 500px;

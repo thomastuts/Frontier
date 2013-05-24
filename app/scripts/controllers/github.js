@@ -14,8 +14,10 @@ angular.module('frontierApp')
 
     // instantiate scope view containers
 
-    $scope.overview = {};
-    $scope.showRepo = {};
+    $scope.data = {
+      overview: {},
+      repo: {}
+    };
 
     $scope.module = {
       meta: {
@@ -40,7 +42,7 @@ angular.module('frontierApp')
     };
 
     $scope.goBack = function () {
-      if($scope.module.views.previousView != null) {
+      if ($scope.module.views.previousView != null) {
         var temp = $scope.module.views.previousView;
         $scope.module.views.previousView = $scope.module.views.currentView;
         $scope.module.views.currentView = temp;
@@ -51,7 +53,7 @@ angular.module('frontierApp')
     var api_user = $scope.module.config.apis.user;
     $.get(api_user, function (data) {
       $scope.$apply(function () {
-        $scope.overview.user = data;
+        $scope.data.overview.user = data;
         console.log(data);
       });
     });
@@ -59,21 +61,32 @@ angular.module('frontierApp')
     var api_repos = $scope.module.config.apis.repos;
     $.get(api_repos, function (data) {
       $scope.$apply(function () {
-        $scope.overview.repos = data;
+        $scope.data.overview.repos = data;
         console.log(data);
       });
     });
 
+    $scope.goToView = function (view, dataContainer) {
+      console.log("Switching page to " + view + " with dataContainer " + dataContainer);
+
+      if (dataContainer) {
+        // clear data to prevent old data being showed while new one is loading
+        $scope.data[dataContainer] = {};
+      }
+
+      $scope.module.views.previousView = $scope.module.views.currentView;
+      $scope.module.views.currentView = view;
+    };
+
     $scope.showRepo = function (repo) {
       console.log("Showing repo: " + repo);
 
-      $scope.module.views.previousView = $scope.module.views.currentView;
-      $scope.module.views.currentView = 'views/modules/github/repo.html';
+      $scope.goToView('views/modules/github/repo.html', 'repo');
 
       var api_repo = $scope.module.config.apis.repo + repo;
       $.get(api_repo, function (data) {
         $scope.$apply(function () {
-          $scope.showRepo.repo = data;
+          $scope.data.repo = data;
           console.log(data);
         });
       });

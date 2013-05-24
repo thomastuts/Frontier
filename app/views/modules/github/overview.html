@@ -1,6 +1,6 @@
 <div class="avatar">
-  <img class="left" ng-src="{{overview.user.avatar_url}}" alt=""/>
-  <h2 class="left"><a href="{{overview.user.html_url}}">{{overview.user.name}} <span class="text-light">({{overview.user.login}})</span></a></h2>
+  <img class="left" ng-src="{{data.overview.user.avatar_url}}" alt=""/>
+  <h2 class="left"><a href="{{data.overview.user.html_url}}">{{data.overview.user.name}} <span class="text-light">({{data.overview.user.login}})</span></a></h2>
   <div style="clear: both"></div>
 </div>
 
@@ -12,7 +12,7 @@
       <td>Open issues</td>
     </tr>
   </thead>
-  <tr ng-repeat="repo in overview.repos" ng-click="showRepo(repo.name)">
+  <tr ng-repeat="repo in data.overview.repos" ng-click="showRepo(repo.name)">
     <td>
       {{repo.name}}
     </td>

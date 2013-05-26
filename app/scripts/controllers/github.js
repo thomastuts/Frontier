@@ -9,7 +9,7 @@
 angular.module('frontierApp')
   .controller('GithubCtrl', function ($scope, storage, viewer, ui) {
 
-    var username = storage.get().data.modules.github.username;
+    var username = storage.get('module-github').username;
 
     // instantiate scope view containers
 

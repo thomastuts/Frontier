@@ -3,27 +3,18 @@
 angular.module('frontierApp')
   .factory('storage', function () {
 
-    function parse (string) {
-      return JSON.parse(string);
-    }
-
-    function stringify (string) {
-      return JSON.stringify(string);
-    }
-
     return {
-      get: function () {
-        var frontierStorage = localStorage.getItem('frontier');
-        if(frontierStorage) {
-          return parse(frontierStorage);
+      get: function (storage) {
+        if(localStorage.getItem('ft-' + storage)) {
+          return JSON.parse(localStorage.getItem('ft-' + storage));
         }
         else {
-          return 'No Frontier localStorage found. Injecting default configuration.'
+          return 'localStorage ' + storage + ' was not found.';
         }
       },
-      set: function (content) {
-        localStorage.setItem('frontier', stringify(content));
-        console.log('Done setting localStorage.frontier');
+      set: function (storage, content) {
+        localStorage.setItem('ft-' + storage, JSON.stringify(content));
+        console.log('Done setting ft-' + storage);
       },
 
       // exports to string

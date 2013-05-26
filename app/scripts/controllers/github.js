@@ -7,9 +7,9 @@
  */
 
 angular.module('frontierApp')
-  .controller('GithubCtrl', function ($scope, storageService, viewer, ui) {
+  .controller('GithubCtrl', function ($scope, storage, viewer, ui) {
 
-    var username = storageService.get().data.modules.github.username;
+    var username = storage.get().data.modules.github.username;
 
     // instantiate scope view containers
 
@@ -85,7 +85,7 @@ angular.module('frontierApp')
       $.get(api_repo, function (data) {
         $scope.$apply(function () {
           $scope.data.repo = data;
-          $scope.data.repo.updated_at = moment($scope.data.repo.updated_at).format(storageService.get().config.general.datetime_format);
+          $scope.data.repo.updated_at = moment($scope.data.repo.updated_at).format(storage.get().config.general.datetime_format);
           console.log(data);
         });
       });

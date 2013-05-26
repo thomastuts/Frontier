@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('frontierApp')
-  .controller('LocalStorageCtrl', function ($scope, storageService) {
+  .controller('LocalStorageCtrl', function ($scope, storage) {
 
     $scope.module = {
       meta: {
@@ -18,10 +18,10 @@ angular.module('frontierApp')
       }
     };
 
-    $scope.localStorage = JSON.stringify(storageService.get(), null, 2);
+    $scope.localStorage = JSON.stringify(storage.get(), null, 2);
 
     $scope.saveStorage = function () {
       var textStorage = $('#localStorage').html();
-      storageService.import(textStorage);
+      storage.import(textStorage);
     }
   });

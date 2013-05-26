@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('frontierApp')
-  .factory('storageService', function () {
+  .factory('storage', function () {
 
     function parse (string) {
       return JSON.parse(string);

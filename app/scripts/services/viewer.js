@@ -5,22 +5,29 @@ angular.module('frontierApp')
 
     return {
       goBack: function ($scope) {
-        if ($scope.module.views.previousView != null) {
-          var temp = $scope.module.views.previousView;
-          $scope.module.views.previousView = $scope.module.views.currentView;
-          $scope.module.views.currentView = temp;
-          console.log("Going back.");
+        var history = $scope.module.views.history;
+        if (history.length != 0) {
+          // set current view to the last item in the history stack
+          $scope.module.views.currentView = history[history.length - 1];
+
+          // remove last item in history since it's the current view now
+          $scope.module.views.history.splice((history.length - 1), 1);
+        }
+        else {
+          console.warn('No previous view detected');
         }
       },
       goToView: function ($scope, view, dataContainer) {
-        console.log("Switching page to " + view + " with dataContainer " + dataContainer);
-
+        console.log($scope.module.views.history);
         if (dataContainer) {
           // clear data to prevent old data being showed while new one is loading
           $scope.data[dataContainer] = {};
         }
 
-        $scope.module.views.previousView = $scope.module.views.currentView;
+        // push current view on history stack
+        $scope.module.views.history.push($scope.module.views.currentView);
+
+        // set current view to the view passed to the viewer function
         $scope.module.views.currentView = view;
       }
     };

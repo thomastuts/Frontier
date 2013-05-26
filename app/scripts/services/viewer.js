@@ -18,7 +18,6 @@ angular.module('frontierApp')
         }
       },
       goToView: function ($scope, view, dataContainer) {
-        console.log($scope.module.views.history);
         if (dataContainer) {
           // clear data to prevent old data being showed while new one is loading
           $scope.data[dataContainer] = {};

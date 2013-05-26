@@ -10,7 +10,6 @@ angular.module('frontierApp')
   .controller('GithubCtrl', function ($scope, storageService, viewer, ui) {
 
     var username = storageService.get().data.modules.github.username;
-    console.log(username);
 
     // instantiate scope view containers
 
@@ -52,6 +51,12 @@ angular.module('frontierApp')
         ui.toggle($scope.module);
     };
 
+    /*
+    *   ------------
+    *   | OVERVIEW |
+    *   ------------
+    */
+
     var api_user = $scope.module.config.apis.user;
     $.get(api_user, function (data) {
       $scope.$apply(function () {
@@ -64,19 +69,23 @@ angular.module('frontierApp')
     $.get(api_repos, function (data) {
       $scope.$apply(function () {
         $scope.data.overview.repos = data;
-        console.log(data);
       });
     });
 
-    $scope.showRepo = function (repo) {
-      console.log("Showing repo: " + repo);
+    /*
+     *   --------
+     *   | REPO |
+     *   --------
+     */
 
+    $scope.showRepo = function (repo) {
       viewer.goToView($scope, 'views/modules/github/repo.html', 'repo');
 
       var api_repo = $scope.module.config.apis.repo + repo;
       $.get(api_repo, function (data) {
         $scope.$apply(function () {
           $scope.data.repo = data;
+          $scope.data.repo.updated_at = moment($scope.data.repo.updated_at).format(storageService.get().config.general.datetime_format);
           console.log(data);
         });
       });

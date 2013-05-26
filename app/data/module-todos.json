@@ -1,0 +1,13 @@
+{
+  "projects": [
+    {
+      "name": "Frontier Development",
+      "description": "Develop Frontier in an efficient and fast way.",
+      "tasks": {
+        "todo": ["Git 101 module"],
+        "current": ["Todo module"],
+        "done": ["Bbasic design", "Viewer service"]
+      }
+    }
+  ]
+}

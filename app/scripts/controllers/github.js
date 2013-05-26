@@ -33,7 +33,7 @@ angular.module('frontierApp')
       },
       views: {
         currentView: 'views/modules/github/overview.html',
-        previousView: null
+        history: []
       },
       config: {
         apis: {

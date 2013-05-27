@@ -28,6 +28,9 @@ angular.module('frontierApp')
       }
     };
 
+    $scope.things = ['one', 'two', 'three'];
+    $scope.otherThings = ['osrum'];
+
     $scope.goBack = function () {
       viewer.goBack($scope);
     };

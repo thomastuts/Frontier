@@ -38,6 +38,13 @@ header {
   }
 }
 
+.panel {
+  width: 100%;
+  background-color: #ededed;
+  padding: 10px;
+  @include border-radius(3px);
+}
+
 .text-light {
   color: #AAA;
 }

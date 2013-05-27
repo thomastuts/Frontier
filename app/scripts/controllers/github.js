@@ -85,7 +85,7 @@ angular.module('frontierApp')
       $.get(api_repo, function (data) {
         $scope.$apply(function () {
           $scope.data.repo = data;
-          $scope.data.repo.updated_at = moment($scope.data.repo.updated_at).format(storage.get().config.general.datetime_format);
+          $scope.data.repo.updated_at = moment($scope.data.repo.updated_at).format(storage.get('config').general.datetime_format);
           console.log(data);
         });
       });

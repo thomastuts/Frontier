@@ -3,8 +3,12 @@
 angular.module('frontierApp')
   .controller('TodosCtrl', function ($scope, storage, viewer, ui) {
     $scope.data = {
-      overview: storage.get('module-todos')
+      overview: {}
     };
+
+    $scope.data.overview = storage.get('module-todos');
+
+    console.log($scope.data.overview);
 
     $scope.module = {
       meta: {

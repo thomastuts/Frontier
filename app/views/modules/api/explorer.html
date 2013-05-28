@@ -1,0 +1,11 @@
+<!--T0D0: replace value with ngmodel 2-way binding-->
+
+<ul>
+  <li>https://api.github.com/rate_limit</li>
+  <li>https://api.github.com/users/thomastuts</li>
+</ul>
+<input type="text" id="api-url" value="https://api.github.com/rate_limit" />
+<a class="button" ng-click="exploreApi()">GET</a>
+
+<!--Gotcha: needs to be on one line, otherwise code gets indented wrong-->
+<pre><code>{{data.explorer}}</code></pre>

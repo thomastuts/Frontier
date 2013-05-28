@@ -3,8 +3,10 @@
 angular.module('frontierApp')
   .controller('TodosCtrl', function ($scope, storage, viewer, ui) {
     $scope.data = {
-      overview: {}
+
     };
+
+    $scope.wutwut = 0;
 
     $scope.data.overview = storage.get('module-todos');
 
@@ -28,6 +30,10 @@ angular.module('frontierApp')
       }
     };
 
+    $scope.saveTodos = function () {
+      console.log('Saving todos...');
+    };
+
     $scope.goBack = function () {
       viewer.goBack($scope);
     };
@@ -35,4 +41,12 @@ angular.module('frontierApp')
     $scope.toggle = function () {
       ui.toggle($scope.module);
     };
+
+    $scope.showDetail = function (project) {
+      viewer.goToView($scope, 'views/modules/todos/project.html', 'project');
+      $scope.data.project = project;
+      console.log($scope.data.project);
+    }
+
+
   });

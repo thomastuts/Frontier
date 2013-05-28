@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('frontierApp', [])
+angular.module('frontierApp', ['btford.dragon-drop'])
     .config(function ($routeProvider) {
       $routeProvider
           .when('/', {

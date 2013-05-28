@@ -1,19 +1,10 @@
-<div class="panel" ng-repeat="project in data.overview.projects">
+<div class="panel" ng-click="showDetail(project)" ng-repeat="project in data.overview.projects">
   <h3>{{project.name}}</h3>
-  <p>{{project.description}}</p>
 
   <h4>To-do:</h4>
   <ul>
     <li ng-repeat="task in project.tasks.todo">{{task}}</li>
   </ul>
-
-  <h4>Current:</h4>
-  <ul>
-    <li ng-repeat="task in project.tasks.current">{{task}}</li>
-  </ul>
-
-  <h4>Done:</h4>
-  <ul>
-    <li ng-repeat="task in project.tasks.done">{{task}}</li>
-  </ul>
 </div>
+
+<a class="button" ng-click="saveTodos()">Show me the money</a>

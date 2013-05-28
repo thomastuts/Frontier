@@ -1,0 +1,33 @@
+<h2>{{data.project.name}}</h2>
+
+<p>{{data.project.description}}</p>
+
+<h4>To-do:</h4>
+<ul>
+  <li btf-dragon="task in data.project.tasks.todo">{{task}}</li>
+</ul>
+
+<h4>Current:</h4>
+<ul>
+  <li btf-dragon="task in data.project.tasks.current">{{task}}</li>
+</ul>
+
+<h4>Done:</h4>
+<ul>
+  <li btf-dragon="task in data.project.tasks.done">{{task}}</li>
+</ul>
+
+<div class="row">
+  <div class="span6">
+    <h3>Todo</h3>
+    <pre>{{data.project.tasks.todo | json}}</pre>
+  </div>
+  <div class="span6">
+    <h3>Current</h3>
+    <pre>{{data.project.tasks.current | json}}</pre>
+  </div>
+  <div class="span6">
+    <h3>Done</h3>
+    <pre>{{data.project.tasks.done | json}}</pre>
+  </div>
+</div>

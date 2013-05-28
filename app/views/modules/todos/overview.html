@@ -1,36 +1,10 @@
-<div class="panel" ng-repeat="project in data.overview.projects">
+<div class="panel" ng-click="showDetail(project)" ng-repeat="project in data.overview.projects">
   <h3>{{project.name}}</h3>
-  <p>{{project.description}}</p>
 
   <h4>To-do:</h4>
   <ul>
-    <li btf-dragon="task in project.tasks.todo">{{task}}</li>
-  </ul>
-
-  <h4>Current:</h4>
-  <ul>
-    <li btf-dragon="task in project.tasks.current">{{task}}</li>
-  </ul>
-
-  <h4>Done:</h4>
-  <ul>
-    <li btf-dragon="task in project.tasks.done">{{task}}</li>
+    <li ng-repeat="task in project.tasks.todo">{{task}}</li>
   </ul>
 </div>
 
-<div class="row">
-  <div class="span6">
-    <h3>Todo</h3>
-    <pre>{{data.overview.projects[0].tasks.todo | json}}</pre>
-  </div>
-  <div class="span6">
-    <h3>Current</h3>
-    <pre>{{data.overview.projects[0].tasks.current | json}}</pre>
-  </div>
-  <div class="span6">
-    <h3>Done</h3>
-    <pre>{{data.overview.projects[0].tasks.done | json}}</pre>
-  </div>
-</div>
-
-<a class="button" ng-click="showTasks()">Show me the money</a>
+<a class="button" ng-click="saveTodos()">Show me the money</a>

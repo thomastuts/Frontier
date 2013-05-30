@@ -1,7 +1,14 @@
 'use strict';
 
 angular.module('frontierApp')
-  .controller('ApiCtrl', function ($scope, storage, viewer, ui, $http) {
+  .controller('ApiCtrl', function ($scope, storage, viewer, ui, utility) {
+
+    $(document).on("click", ".api-link", function () {
+      var url = $(this).attr('data-link');
+      console.log(url);
+      $('#api-url').val(url);
+      $scope.exploreApi(url);
+    });
 
     $scope.data = {
       explorer: null
@@ -33,28 +40,34 @@ angular.module('frontierApp')
       ui.toggle($scope.module);
     };
 
-    $scope.exploreApi = function () {
-      $scope.url = $('#api-url').val();
-
-      console.log($scope.url);
-
-      $.get($scope.url, function (data) {
-        $scope.$apply(function () {
-          $scope.data.explorer = JSON.stringify(data, null, 4);
-          console.log($scope.data.explorer);
+    $scope.exploreApi = function (url) {
+      if (url) {
+        console.log('Exploring ' + url);
+        $scope.url = url;
+        $.get($scope.url, function (data) {
+          $scope.$apply(function () {
+            data = JSON.stringify(data, null, 4);
+            $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
+            console.log($scope.data.explorer);
+            $('.code').html($scope.data.explorer);
+          });
         });
-      });
-    };
+      }
+      else {
+        $scope.url = $('#api-url').val();
 
-    $scope.parseForLinks = function (data) {
-      //get the string
-      //create good link matching regexp
-      var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/g
-      // $1 is the found URL in the text
-      // str.replace replaces the found url with <a href='THE URL'>THE URL</a>
-      var replaced_text = data.replace(regex, "<a href='$1'>$1</a>")
-      //replace the contents
-      return replaced_text;
+        console.log($scope.url);
+
+        $.get($scope.url, function (data) {
+          $scope.$apply(function () {
+            data = JSON.stringify(data, null, 4);
+            $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
+            console.log($scope.data.explorer);
+            $('.code').html($scope.data.explorer);
+          });
+        });
+      }
+
     };
 
   });

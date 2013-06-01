@@ -11,3 +11,7 @@ angular.module('frontierApp', ['btford.dragon-drop'])
             redirectTo: '/'
           });
     });
+
+$(document).on('click', 'a[href="#"]', function() {
+  return false;
+});

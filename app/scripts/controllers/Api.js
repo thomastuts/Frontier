@@ -49,7 +49,7 @@ angular.module('frontierApp')
             data = JSON.stringify(data, null, 4);
             $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
             console.log($scope.data.explorer);
-            $('.code').html($scope.data.explorer);
+            $('.api .code').html($scope.data.explorer);
           });
         });
       }
@@ -63,11 +63,16 @@ angular.module('frontierApp')
             data = JSON.stringify(data, null, 4);
             $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
             console.log($scope.data.explorer);
-            $('.code').html($scope.data.explorer);
+            $('.api .code').html($scope.data.explorer);
           });
         });
       }
 
+    };
+
+    $scope.clearData = function () {
+      $scope.data.explorer = null;
+      $('.api .code').html('');
     };
 
   });

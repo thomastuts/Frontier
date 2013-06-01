@@ -77,6 +77,7 @@ angular.module('frontierApp')
 
       else {
 
+        // API exploration by given URL (input)
         switch($scope.module.methods.currentMethod) {
           case 'GET':
             console.log($scope.url);
@@ -91,6 +92,7 @@ angular.module('frontierApp')
             });
             break;
           case 'POST':
+            // TODO: perform post
             console.log('Performing POST');
         }
       }

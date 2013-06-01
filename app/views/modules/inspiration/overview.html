@@ -1,1 +1,9 @@
-<h2>Inspiration module stuff!</h2>
+<div class="panel" ng-click="showSet(set)" ng-repeat="set in data.overview">
+  <h2>{{set.name}}</h2>
+  <p>{{set.description}}</p>
+
+  <div class="thumbnails">
+    <img ng-repeat="shot in set.shots" ng-src="{{shot.image}}" alt=""/>
+    <div style="clear: both;"></div>
+  </div>
+</div>

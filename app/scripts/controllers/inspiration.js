@@ -4,7 +4,7 @@ angular.module('frontierApp')
   .controller('InspirationCtrl', function ($scope, storage, viewer, ui) {
 
     $scope.data = {
-      explorer: null
+      overview: storage.get('module-inspiration').sets
     };
 
     $scope.module = {
@@ -32,5 +32,17 @@ angular.module('frontierApp')
     $scope.toggle = function () {
       ui.toggle($scope.module);
     };
+
+    /*
+     *   ------------
+     *   | OVERVIEW |
+     *   ------------
+     */
+
+
+
+
+
+
 
   });

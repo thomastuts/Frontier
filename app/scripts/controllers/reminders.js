@@ -4,26 +4,31 @@ angular.module('frontierApp')
   .controller('RemindersCtrl', function ($scope, viewer, ui, storage) {
 
     $scope.data = {
-      overview: storage.get('module-reminders').reminders
+      overview: storage.get('module-reminders').reminders,
+      new: {
+        name: '',
+        datetime: '',
+        type: ''
+      }
     };
 
     console.log(moment().format());
 
     $scope.module = {
-      meta: {
+      meta   : {
         version: '0.1',
-        name: 'reminders'
+        name   : 'reminders'
       },
       menubar: {
         title: 'Reminders',
-        icon: 'icon-bell-alt'
+        icon : 'icon-bell-alt'
       },
-      ui: {
+      ui     : {
         open: true // true for full window, false for minimized version
       },
-      views: {
-        currentView: 'views/modules/reminders/overview.html',
-        history: []
+      views  : {
+        currentView: 'views/modules/reminders/new.html',
+        history    : []
       }
     };
 
@@ -40,5 +45,26 @@ angular.module('frontierApp')
      *   | OVERVIEW |
      *   ------------
      */
+
+    $scope.newReminder = function () {
+      viewer.goToView($scope, 'views/modules/reminders/new.html', 'new');
+    };
+
+    /*
+     *   ----------------
+     *   | NEW REMINDER |
+     *   ----------------
+     */
+
+    $scope.saveReminder = function () {
+      console.log('Saving reminder for ' + $scope.data.new.name);
+      var reminder = $scope.data.new;
+      var reminders_data = storage.get('module-reminders');
+      reminders_data.reminders.push(reminder);
+      console.log(JSON.stringify(reminders_data));
+      storage.set('module-reminders', reminders_data);
+    }
+
+
 
   });

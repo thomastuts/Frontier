@@ -52,5 +52,14 @@
     background: #fff;
     color: $darkgrey;
     font-size: 14px;
+
+    .actions {
+      list-style-type: none;
+      float: right;
+
+      li {
+        float: left;
+      }
+    }
   }
 }

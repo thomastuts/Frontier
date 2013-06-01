@@ -1,0 +1,9 @@
+{
+  "reminders": [
+    {
+      "name": "Frontier development meeting",
+      "datetime": "01-06-2013 18:45",
+      "type": "alarm"
+    }
+  ]
+}

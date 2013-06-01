@@ -28,10 +28,10 @@ angular.module('frontierApp')
         }
       },
       // imports from string
-      import: function (string) {
+      import: function (storage, content) {
         // TODO: check if string is valid JSON before inserting
-        localStorage.setItem('frontier', string);
-        console.log('Imported JSON string to localStorage');
+        localStorage.setItem('ft-' + storage, content);
+        console.log('Imported JSON string to ft-' + storage);
       }
     };
   });

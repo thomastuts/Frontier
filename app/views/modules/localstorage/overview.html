@@ -1,7 +1,11 @@
 <h3>localStorage</h3>
 
-<pre><code id="localStorage" contenteditable="true" class="javascript">
-  {{localStorage}}
-</code></pre>
+<div>
+  <input id="storage-name" type="text" ng-model="storage"/>
+</div>
+        <br>
+<div>
+  <textarea name="" class="code" id="storage-content" style="width: 100%; height: 250px;" ng-model="content">{{content}}</textarea>
+</div>
 
 <a class="button" ng-click="saveStorage()">Save</a>

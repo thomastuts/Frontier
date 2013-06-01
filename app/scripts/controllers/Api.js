@@ -3,16 +3,11 @@
 angular.module('frontierApp')
   .controller('ApiCtrl', function ($scope, storage, viewer, ui, utility) {
 
-    $(document).on("click", ".api-link", function () {
-      var url = $(this).attr('data-link');
-      console.log(url);
-      $('#api-url').val(url);
-      $scope.exploreApi(url);
-    });
-
     $scope.data = {
       explorer: null
     };
+
+    $scope.url = 'https://api.github.com/users/thomastuts'; // TODO: remember last request
 
     $scope.module = {
       meta: {
@@ -29,7 +24,17 @@ angular.module('frontierApp')
       views: {
         currentView: 'views/modules/api/explorer.html',
         history: []
-      }
+      },
+      methods: {
+        currentMethod: 'GET',
+        availableMethods: ['GET', 'POST']
+      },
+      getParameters: [
+        {
+          key: "test",
+          value: "valuetest"
+        }
+      ]
     };
 
     $scope.goBack = function () {
@@ -40,7 +45,23 @@ angular.module('frontierApp')
       ui.toggle($scope.module);
     };
 
+    $(document).on("click", ".api-link", function () {
+      var url = $(this).attr('data-link');
+      console.log(url);
+      // $('#api-url').val(url);
+      $scope.url = url;
+      $scope.exploreApi(url);
+    });
+
+    $(document).on("change", "#api-method", function () {
+      var method = $(this).val();
+      $scope.$apply(function(){
+          $scope.module.methods.currentMethod = method;
+      });
+    });
+
     $scope.exploreApi = function (url) {
+      // inline JSON explore
       if (url) {
         console.log('Exploring ' + url);
         $scope.url = url;
@@ -53,19 +74,25 @@ angular.module('frontierApp')
           });
         });
       }
+
       else {
-        $scope.url = $('#api-url').val();
 
-        console.log($scope.url);
+        switch($scope.module.methods.currentMethod) {
+          case 'GET':
+            console.log($scope.url);
 
-        $.get($scope.url, function (data) {
-          $scope.$apply(function () {
-            data = JSON.stringify(data, null, 4);
-            $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
-            console.log($scope.data.explorer);
-            $('.api .code').html($scope.data.explorer);
-          });
-        });
+            $.get($scope.url, function (data) {
+              $scope.$apply(function () {
+                data = JSON.stringify(data, null, 4);
+                $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
+                console.log($scope.data.explorer);
+                $('.api .code').html($scope.data.explorer);
+              });
+            });
+            break;
+          case 'POST':
+            console.log('Performing POST');
+        }
       }
 
     };

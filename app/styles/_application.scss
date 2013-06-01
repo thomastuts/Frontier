@@ -44,6 +44,7 @@ header {
   background-color: #ededed;
   padding: 10px;
   @include border-radius(3px);
+  margin-bottom: 5px;
 }
 
 .text-light {

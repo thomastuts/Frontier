@@ -3,6 +3,10 @@
 </ul>
 
 <div class="panel" ng-repeat="reminder in data.overview">
+  <ul class="actions">
+    <li ng-click="editReminder(reminder)"><i class="icon-edit"></i></li>
+  </ul>
+
   <h3>{{reminder.name}}</h3>
   <h4>{{1288323623006 | date:'DD-mm-yyyy'}}</h4>
 </div>

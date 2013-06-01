@@ -9,6 +9,11 @@ angular.module('frontierApp')
         name: '',
         datetime: '',
         type: ''
+      },
+      edit: {
+        name: '',
+        datetime: '',
+        type: ''
       }
     };
 
@@ -27,7 +32,7 @@ angular.module('frontierApp')
         open: true // true for full window, false for minimized version
       },
       views  : {
-        currentView: 'views/modules/reminders/new.html',
+        currentView: 'views/modules/reminders/overview.html',
         history    : []
       }
     };
@@ -48,7 +53,9 @@ angular.module('frontierApp')
 
     $scope.newReminder = function () {
       viewer.goToView($scope, 'views/modules/reminders/new.html', 'new');
+      $scope.data.new.datetime = moment().unix();
     };
+
 
     /*
      *   ----------------
@@ -56,14 +63,38 @@ angular.module('frontierApp')
      *   ----------------
      */
 
-    $scope.saveReminder = function () {
-      console.log('Saving reminder for ' + $scope.data.new.name);
-      var reminder = $scope.data.new;
+    $scope.saveReminder = function (view) {
+
+      var reminder, reminders;
       var reminders_data = storage.get('module-reminders');
-      reminders_data.reminders.push(reminder);
-      console.log(JSON.stringify(reminders_data));
+
+      switch(view) {
+        case 'new':
+          console.log('Saving new reminder for ' + $scope.data.new.name);
+          reminder = $scope.data.new;
+          reminders_data.reminders.push(reminder);
+          break;
+        case 'edit':
+          console.log('Saving edited reminder for ' + $scope.data.edit.name);
+          reminder = $scope.data.edit;
+          // TODO: find edited reminder and replace it
+          break;
+      }
+
       storage.set('module-reminders', reminders_data);
-    }
+    };
+
+    /*
+     *   -----------------
+     *   | EDIT REMINDER |
+     *   -----------------
+     */
+
+    $scope.editReminder = function (reminder) {
+      viewer.goToView($scope, 'views/modules/reminders/edit.html', 'edit');
+      console.log('Editing reminder ' + reminder.name);
+      $scope.data.edit = reminder;
+    };
 
 
 

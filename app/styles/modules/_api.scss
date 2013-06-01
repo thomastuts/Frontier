@@ -1,11 +1,12 @@
-.code {
-  word-wrap: break-word;
-  font-size: 10px;
-  line-height: 14px;
-}
+@import "../variables";
 
 .api-link {
   color: $yellow;
+  cursor: pointer;
+
+  &:hover {
+    color: lighten($yellow, 15%);
+  }
 }
 
 #api-url {

@@ -1,27 +1,29 @@
 'use strict';
 
 angular.module('frontierApp')
-  .controller('LocalStorageCtrl', function ($scope, storage) {
+  .controller('LocalStorageCtrl', function ($scope, storage, utility) {
 
     $scope.module = {
-      meta: {
+      meta   : {
         version: '0.1',
-        name: 'localstorage'
+        name   : 'localstorage'
       },
       menubar: {
         title: 'localStorage',
-        icon: 'icon-cogs'
+        icon : 'icon-cogs'
       },
-      views: {
-        currentView: 'views/modules/localstorage/overview.html',
+      views  : {
+        currentView : 'views/modules/localstorage/overview.html',
         previousView: null
       }
     };
 
-    $scope.localStorage = JSON.stringify(storage.get(), null, 2);
 
     $scope.saveStorage = function () {
-      var textStorage = $('#localStorage').html();
-      storage.import(textStorage);
+      var name = $('#storage-name').val();
+      var content = utility.removeLineBreaks($('#storage-content').val());
+      console.log(name);
+      console.log(content);
+      storage.import(name, content);
     }
   });

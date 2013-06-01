@@ -4,8 +4,11 @@ angular.module('frontierApp')
   .controller('ApiCtrl', function ($scope, storage, viewer, ui, utility) {
 
     $scope.data = {
-      explorer: null
+      explorer: null,
+      collections: storage.get('module-api').collections
     };
+
+    $scope.selectedCollection = null;
 
     $scope.url = 'https://api.github.com/users/thomastuts'; // TODO: remember last request
 
@@ -50,7 +53,7 @@ angular.module('frontierApp')
       console.log(url);
       // $('#api-url').val(url);
       $scope.url = url;
-      $scope.exploreApi(url);
+      $scope.exploreApi(url);z
     });
 
     $(document).on("change", "#api-method", function () {
@@ -61,6 +64,7 @@ angular.module('frontierApp')
     });
 
     $scope.exploreApi = function (url) {
+      viewer.goToView($scope, 'views/modules/api/explorer.html');
       // inline JSON explore
       if (url) {
         console.log('Exploring ' + url);
@@ -103,5 +107,9 @@ angular.module('frontierApp')
       $scope.data.explorer = null;
       $('.api .code').html('');
     };
+
+    $scope.showCollections = function () {
+      viewer.goToView($scope, 'views/modules/api/collections.html');
+    }
 
   });

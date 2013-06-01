@@ -19,6 +19,27 @@
           }
         }
       ]
+    },
+    {
+      "name": "Github Thomas",
+      "description": "Github collection for Thomas Tuts",
+      "api_calls": [
+        {
+          "name": "Profile",
+          "url": "https://api.github.com/users/thomastuts",
+          "method": {
+            "type": "GET"
+          }
+        },
+        {
+          "name": "Rate limit",
+          "url": "https://api.github.com/rate_limit",
+          "method": {
+            "type": "GET"
+          }
+        }
+      ]
     }
+
   ]
 }

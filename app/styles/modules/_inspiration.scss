@@ -1,0 +1,15 @@
+.inspiration {
+
+  .thumbnails {
+
+    img {
+      width: 48%;
+      border: 1px solid #ddd;
+      float: left;
+    }
+
+    img:nth-child(2n) {
+      float: right;
+    }
+  }
+}

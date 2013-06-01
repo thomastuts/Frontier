@@ -4,7 +4,40 @@
   <li>https://api.github.com/rate_limit</li>
   <li>https://api.github.com/users/thomastuts</li>
 </ul>
-<input type="text" id="api-url" value="https://api.github.com/users/thomastuts" />
+
+<input type="text" ng-model="url" style="display: block; width: 100%;"/>
+<select name="methods" id="api-method">
+  <option ng-repeat="method in module.methods.availableMethods" value="{{method}}">{{method}}</option>
+</select>
+
+Current method: {{module.methods.currentMethod}}
+
+<div ng-switch="module.methods.currentMethod">
+  <table ng-switch-when="POST">
+    <thead>
+    <tr>
+      <td>Key</td>
+      <td>Value</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="parameter in module.getParameters">
+      <td>
+        <input type="text" ng-model="parameter.key"/>
+      </td>
+      <td>
+        <input type="text" ng-model="parameter.value"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Add new
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
 <a class="button" ng-click="exploreApi()">GET</a>
 <a class="button" ng-click="clearData()">CLEAR</a>
 

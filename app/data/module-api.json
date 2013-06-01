@@ -1,0 +1,24 @@
+{
+  "collections": [
+    {
+      "name": "Data.Gent Demografie",
+      "description": "A dataset that uses part of the Open Data made available by the city of Ghent.",
+      "api_calls": [
+        {
+          "name": "Overzicht Demografische Onderwerpen",
+          "url": "http://datatank.gent.be/Bevolking/OverzichtDemografischeOnderwerpen.json",
+          "method": {
+            "type": "GET"
+          }
+        },
+        {
+          "name": "Bevolkingssamenstelling: Geslacht",
+          "url": "http://datatank.gent.be/Bevolking/BevolkingssamenstellingGeslacht.json",
+          "method": {
+            "type": "GET"
+          }
+        }
+      ]
+    }
+  ]
+}

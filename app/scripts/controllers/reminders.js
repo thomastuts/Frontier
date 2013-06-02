@@ -5,33 +5,33 @@ angular.module('frontierApp')
 
     $scope.data = {
       overview: storage.get('module-reminders'),
-      new     : {
-        name    : '',
+      new: {
+        name: '',
         datetime: '',
-        type    : ''
+        type: ''
       },
-      edit    : {
-        name    : '',
+      edit: {
+        name: '',
         datetime: '',
-        type    : ''
+        type: ''
       }
     };
 
     $scope.module = {
-      meta   : {
+      meta: {
         version: '0.1',
-        name   : 'reminders'
+        name: 'reminders'
       },
       menubar: {
         title: 'Reminders',
-        icon : 'icon-bell-alt'
+        icon: 'icon-bell-alt'
       },
-      ui     : {
+      ui: {
         open: true // true for full window, false for minimized version
       },
-      views  : {
+      views: {
         currentView: 'views/modules/reminders/overview.html',
-        history    : []
+        history: []
       }
     };
 
@@ -91,7 +91,7 @@ angular.module('frontierApp')
         case 'new':
           console.log('Saving new reminder for ' + $scope.data.new.name);
           reminder = $scope.data.new;
-          if($scope.data.overview.reminders.length === 0) {
+          if ($scope.data.overview.reminders.length === 0) {
             reminder.id = 1;
           }
           else {
@@ -105,10 +105,9 @@ angular.module('frontierApp')
           // TODO: doesn't sync with storage
           console.log('Saving edited reminder for ' + $scope.data.edit.name);
           reminder = $scope.data.edit;
-          for(var i = 0; i < $scope.data.overview.reminders.length; i++)
-          {
-            if ($scope.data.overview.reminders[i].id === reminder.id) {
-              $scope.data.overview.reminders[i] = reminder;
+          for (var i = 0; i < reminders_data.reminders.length; i++) {
+            if (reminders_data.reminders[i].id === reminder.id) {
+              reminders_data.reminders[i] = reminder;
             }
           }
           break;

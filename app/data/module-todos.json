@@ -1,6 +1,7 @@
 {
   "projects": [
     {
+      "id": 1,
       "name": "Frontier Development",
       "description": "Develop Frontier in an efficient and fast way.",
       "tasks": {

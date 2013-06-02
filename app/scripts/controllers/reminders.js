@@ -5,15 +5,15 @@ angular.module('frontierApp')
 
     $scope.data = {
       overview: storage.get('module-reminders'),
-      new: {
-        name: '',
+      new     : {
+        name    : '',
         datetime: '',
-        type: ''
+        type    : ''
       },
-      edit: {
-        name: '',
+      edit    : {
+        name    : '',
         datetime: '',
-        type: ''
+        type    : ''
       }
     };
 
@@ -59,9 +59,12 @@ angular.module('frontierApp')
     };
 
     $scope.removeReminder = function (reminder) {
-      for(var i = 0; i < $scope.reminders.length; i++)
-      { 
-          
+      console.log('Removing reminder: ' + reminder.name);
+      for (var i = 0; i < $scope.data.overview.reminders.length; i++) {
+        // TODO: confirmation?
+        if ($scope.data.overview.reminders[i].name === reminder.name && $scope.data.overview.reminders[i].datetime === reminder.datetime) {
+          $scope.data.overview.reminders.splice(i, 1);
+        }
       }
     };
 
@@ -77,7 +80,7 @@ angular.module('frontierApp')
       var reminder, reminders;
       var reminders_data = storage.get('module-reminders');
 
-      switch(view) {
+      switch (view) {
         case 'new':
           console.log('Saving new reminder for ' + $scope.data.new.name);
           reminder = $scope.data.new;
@@ -108,7 +111,6 @@ angular.module('frontierApp')
       console.log('Editing reminder ' + reminder.name);
       $scope.data.edit = reminder;
     };
-
 
 
   });

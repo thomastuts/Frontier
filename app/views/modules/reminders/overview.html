@@ -5,6 +5,7 @@
 <div class="panel" ng-repeat="reminder in data.overview.reminders">
   <ul class="actions">
     <li ng-click="editReminder(reminder)"><i class="icon-edit"></i></li>
+    <li ng-click="removeReminder(reminder)"><i class="icon-remove"></i></li>
   </ul>
 
   <h3>{{reminder.name}}</h3>

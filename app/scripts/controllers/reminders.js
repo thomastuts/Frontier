@@ -91,6 +91,13 @@ angular.module('frontierApp')
         case 'new':
           console.log('Saving new reminder for ' + $scope.data.new.name);
           reminder = $scope.data.new;
+          if($scope.data.overview.reminders.length === 0) {
+            reminder.id = 1;
+          }
+          else {
+            var lastId = $scope.data.overview.reminders[($scope.data.overview.reminders.length - 1)].id;
+            reminder.id = lastId + 1;
+          }
           console.log(reminder);
           reminders_data.reminders.push(reminder);
           break;

@@ -1,6 +1,15 @@
 <h3>localStorage</h3>
 
+<p>Select a storage:</p>
 <div>
+  <select name="select-storage" id="select-storage">
+    <option ng-repeat="storage in storages" value="{{storage}}">{{storage}}</option>
+  </select>
+  <a ng-click="loadStorage()" class="button" href="">Load</a>
+</div>
+
+<div>
+  <p>Or enter a name:</p>
   <input id="storage-name" type="text" ng-model="storage"/>
 </div>
         <br>

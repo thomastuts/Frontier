@@ -18,6 +18,17 @@ angular.module('frontierApp')
       }
     };
 
+    $scope.storages = ['module-github', 'module-api', 'module-reminders'];
+
+    $scope.loadStorage = function () {
+      var storageName = $('#select-storage').val();
+      $('#storage-name').val(storageName);
+      console.log(storageName);
+      var content = storage.export(storageName);
+      console.log(content);
+      $('#storage-content').val(content);
+    };
+
 
     $scope.saveStorage = function () {
       var name = $('#storage-name').val();

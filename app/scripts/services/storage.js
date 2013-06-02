@@ -18,13 +18,14 @@ angular.module('frontierApp')
       },
 
       // exports to string
-      export: function () {
-        var frontierStorage = localStorage.getItem('frontier');
-        if(frontierStorage) {
-          return frontierStorage;
+      export: function (storage) {
+        var content = localStorage.getItem('ft-' + storage);
+        if(content) {
+          // todo: use json.prettyprint instead
+          return JSON.stringify(JSON.parse(content), null, 2);
         }
         else {
-          return 'No Frontier localStorage found. Exporting failed.'
+          return 'No localStorage found called ft-' + storage + '. Export failed.'
         }
       },
       // imports from string

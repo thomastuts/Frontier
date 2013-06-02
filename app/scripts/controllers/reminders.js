@@ -102,10 +102,14 @@ angular.module('frontierApp')
           reminders_data.reminders.push(reminder);
           break;
         case 'edit':
+          // TODO: doesn't sync with storage
           console.log('Saving edited reminder for ' + $scope.data.edit.name);
           reminder = $scope.data.edit;
-          if ($scope.data.overview.reminders[i].id === reminder.id) {
-            $scope.data.overview.reminders[i] = reminder;
+          for(var i = 0; i < $scope.data.overview.reminders.length; i++)
+          {
+            if ($scope.data.overview.reminders[i].id === reminder.id) {
+              $scope.data.overview.reminders[i] = reminder;
+            }
           }
           break;
       }

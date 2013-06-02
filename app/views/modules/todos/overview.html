@@ -1,3 +1,9 @@
+<ul class="actions toggle">
+  <li ng-click="showNew()"><i class="icon-plus"></i> Add new project</li>
+</ul>
+
+<p>This panel shows all the to-do tasks for your projects. Click a project to see more detailed information.</p>
+
 <div class="panel" ng-click="showDetail(project)" ng-repeat="project in data.overview.projects">
   <h3>{{project.name}}</h3>
 
@@ -6,5 +12,3 @@
     <li ng-repeat="task in project.tasks.todo">{{task}}</li>
   </ul>
 </div>
-
-<a class="button" ng-click="saveTodos()">Show me the money</a>

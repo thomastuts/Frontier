@@ -1,0 +1,22 @@
+<h2>New project</h2>
+
+<p>Add items below in their respective status box. Items are separated by a new line.</p>
+
+        <p>Name</p>
+<input ng-model="data.new.name" type="text"/>
+
+        <p>Description</p>
+<input ng-model="data.new.description" type="text"/>
+
+        <p>To-do:</p>
+<textarea name="project-todo" id="project-todo" cols="30" rows="10"></textarea>
+<br>
+        <p>Current tasks:</p>
+<textarea name="project-current" id="project-current" cols="30" rows="10"></textarea>
+<br>
+        <p>Done tasks:</p>
+<textarea name="project-done" id="project-done" cols="30" rows="10"></textarea>
+
+<div>
+  <a ng-click="saveNewProject()" class="button" href="">Save project</a>
+</div>

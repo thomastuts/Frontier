@@ -36,7 +36,7 @@ angular.module('frontierApp')
       alarm: false // true for active, false for not active
     };
 
-    $scope.checkForReminders = window.setInterval(function () {
+   /* $scope.checkForReminders = window.setInterval(function () {
       var reminders = $scope.data.overview.reminders;
       var currentTime = moment().unix() * 1000;
       for (var i = 0; i < reminders.length; i++) {
@@ -47,7 +47,7 @@ angular.module('frontierApp')
           $scope.showAlarm($scope.data.overview.reminders[i]);
         }
       }
-    }, 1000);
+    }, 1000);*/
 
     $scope.showAlarm = function (reminder) {
       if($scope.alarm) {

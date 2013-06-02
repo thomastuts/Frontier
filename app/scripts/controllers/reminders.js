@@ -4,7 +4,7 @@ angular.module('frontierApp')
   .controller('RemindersCtrl', function ($scope, viewer, ui, storage) {
 
     $scope.data = {
-      overview: storage.get('module-reminders').reminders,
+      overview: storage.get('module-reminders'),
       new: {
         name: '',
         datetime: '',
@@ -55,7 +55,14 @@ angular.module('frontierApp')
 
     $scope.newReminder = function () {
       viewer.goToView($scope, 'views/modules/reminders/new.html', 'new');
-      $scope.data.new.datetime = moment().unix();
+      $scope.data.new.datetime = moment().format('DD-MM-YYYY HH:mm');
+    };
+
+    $scope.removeReminder = function (reminder) {
+      for(var i = 0; i < $scope.reminders.length; i++)
+      { 
+          
+      }
     };
 
 
@@ -74,6 +81,7 @@ angular.module('frontierApp')
         case 'new':
           console.log('Saving new reminder for ' + $scope.data.new.name);
           reminder = $scope.data.new;
+          console.log(reminder);
           reminders_data.reminders.push(reminder);
           break;
         case 'edit':
@@ -83,7 +91,10 @@ angular.module('frontierApp')
           break;
       }
 
+      console.log(reminders_data);
       storage.set('module-reminders', reminders_data);
+      $scope.data.overview = reminders_data;
+      viewer.goToView($scope, 'views/modules/reminders/overview.html');
     };
 
     /*

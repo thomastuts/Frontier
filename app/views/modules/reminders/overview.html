@@ -2,11 +2,11 @@
   <li ng-click="newReminder()"><i class="icon-plus"></i></li>
 </ul>
 
-<div class="panel" ng-repeat="reminder in data.overview">
+<div class="panel" ng-repeat="reminder in data.overview.reminders">
   <ul class="actions">
     <li ng-click="editReminder(reminder)"><i class="icon-edit"></i></li>
   </ul>
 
   <h3>{{reminder.name}}</h3>
-  <h4>{{1370177183000 | date:'dd-MM-yyyy HH:mm'}}</h4>
+  <h4>{{reminder.datetime}}</h4>
 </div>

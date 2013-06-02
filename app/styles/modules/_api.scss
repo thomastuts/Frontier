@@ -1,25 +1,32 @@
 @import "../variables";
 
-.api-link {
-  color: $yellow;
-  cursor: pointer;
+.api {
+  .api-link {
+    color: $yellow;
+    cursor: pointer;
 
-  &:hover {
-    color: lighten($yellow, 15%);
+    &:hover {
+      color: lighten($yellow, 15%);
+    }
   }
-}
 
-#api-url {
-  display: block;
-  width: 100%;
-}
+  .code {
+    max-height: 500px;
+    overflow: auto;
+  }
 
-.previous {
-  color: $darkblue;
-  opacity: 0.5;
-  cursor: pointer;
+  #api-url {
+    display: block;
+    width: 100%;
+  }
 
-  &:hover {
-    opacity: 1;
+  .previous {
+    color: $darkblue;
+    opacity: 0.5;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }

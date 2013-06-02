@@ -17,8 +17,6 @@ angular.module('frontierApp')
       }
     };
 
-    console.log(moment().format());
-
     $scope.module = {
       meta   : {
         version: '0.1',
@@ -43,6 +41,10 @@ angular.module('frontierApp')
 
     $scope.toggle = function () {
       ui.toggle($scope.module);
+    };
+
+    $scope.toggleActions = function () {
+      viewer.toggleActions('reminders');
     };
 
     /*

@@ -1,6 +1,10 @@
 <div>
   <div class="column left">
 
+    <div ng-controller="LocalStorageCtrl">
+      <div ng-include="'views/modules/template.html'"></div>
+    </div>
+
     <div ng-controller="InspirationCtrl">
       <div ng-include="'views/modules/template.html'"></div>
     </div>
@@ -21,10 +25,6 @@
     </div>
 
     <div ng-controller="TodosCtrl">
-      <div ng-include="'views/modules/template.html'"></div>
-    </div>
-
-    <div ng-controller="LocalStorageCtrl">
       <div ng-include="'views/modules/template.html'"></div>
     </div>
 

@@ -1,5 +1,5 @@
-<ul class="actions">
-  <li ng-click="showCollections()">Show collections</li>
+<ul class="actions toggle">
+  <li ng-click="showCollections()"><i class="icon-magnet"></i> Show collections</li>
 </ul>
 
 <input type="text" ng-model="url" style="display: block; width: 100%;"/>
@@ -35,7 +35,7 @@ Current method: {{module.methods.currentMethod}}
   </table>
 </div>
 
-<a class="button" ng-click="exploreApi()">GET</a>
+<a class="button" ng-click="exploreApi()">SEND</a>
 <a class="button" ng-click="clearData()">CLEAR</a>
 
 <div ng-click="exploreApi('hello')">testje</div>

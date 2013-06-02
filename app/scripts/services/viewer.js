@@ -5,7 +5,7 @@ angular.module('frontierApp')
 
     return {
       toggleActions: function (module) {
-        $('.' + module + ' .actions').toggle();
+        $('.' + module + ' .actions.toggle').toggle();
       },
       goBack: function ($scope) {
         var history = $scope.module.views.history;

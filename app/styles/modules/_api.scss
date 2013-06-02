@@ -1,5 +1,12 @@
+@import "../variables";
+
 .api-link {
   color: $yellow;
+  cursor: pointer;
+
+  &:hover {
+    color: lighten($yellow, 15%);
+  }
 }
 
 #api-url {

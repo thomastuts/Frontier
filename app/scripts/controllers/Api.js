@@ -41,7 +41,7 @@ angular.module('frontierApp')
     };
 
     $scope.goBack = function () {
-      // TODO: go back to previous API call
+      viewer.goBack($scope);
     };
 
     $scope.toggle = function () {

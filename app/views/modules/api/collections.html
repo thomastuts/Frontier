@@ -1,7 +1,7 @@
 <div ng-repeat="collection in data.collections" class="panel">
   <h3>{{collection.name}}</h3>
   <ul>
-    <li ng-repeat="link in collection.api_calls">
+    <li ng-click="exploreApi(link.url)" ng-repeat="link in collection.api_calls">
       <h4>{{link.name}} ({{link.method.type}})</h4>
       <h5>{{link.url}}</h5>
     </li>

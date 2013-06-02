@@ -4,6 +4,9 @@ angular.module('frontierApp')
   .factory('viewer', function () {
 
     return {
+      toggleActions: function (module) {
+        $('.' + module + ' .actions').toggle();
+      },
       goBack: function ($scope) {
         var history = $scope.module.views.history;
         if (history.length != 0) {

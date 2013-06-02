@@ -40,6 +40,10 @@ angular.module('frontierApp')
       ]
     };
 
+    $scope.toggleActions = function () {
+      viewer.toggleActions('api');
+    };
+
     $scope.goBack = function () {
       viewer.goBack($scope);
     };

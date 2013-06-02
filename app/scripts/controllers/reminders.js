@@ -32,6 +32,27 @@ angular.module('frontierApp')
       views: {
         currentView: 'views/modules/reminders/overview.html',
         history: []
+      },
+      alarm: false // true for active, false for not active
+    };
+
+    $scope.checkForReminders = window.setInterval(function () {
+      var reminders = $scope.data.overview.reminders;
+      var currentTime = moment().unix() * 1000;
+      for (var i = 0; i < reminders.length; i++) {
+        var alarmTime = moment(reminders[i].datetime).unix() * 1000;
+        console.log('Reminder: ' + alarmTime + ' & current: ' + currentTime);
+        if(currentTime > alarmTime) {
+          $scope.data.overview.reminders[i].alarm = moment(alarmTime + (0.25 * 60 * 1000)).format('MM-DD-YYYY HH:mm:ss'); // 10 = minutes of snooze time
+          $scope.showAlarm($scope.data.overview.reminders[i]);
+        }
+      }
+    }, 1000);
+
+    $scope.showAlarm = function (reminder) {
+      if($scope.alarm) {
+        console.log('THIS IS AN ALARM FOR ' + reminder.name);
+        $scope.alarm = false;
       }
     };
 

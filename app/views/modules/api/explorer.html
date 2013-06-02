@@ -18,7 +18,7 @@ Current method: {{module.methods.currentMethod}}
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="parameter in module.getParameters">
+    <tr ng-repeat="parameter in module.postParameters">
       <td>
         <input type="text" ng-model="parameter.key"/>
       </td>
@@ -38,9 +38,7 @@ Current method: {{module.methods.currentMethod}}
 <a class="button" ng-click="exploreApi()">SEND</a>
 <a class="button" ng-click="clearData()">CLEAR</a>
 
-<div ng-click="exploreApi('hello')">testje</div>
-
+<i ng-click="previousApiCall()" class="icon-mail-reply icon-large previous"></i>
 <pre class="code">
-<i class="icon-mail-reply icon-large previous"></i>
 {{data.explorer}}
 </pre>

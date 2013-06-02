@@ -32,12 +32,13 @@ angular.module('frontierApp')
         currentMethod: 'GET',
         availableMethods: ['GET', 'POST']
       },
-      getParameters: [
+      postParameters: [
         {
           key: "test",
           value: "valuetest"
         }
-      ]
+      ],
+      apiHistory: []
     };
 
     $scope.toggleActions = function () {
@@ -57,7 +58,7 @@ angular.module('frontierApp')
       console.log(url);
       // $('#api-url').val(url);
       $scope.url = url;
-      $scope.exploreApi(url);z
+      $scope.exploreApi(url);
     });
 
     $(document).on("change", "#api-method", function () {
@@ -77,7 +78,7 @@ angular.module('frontierApp')
           $scope.$apply(function () {
             data = JSON.stringify(data, null, 4);
             $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
-            console.log($scope.data.explorer);
+//            console.log($scope.data.explorer);
             $('.api .code').html($scope.data.explorer);
           });
         });
@@ -94,7 +95,7 @@ angular.module('frontierApp')
               $scope.$apply(function () {
                 data = JSON.stringify(data, null, 4);
                 $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
-                console.log($scope.data.explorer);
+//                console.log($scope.data.explorer);
                 $('.api .code').html($scope.data.explorer);
               });
             });
@@ -105,6 +106,23 @@ angular.module('frontierApp')
         }
       }
 
+      $scope.module.apiHistory.push($scope.url);
+
+    };
+
+    $scope.previousApiCall = function () {
+      if($scope.module.apiHistory.length > 0) {
+        if($scope.module.apiHistory.length === 1) {
+          $scope.exploreApi($scope.module.apiHistory[($scope.module.apiHistory.length - 1 )]);
+        }
+        else {
+          $scope.exploreApi($scope.module.apiHistory[($scope.module.apiHistory.length - 2 )]);
+        }
+      }
+    };
+
+    $scope.testje = function () {
+      console.log('TEEEESTTTTT');
     };
 
     $scope.clearData = function () {

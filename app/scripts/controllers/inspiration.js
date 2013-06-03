@@ -4,7 +4,14 @@ angular.module('frontierApp')
   .controller('InspirationCtrl', function ($scope, storage, viewer, ui) {
 
     $scope.data = {
-      overview: storage.get('module-inspiration').sets
+      overview: storage.get('module-inspiration'),
+      new: {
+        name: '',
+        description: '',
+        date_created: '',
+        date_updated: '',
+        shots: []
+      }
     };
 
     $scope.module = {
@@ -26,7 +33,11 @@ angular.module('frontierApp')
     };
 
     $scope.goBack = function () {
-      // TODO: go back to previous API call
+      viewer.goBack($scope);
+    };
+
+    $scope.toggleActions = function () {
+      viewer.toggleActions('inspiration');
     };
 
     $scope.toggle = function () {
@@ -39,7 +50,33 @@ angular.module('frontierApp')
      *   ------------
      */
 
+    $scope.showNew = function () {
+      viewer.goToView($scope, 'views/modules/inspiration/new.html');
+    };
 
+    // todo: make more userfriendly by adding a new input box on keydown of the previous one
+    // (check if there isn't one present, otherwise each keystroke will generate a new input)
+    $scope.addShot = function () {
+      $('.inspiration .shots').append('<input type="text" class="inspiration-shot"/> <br>');
+    };
+
+    $scope.addSet = function () {
+      var description = $('#inspiration-description').val();
+      var shots = [];
+      for(var i = 0; i < $('.inspiration-shot').length; i++)
+      {
+        shots.push($('.inspiration-shot').eq(i).val());
+      }
+      $scope.data.new.description = description;
+      $scope.data.new.date_created = moment().format();
+      $scope.data.new.shots = shots;
+
+      // sync data locally and to storage
+      $scope.data.overview.sets.push($scope.data.new);
+      storage.set('module-inspiration', $scope.data.overview);
+
+      viewer.goToView($scope, 'views/modules/inspiration/overview.html', 'new'); // last parameter 'new' is passed to viewer function to clear the data container
+    };
 
 
 

@@ -44,15 +44,25 @@ angular.module('frontierApp')
       ui.toggle($scope.module);
     };
 
+    $scope.showView = function (view) {
+      viewer.goToView($scope, 'views/modules/inspiration/' + view + '.html');
+    };
+
+    $scope.showEdit = function (inspirationset) {
+      console.log(inspirationset);
+    };
+
     /*
      *   ------------
      *   | OVERVIEW |
      *   ------------
      */
 
-    $scope.showNew = function () {
-      viewer.goToView($scope, 'views/modules/inspiration/new.html');
-    };
+    /*
+     *   -------
+     *   | NEW |
+     *   -------
+     */
 
     // todo: make more userfriendly by adding a new input box on keydown of the previous one
     // (check if there isn't one present, otherwise each keystroke will generate a new input)

@@ -1,13 +1,13 @@
 <div class="row">
   <div class="small-6 columns">
     <div class="panel">
-      <h3>General configuration</h3>
+      <h3>General</h3>
       <div class="row collapse">
         <div class="small-4 columns">
           <span class="prefix radius">Your name</span>
         </div>
         <div class="small-8 columns">
-          <input type="text" ng-model="config.username" />
+          <input type="text" ng-model="config.general.username" />
         </div>
       </div>
       <div class="row collapse">
@@ -15,14 +15,25 @@
           <span class="prefix radius">Date & time format</span>
         </div>
         <div class="small-8 columns">
-          <input type="text" ng-model="config.datetime_format" />
+          <input type="text" ng-model="config.general.datetime_format" />
         </div>
       </div>
     </div>
   </div>
   <div class="small-6 columns">
     <div class="panel">
-
+      <h3>Github</h3>
+      <div class="row collapse">
+        <div class="small-4 columns">
+          <span class="prefix radius">Github username</span>
+        </div>
+        <div class="small-8 columns">
+          <input type="text" ng-model="github.username" />
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <a ng-click="saveConfiguration()" class="button" href="">Save configuration</a> Get ready to rock!
     </div>
   </div>
 </div>

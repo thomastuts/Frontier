@@ -105,9 +105,7 @@ $glowing-effect-color:               $input-focus-border-color !default;
   }
   // Basic focus styles
   &:focus {
-    background: $input-focus-bg-color;
-    border-color: $input-focus-border-color;
-    outline: none;
+
   }
 
   // Disabled background input background color

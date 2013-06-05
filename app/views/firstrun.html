@@ -1,9 +1,28 @@
 <div class="row">
-  <div class="small-12 columns">
-    This is the first run screen. Kewl!
-
-    <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-    </ul>
+  <div class="small-6 columns">
+    <div class="panel">
+      <h3>General configuration</h3>
+      <div class="row collapse">
+        <div class="small-4 columns">
+          <span class="prefix radius">Your name</span>
+        </div>
+        <div class="small-8 columns">
+          <input type="text" ng-model="config.username" />
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-4 columns">
+          <span class="prefix radius">Date & time format</span>
+        </div>
+        <div class="small-8 columns">
+          <input type="text" ng-model="config.datetime_format" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="small-6 columns">
+    <div class="panel">
+      
+    </div>
   </div>
 </div>

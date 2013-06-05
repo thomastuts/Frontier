@@ -2,12 +2,22 @@
   <li ng-click="newReminder()"><i class="icon-plus"></i></li>
 </ul>
 
-<div class="panel" ng-repeat="reminder in data.overview.reminders">
-  <ul class="actions">
-    <li ng-click="editReminder(reminder)"><i class="icon-edit"></i></li>
-    <li ng-click="removeReminder(reminder)"><i class="icon-remove"></i></li>
-  </ul>
 
-  <h3>{{reminder.name}}</h3>
-  <h4>{{reminder.datetime}}</h4>
+
+<div class="panel" ng-repeat="reminder in data.overview.reminders">
+
+  <div class="row">
+    <div class="small-10 columns">
+      <h3>{{reminder.name}}</h3>
+    </div>
+    <div class="small-2 columns text-right">
+      <span ng-click="editReminder(reminder)"><i class="icon-edit"></i></span>
+      <span ng-click="removeReminder(reminder)"><i class="icon-remove"></i></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      {{reminder.datetime}}
+    </div>
+  </div>
 </div>

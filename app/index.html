@@ -19,16 +19,17 @@
   <body ng-app="frontierApp">
 
     <header>
-      <div ng-controller="HeaderCtrl" class="container">
-        <ul class="left">
-          <li>Hello, {{data.general.username}}!</li>
-        </ul>
+      <div ng-controller="HeaderCtrl" class="row">
+        <div class="small-12 columns">
+          <ul class="left">
+            <li>Hello, {{data.general.username}}!</li>
+          </ul>
+          <ul class="right">
+            <li>{{timer}}</li>
+          </ul>
+        </div>
 
-        <ul class="right">
-          <li>{{timer}}</li>
-        </ul>
 
-        <div style="clear: both;"></div>
       </div>
     </header>
 

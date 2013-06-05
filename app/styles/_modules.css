@@ -1,0 +1,71 @@
+/*
+Syntax error: Invalid CSS after "      mb0": expected "{", was "}"
+        on line 37 of _modules.scss
+
+32:     }
+33: 
+34:     ul {
+35:       list-style-type: none;
+36:       mb0
+37:     }
+38: 
+39:     li {
+40:       float: left;
+41:       margin-right: 10px;
+42:       line-height: 24px;
+
+Backtrace:
+_modules.scss:37
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:1148:in `expected'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:1084:in `expected'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:1079:in `tok!'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:534:in `block'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:529:in `ruleset'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:591:in `block in declaration_or_ruleset'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:1122:in `call'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:1122:in `rethrow'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:592:in `declaration_or_ruleset'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:554:in `block_child'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:546:in `block_contents'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:535:in `block'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:529:in `ruleset'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:591:in `block in declaration_or_ruleset'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:1122:in `call'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:1122:in `rethrow'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:592:in `declaration_or_ruleset'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:554:in `block_child'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:546:in `block_contents'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:535:in `block'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:529:in `ruleset'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:591:in `block in declaration_or_ruleset'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:1122:in `call'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:1122:in `rethrow'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:592:in `declaration_or_ruleset'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:554:in `block_child'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:546:in `block_contents'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:535:in `block'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:529:in `ruleset'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:553:in `block_child'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:546:in `block_contents'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:82:in `stylesheet'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/scss/parser.rb:27:in `parse'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/engine.rb:342:in `_to_tree'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/engine.rb:315:in `_render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/engine.rb:262:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:341:in `update_stylesheet'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:201:in `each'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/plugin.rb:81:in `update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/exec.rb:425:in `watch_or_update'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/exec.rb:307:in `process_result'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/exec.rb:41:in `parse'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/lib/sass/exec.rb:21:in `parse!'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.7/bin/scss:9:in `<top (required)>'
+C:/Ruby193/bin/scss:23:in `load'
+C:/Ruby193/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"      mb0\": expected \"{\", was \"}\"\A         on line 37 of _modules.scss\A \A 32:     }\A 33: \A 34:     ul {\A 35:       list-style-type: none;\A 36:       mb0\A 37:     }\A 38: \A 39:     li {\A 40:       float: left;\A 41:       margin-right: 10px;\A 42:       line-height: 24px;"; }

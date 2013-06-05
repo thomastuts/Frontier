@@ -12,13 +12,8 @@ body {
   overflow-y: scroll;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.column {
-  width: 49%;
+.row {
+  max-width: 1300px;
 }
 
 a {
@@ -39,15 +34,6 @@ header {
   }
 }
 
-.panel {
-  clear: both;
-  width: 100%;
-  background-color: #ededed;
-  padding: 10px;
-  @include border-radius(3px);
-  margin-bottom: 5px;
-}
-
 .text-light {
   color: #AAA;
 }
@@ -64,14 +50,6 @@ header {
   position: relative;
 }
 
-.button {
-  color: #fff;
-  background-color: $red;
-  @include border-radius(5px);
-  padding: 10px;
-  display: inline-block;
-
-  &:hover {
-    background-color: darken($red, 5%);
-  }
+table {
+  width: 100%;
 }

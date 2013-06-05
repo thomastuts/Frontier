@@ -1,22 +1,48 @@
-<h2>New project</h2>
+<div class="row">
+  <div class="small-12 columns">
+    <h2>New project</h2>
 
-<p>Add items below in their respective status box. Items are separated by a new line.</p>
+    <p>Add items below in their respective status box. Items are separated by a new line.</p>
 
-        <p>Name</p>
-<input ng-model="data.new.name" type="text"/>
+    <div class="row">
+      <div class="small-12 columns">
+        <label>Name</label>
+        <input ng-model="data.new.name" type="text"/>
+      </div>
+    </div>
 
-        <p>Description</p>
-<input ng-model="data.new.description" type="text"/>
+    <div class="row">
+      <div class="small-12 columns">
+        <label>Description</label>
+        <input ng-model="data.new.description" type="text"/>
+      </div>
+    </div>
 
-        <p>To-do:</p>
-<textarea name="project-todo" id="project-todo" cols="30" rows="10"></textarea>
-<br>
-        <p>Current tasks:</p>
-<textarea name="project-current" id="project-current" cols="30" rows="10"></textarea>
-<br>
-        <p>Done tasks:</p>
-<textarea name="project-done" id="project-done" cols="30" rows="10"></textarea>
+    <div class="row">
+      <div class="small-12 columns">
+        <label>To-do:</label>
+        <textarea name="project-todo" id="project-todo" cols="30" rows="10"></textarea>
+      </div>
+    </div>
 
-<div>
-  <a ng-click="saveNewProject()" class="button" href="">Save project</a>
+    <div class="row">
+      <div class="small-12 columns">
+        <label>Current:</label>
+        <textarea name="project-current" id="project-current" cols="30" rows="10"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <label>Done:</label>
+        <textarea name="project-done" id="project-done" cols="30" rows="10"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <a ng-click="saveNewProject()" class="button" href="">Save project</a>
+      </div>
+    </div>
+  </div>
 </div>

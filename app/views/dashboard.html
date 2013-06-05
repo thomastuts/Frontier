@@ -16,6 +16,11 @@
   </div>
 
   <div class="large-6 columns">
+
+    <div ng-controller="TodosCtrl">
+      <div ng-include="'views/modules/template.html'"></div>
+    </div>
+
     <div ng-controller="InspirationCtrl">
       <div ng-include="'views/modules/template.html'"></div>
     </div>
@@ -24,9 +29,7 @@
       <div ng-include="'views/modules/template.html'"></div>
     </div>
 
-    <div ng-controller="TodosCtrl">
-      <div ng-include="'views/modules/template.html'"></div>
-    </div>
+
   </div>
 
 </div>

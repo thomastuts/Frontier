@@ -49,6 +49,8 @@ angular.module('frontierApp')
     };
 
     $scope.showEdit = function (inspirationset) {
+      viewer.goToView($scope, 'views/modules/inspiration/edit.html');
+      $scope.data.edit = inspirationset;
       console.log(inspirationset);
     };
 

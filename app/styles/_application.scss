@@ -12,13 +12,8 @@ body {
   overflow-y: scroll;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.column {
-  width: 49%;
+.row {
+  max-width: 1300px;
 }
 
 a {

@@ -1128,8 +1128,8 @@ $primary-color: $red;
 
 // Background color for the table and even rows
 
-// $table-bg: #fff;
-// $table-even-row-bg: #f9f9f9;
+$table-bg: #fff;
+$table-even-row-bg: #e4e4e4;
 
 // Table cell border style
 
@@ -1139,23 +1139,23 @@ $primary-color: $red;
 
 // Table head styles
 
-// $table-head-bg: #f5f5f5;
-// $table-head-font-size: emCalc(14px);
-// $table-head-font-color: #222;
-// $table-head-font-weight: bold;
-// $table-head-padding: emCalc(8px) emCalc(10px) emCalc(10px);
+$table-head-bg: #f5f5f5;
+$table-head-font-size: emCalc(14px);
+$table-head-font-color: #222;
+$table-head-font-weight: bold;
+$table-head-padding: emCalc(8px) emCalc(10px) emCalc(10px);
 
 // Row padding and font styles
 
-// $table-row-padding: emCalc(9px) emCalc(10px);
-// $table-row-font-size: emCalc(14px);
-// $table-row-font-color: #222;
-// $table-line-height: emCalc(18px);
+$table-row-padding: emCalc(9px) emCalc(10px);
+$table-row-font-size: emCalc(14px);
+$table-row-font-color: #222;
+$table-line-height: emCalc(18px);
 
 // Display and margin of tables
 
-// $table-display: table-cell;
-// $table-margin-bottom: emCalc(20px);
+$table-display: table-cell;
+$table-margin-bottom: emCalc(20px);
 
 //
 // Image Thumbnail Variables

@@ -58,15 +58,3 @@ header {
   line-height: 16px;
   position: relative;
 }
-
-.button {
-  color: #fff;
-  background-color: $red;
-  @include border-radius(5px);
-  padding: 10px;
-  display: inline-block;
-
-  &:hover {
-    background-color: darken($red, 5%);
-  }
-}

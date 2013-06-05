@@ -3,11 +3,23 @@
 </ul>
 
 <div ng-repeat="collection in data.collections" class="panel">
-  <h3>{{collection.name}}</h3>
-  <ul>
-    <li ng-click="exploreApi(link.url)" ng-repeat="link in collection.api_calls">
-      <h4>{{link.name}} ({{link.method.type}})</h4>
-      <h5>{{link.url}}</h5>
-    </li>
-  </ul>
+  <div class="row collapse">
+    <div class="small-12 columns">
+      <h3>{{collection.name}}</h3>
+    </div>
+
+    <div class="row collapse">
+      <div class="small-12 columns">
+        <div ng-click="exploreApi(link.url)" ng-repeat="link in collection.api_calls" class="row">
+          <div class="small-10 columns">
+            <h4>{{link.name}}</h4>
+          </div>
+          <div class="small-2 columns">
+            {{link.method.type}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

@@ -1,0 +1,19 @@
+/* ----- COLORS ----- */
+/* ----- FONTS ----- */
+.api .api-link {
+  color: #fcff97;
+  cursor: pointer; }
+  .api .api-link:hover {
+    color: #feffe3; }
+.api .code {
+  max-height: 500px;
+  overflow: auto; }
+.api #api-url {
+  display: block;
+  width: 100%; }
+.api .previous {
+  color: #1c242b;
+  opacity: 0.5;
+  cursor: pointer; }
+  .api .previous:hover {
+    opacity: 1; }

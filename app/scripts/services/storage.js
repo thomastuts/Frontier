@@ -9,7 +9,7 @@ angular.module('frontierApp')
           return JSON.parse(localStorage.getItem('ft-' + storage));
         }
         else {
-          return 'localStorage ' + storage + ' was not found.';
+          return null;
         }
       },
       set: function (storage, content) {

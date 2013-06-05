@@ -16,13 +16,16 @@
     <link rel="stylesheet" href="components/highlightjs/styles/default.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="frontierApp">
+  <body ng-app="frontierApp" ng-controller="MainCtrl">
 
     <header>
       <div ng-controller="HeaderCtrl" class="row">
         <div class="small-12 columns">
           <ul class="left">
-            <li>Hello, {{data.general.username}}!</li>
+            <li ng-switch on="data.general.username">
+              <span ng-switch-when="null">Frontier - You, but only more productive.</span>
+              <span ng-switch-default="">Hello, {{data.general.username}}!</span>
+            </li>
           </ul>
           <ul class="right">
             <li>{{timer}}</li>
@@ -63,6 +66,8 @@
     <script src="scripts/services/utility.js"></script>
     <script src="scripts/controllers/inspiration.js"></script>
     <script src="scripts/controllers/reminders.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/firstrun.js"></script>
     <!-- endbuild -->
     <script>hljs.initHighlightingOnLoad();</script>
   </body>

@@ -4,3 +4,4 @@ dist
 .sass-cache
 app/components
 app/styles/*.css
+app/data/uploads/*

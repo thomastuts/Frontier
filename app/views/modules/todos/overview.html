@@ -2,10 +2,10 @@
   <li ng-click="showNew()"><i class="icon-plus"></i> Add new project</li>
 </ul>
 
-<div ng-click="showDetail(project)" ng-repeat="project in data.overview.projects" class="panel red panel-hover">
+<div ng-repeat="project in data.overview.projects" class="panel red panel-hover">
   <div class="row project-header">
     <div class="small-9 columns">
-      <h2>{{project.name}}</h2>
+      <h2 ng-click="showDetail(project)">{{project.name}}</h2>
     </div>
     <div class="small-3 columns">
       10-06-2013
@@ -17,7 +17,7 @@
       <h3>Todo:</h3>
       <ul class="tasks">
         <li ng-repeat="task in project.tasks.todo">
-          {{task}} <i class="icon-download right"></i>
+          {{task}} <i ng-click="markAsCurrent(project, task)" class="icon-download right"></i>
         </li>
       </ul>
     </div>

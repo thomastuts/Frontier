@@ -10,7 +10,7 @@ angular.module('frontierApp')
 
     $scope.selectedCollection = null;
 
-    $scope.url = 'https://api.github.com/users/thomastuts'; // TODO: remember last request
+    $scope.url = 'https://api.github.com/rate_limit'; // TODO: remember last request
 
     $scope.module = {
       meta: {
@@ -33,10 +33,7 @@ angular.module('frontierApp')
         availableMethods: ['GET', 'POST']
       },
       postParameters: [
-        {
-          key: "test",
-          value: "valuetest"
-        }
+
       ],
       apiHistory: []
     };
@@ -68,43 +65,60 @@ angular.module('frontierApp')
       });
     });
 
-    $scope.exploreApi = function (url) {
+    $scope.exploreApi = function (method, url) {
       viewer.goToView($scope, 'views/modules/api/explorer.html');
-      // inline JSON explore
-      if (url) {
-        console.log('Exploring ' + url);
-        $scope.url = url;
-        $.get($scope.url, function (data) {
-          $scope.$apply(function () {
-            data = JSON.stringify(data, null, 4);
-            $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
-//            console.log($scope.data.explorer);
-            $('.api .code').html($scope.data.explorer);
-          });
-        });
-      }
 
-      else {
-
-        // API exploration by given URL (input)
-        switch($scope.module.methods.currentMethod) {
-          case 'GET':
-            console.log($scope.url);
-
+      switch(method) {
+        case 'GET':
+          // inline JSON explore
+          if (url) {
+            console.log('Exploring ' + url);
+            $scope.url = url;
             $.get($scope.url, function (data) {
               $scope.$apply(function () {
                 data = JSON.stringify(data, null, 4);
                 $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
-//                console.log($scope.data.explorer);
+//            console.log($scope.data.explorer);
                 $('.api .code').html($scope.data.explorer);
               });
             });
-            break;
-          case 'POST':
-            // TODO: perform post
-            console.log('Performing POST');
-        }
+          }
+
+          else {
+
+            // API exploration by given URL (input)
+            switch($scope.module.methods.currentMethod) {
+              case 'GET':
+                console.log($scope.url);
+
+                $.get($scope.url, function (data) {
+                  $scope.$apply(function () {
+                    data = JSON.stringify(data, null, 4);
+                    $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
+//                console.log($scope.data.explorer);
+                    $('.api .code').html($scope.data.explorer);
+                  });
+                });
+                break;
+              case 'POST':
+                // TODO: perform post
+                console.log('Performing POST');
+            }
+          }
+          break;
+        case 'POST':
+          console.log('Performing POST');
+          try {
+            $.post($scope.url, {})
+              .done(function(data) {
+                console.log(data);
+              });
+          }
+          catch (e) {
+            console.warn(e.message);
+          }
       }
+
 
       $scope.module.apiHistory.push($scope.url);
 

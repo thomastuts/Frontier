@@ -10,7 +10,7 @@
 
     <div class="row collapse">
       <div class="small-12 columns">
-        <div ng-click="exploreApi(link.url)" ng-repeat="link in collection.api_calls" class="row">
+        <div ng-click="exploreApi(link.method.type, link.url)" ng-repeat="link in collection.api_calls" class="row">
           <div class="small-10 columns">
             <h4>{{link.name}}</h4>
           </div>

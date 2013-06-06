@@ -23,9 +23,9 @@
 </div>
 
 <div class="row">
-  <div class="small-9 small-offset-3 columns">
+  <div class="small-12 columns">
     <div ng-switch="module.methods.currentMethod">
-      <table class="table" ng-switch-when="POST">
+      <table class="panel red table" ng-switch-when="POST">
         <thead>
         <tr>
           <td>Key</td>
@@ -33,16 +33,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="parameter in module.postParameters">
+        <tr>
           <td>
-            <input type="text" ng-model="parameter.key"/>
+            <input type="text" class="post-key"/>
           </td>
           <td>
-            <input type="text" ng-model="parameter.value"/>
+            <input type="text" class="post-value"/>
           </td>
         </tr>
         <tr>
-          <td>
+          <td ng-click="addNewKey()">
             Add new
           </td>
         </tr>
@@ -56,7 +56,7 @@
   <div class="small-5 small-offset-6 columns">
     <div class="row">
       <div class="small-6 columns">
-        <a class="button" ng-click="exploreApi()">SEND</a>
+        <a class="button" ng-click="exploreApi(module.methods.currentMethod)">SEND</a>
       </div>
       <div class="small-6 columns">
         <a class="button" ng-click="clearData()">CLEAR</a>
@@ -72,8 +72,8 @@ Current method: {{module.methods.currentMethod}}
 <i ng-click="previousApiCall()" class="icon-mail-reply icon-large previous"></i>
 <div class="row">
   <div class="small-12 columns">
-    <pre class="code">
-    {{data.explorer}}
-    </pre>
+<pre class="code">
+{{data.explorer}}
+</pre>
   </div>
 </div>

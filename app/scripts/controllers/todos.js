@@ -64,10 +64,17 @@ angular.module('frontierApp')
         done: $('#project-done').val().split('\n')
       };
 
-      var lastId = $scope.data.overview.projects[($scope.data.overview.projects.length - 1)].id;
+      var lastId = 0;
+
+      if ($scope.data.overview.projects.length !== 0) {
+        lastId = $scope.data.overview.projects[($scope.data.overview.projects.length - 1)].id;
+      }
 
       $scope.data.new.tasks = tasks;
+
       $scope.data.new.id = (lastId + 1);
+
+
       $scope.data.overview.projects.push($scope.data.new);
       storage.set('module-todos', $scope.data.overview);
       viewer.goToView($scope, 'views/modules/todos/overview.html');

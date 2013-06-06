@@ -1,0 +1,15 @@
+/* ----- COLORS ----- */
+/* ----- FONTS ----- */
+html, body {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+
+.carousel {
+  width: 400%;
+  background: #ff5b5b; }
+
+.slide {
+  width: 25%;
+  height: 100%;
+  background: green; }

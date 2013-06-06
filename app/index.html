@@ -16,26 +16,9 @@
     <link rel="stylesheet" href="components/highlightjs/styles/default.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="frontierApp">
+  <body ng-app="frontierApp" ng-controller="MainCtrl">
 
-    <header>
-      <div ng-controller="HeaderCtrl" class="row">
-        <div class="small-12 columns">
-          <ul class="left">
-            <li>Hello, {{data.general.username}}!</li>
-          </ul>
-          <ul class="right">
-            <li>{{timer}}</li>
-          </ul>
-        </div>
-
-
-      </div>
-    </header>
-
-    <div class="container">
-      <div ng-view></div>
-    </div>
+  <div ng-view></div>
 
     <script src="components/jquery/jquery.js"></script>
     <script src="components/angular/angular.js"></script>
@@ -63,6 +46,8 @@
     <script src="scripts/services/utility.js"></script>
     <script src="scripts/controllers/inspiration.js"></script>
     <script src="scripts/controllers/reminders.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/firstrun.js"></script>
     <!-- endbuild -->
     <script>hljs.initHighlightingOnLoad();</script>
   </body>

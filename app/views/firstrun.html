@@ -1,0 +1,43 @@
+<div class="carousel">
+  <div class="slide">
+    <div class="row">
+      <div class="small-6 small-centered columns">
+        <h1>Hi there!</h1>
+        <p>Before we hit the ground running, let's get to know eachother a little first.</p>
+
+        <p>What's your name?</p>
+        <input type="text" ng-model="config.general.username" />
+
+        <p>What is your preferred date & time format? This is used for displaying the date & clock in various places in the app.</p>
+        <input type="text" ng-model="config.general.datetime_format" />
+
+        <a class="carousel-button" ng-click="nextSlide()" href="">Next</a>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <div class="row">
+      <div class="small-6 small-centered columns">
+        <h1>Github</h1>
+        <p>If you have a Github account, please give me your username.</p>
+
+        <input type="text" ng-model="github.username" />
+
+        <a class="carousel-button" ng-click="nextSlide()" href="">Next</a>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <div class="row">
+      <div class="small-6 small-centered columns">
+        <h1>Done!</h1>
+        <p>Looks like we're all set. Enjoy the new productivity.</p>
+        <p>If you've found any bugs, please resport them on the <a href="https://github.com/thomastuts/Frontier">Github repo.</a></p>
+
+        <a class="carousel-button" ng-click="saveConfiguration()" href="">Start</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+

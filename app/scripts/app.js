@@ -7,6 +7,10 @@ angular.module('frontierApp', ['btford.dragon-drop'])
             templateUrl: 'views/dashboard.html',
             controller: 'DashboardCtrl'
           })
+          .when('/firstrun', {
+            templateUrl: 'views/firstrun.html',
+            controller: 'FirstRunCtrl'
+          })
           .otherwise({
             redirectTo: '/'
           });

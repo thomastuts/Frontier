@@ -65,7 +65,7 @@ angular.module('frontierApp')
         slideshow: false,
         itemWidth: 210,
         itemMargin: 5,
-        asNavFor: '#slider'
+        asNavFor: '#slider-' + id
       });
 
       $('#slider-' + id).flexslider({
@@ -73,7 +73,7 @@ angular.module('frontierApp')
         controlNav: false,
         animationLoop: false,
         slideshow: false,
-        sync: "#carousel"
+        sync: "#carousel-" + id
       });
     };
 

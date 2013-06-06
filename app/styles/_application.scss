@@ -39,6 +39,10 @@ header {
   color: #AAA;
 }
 
+input[type="text"] {
+  font-family: $osr;
+}
+
 .code {
   background-color: #222;
   color: #fff;

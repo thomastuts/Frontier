@@ -1,3 +1,19 @@
+<header>
+  <div ng-controller="HeaderCtrl" class="row">
+    <div class="small-12 columns">
+      <ul class="left">
+        <li ng-switch on="data.general.username">
+          <span ng-switch-when="null">Frontier - You, but only more productive.</span>
+          <span ng-switch-default="">Hello, {{data.general.username}}!</span>
+        </li>
+      </ul>
+      <ul class="right">
+        <li>{{timer}}</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
 <div class="row">
 
   <div class="large-6 columns">

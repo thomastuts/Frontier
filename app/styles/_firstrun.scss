@@ -1,0 +1,39 @@
+@import "variables";
+
+html, body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.carousel {
+  width: 400%;
+  background: $ft-primary;
+  color: #fff;
+  font-family: Arial;
+  
+  h1 {
+    font-family: $oseb;
+    text-transform: uppercase;
+  }
+}
+
+.slide {
+  width: 25%;
+  height: 100%;
+  float: left;
+  //background: green;
+  //border: 2px solid black;
+}
+
+.carousel-button {
+  background: #fff;
+  color: $ft-primary;
+  padding: 10px;
+  border-radius: 3px;
+  display: inline-block;
+  
+  &:hover {
+    background: lighten($ft-primary, 25%);
+  }
+}

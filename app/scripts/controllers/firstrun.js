@@ -3,6 +3,15 @@
 angular.module('frontierApp')
   .controller('FirstRunCtrl', function ($scope, $location, storage) {
 
+    $('.carousel').height($('html').height());
+    $('body').css('overflow', 'hidden');
+
+    $scope.currentSlide = 1;
+
+    $(window).resize(function () {
+      $('.carousel').height($('body').height());
+    });
+
     $scope.config = {
       general: {
         username: '',
@@ -12,6 +21,11 @@ angular.module('frontierApp')
 
     $scope.github = {
       username: ''
+    };
+
+    $scope.nextSlide = function () {
+      $('.carousel').transition({marginLeft: $scope.currentSlide * 100 * (- 1) + '%'});
+      $scope.currentSlide++;
     };
 
     $scope.saveConfiguration = function () {
@@ -29,5 +43,4 @@ angular.module('frontierApp')
 
       $location.path('/');
     };
-
   });

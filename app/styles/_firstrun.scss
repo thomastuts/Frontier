@@ -33,7 +33,5 @@ html, body {
   border-radius: 3px;
   display: inline-block;
   
-  &:hover {
-    background: lighten($ft-primary, 25%);
-  }
+
 }

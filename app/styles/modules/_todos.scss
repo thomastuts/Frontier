@@ -1,0 +1,15 @@
+.todos {
+
+  ul {
+    list-style-type: none;
+  }
+
+  .tasks {
+    li {
+      display: block;
+      padding: 10px;
+      background: #eee;
+      margin-bottom: 5px;
+    }
+  }
+}

@@ -2,13 +2,34 @@
   <li ng-click="showNew()"><i class="icon-plus"></i> Add new project</li>
 </ul>
 
-<p>This panel shows all the to-do tasks for your projects. Click a project to see more detailed information.</p>
+<div ng-click="showDetail(project)" ng-repeat="project in data.overview.projects" class="panel red panel-hover">
+  <div class="row project-header">
+    <div class="small-9 columns">
+      <h2>{{project.name}}</h2>
+    </div>
+    <div class="small-3 columns">
+      10-06-2013
+    </div>
+  </div>
 
-<div class="panel" ng-click="showDetail(project)" ng-repeat="project in data.overview.projects">
-  <h3>{{project.name}}</h3>
-
-  <h4>To-do:</h4>
-  <ul>
-    <li ng-repeat="task in project.tasks.todo">{{task}}</li>
-  </ul>
+  <div class="row">
+    <div class="small-12 columns">
+      <h3>Todo:</h3>
+      <ul class="tasks">
+        <li ng-repeat="task in project.tasks.todo">
+          {{task}} <i class="icon-download right"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <h3>Current:</h3>
+      <ul class="tasks">
+        <li ng-repeat="task in project.tasks.current">
+          {{task}} <i class="icon-check-sign right"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

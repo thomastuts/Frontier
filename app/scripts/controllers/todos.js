@@ -52,6 +52,30 @@ angular.module('frontierApp')
       console.log($scope.data.project);
     };
 
+    $scope.markAsCurrent = function (project, task) {
+      for(var i = 0; i < project.tasks.todo.length; i++)
+      {
+        if(project.tasks.todo[i] === task) {
+          project.tasks.current.push(project.tasks.todo[i]);
+          project.tasks.todo.splice(i, 1);
+          storage.set('module-todos', $scope.data.overview);
+          break;
+        }
+      }
+    };
+
+    $scope.markAsDone = function (project, task) {
+      for(var i = 0; i < project.tasks.current.length; i++)
+      {
+        if(project.tasks.current[i] === task) {
+          project.tasks.done.push(project.tasks.current[i]);
+          project.tasks.current.splice(i, 1);
+          storage.set('module-todos', $scope.data.overview);
+          break;
+        }
+      }
+    };
+
     $scope.showNew = function () {
       viewer.goToView($scope, 'views/modules/todos/new.html', 'project');
     };

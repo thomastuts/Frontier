@@ -1,0 +1,18 @@
+@import "variables";
+@import "../components/components-font-awesome/css/font-awesome.min.css";
+
+.icon-check-sign {
+  color: $green;
+
+  &:hover {
+    color: darken($green, 10%);
+  }
+}
+
+.icon-download {
+  color: $blue;
+
+  &:hover {
+    color: darken($blue, 10%);
+  }
+}

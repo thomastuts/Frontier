@@ -2,13 +2,14 @@
   <li ng-click="showView('new')"><i class="icon-plus"></i> Add new set</li>
 </ul>
 
-<div class="panel" ng-click="showSet(set)" ng-repeat="set in data.overview.sets">
+<div class="panel red" ng-click="showSet(set)" ng-repeat="set in data.overview.sets">
   <h2>{{set.name}}</h2>
   <p>{{set.description}}</p>
-  <i ng-click="showEdit(set)" class="icon-edit"></i>
 
   <div class="thumbnails">
-    <img ng-repeat="shot in set.shots" ng-src="{{shot.image}}" alt=""/>
+    <div ng-repeat="shot in set.shots" class="thumbnail" style="background-image: url('{{shot.image}}')">
+    </div>
     <div style="clear: both;"></div>
   </div>
 </div>
+<i ng-click="showEdit(set)" class="icon-edit"></i>

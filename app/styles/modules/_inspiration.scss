@@ -1,19 +1,24 @@
 .inspiration {
 
-  img {
-    width: 25%;
-  }
-
   .thumbnails {
+    margin-top: 10px;
+    padding: 10px;
+    background: #333;
 
-    img {
-      width: 48%;
-      border: 1px solid #ddd;
+    .thumbnail {
+      display: block;
+      width: 21%;
+      height: 100px;
+      background-size: cover;
       float: left;
-    }
+      border: 8px solid #fff;
+      box-shadow: 2px 2px 0px #888;
+      margin-right: 5%;
+      margin-bottom: 5%;
 
-    img:nth-child(2n) {
-      float: right;
+      &:nth-child(4) {
+        margin-right: 0;
+      }
     }
   }
 }

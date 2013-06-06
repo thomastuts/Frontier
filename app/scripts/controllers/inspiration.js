@@ -54,6 +54,29 @@ angular.module('frontierApp')
       console.log(inspirationset);
     };
 
+    $scope.showSlider = function (id) {
+      $('#carousel-' + id).toggle();
+      $('#slider-' + id).toggle();
+
+      $('#carousel-' + id).flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        itemWidth: 210,
+        itemMargin: 5,
+        asNavFor: '#slider'
+      });
+
+      $('#slider-' + id).flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        sync: "#carousel"
+      });
+    };
+
     /*
      *   ------------
      *   | OVERVIEW |

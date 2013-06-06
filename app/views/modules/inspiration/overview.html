@@ -2,13 +2,33 @@
   <li ng-click="showView('new')"><i class="icon-plus"></i> Add new set</li>
 </ul>
 
-<div class="panel" ng-click="showSet(set)" ng-repeat="set in data.overview.sets">
+<div class="panel red" ng-click="showSet(set)" ng-repeat="set in data.overview.sets">
+  <i ng-click="showSlider(set.id)" class="right icon-eye-open"></i>
+  <i ng-click="showEdit(set)" class="right icon-edit"></i>
+
   <h2>{{set.name}}</h2>
   <p>{{set.description}}</p>
-  <i ng-click="showEdit(set)" class="icon-edit"></i>
 
-  <div class="thumbnails">
-    <img ng-repeat="shot in set.shots" ng-src="{{shot.image}}" alt=""/>
-    <div style="clear: both;"></div>
+  <div id="slider-{{set.id}}" class="flexslider">
+    <ul class="slides">
+      <li ng-repeat="shot in set.shots">
+        <img ng-src="{{shot.image}}" alt=""/>
+      </li>
+    </ul>
   </div>
+  <div id="carousel-{{set.id}}" class="flexslider">
+    <ul class="slides">
+      <li ng-repeat="shot in set.shots">
+        <img ng-src="{{shot.image}}" alt=""/>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    $(window).load(function() {
+      // The slider being synced must be initialized first
+
+    });
+  </script>
+
 </div>

@@ -11,9 +11,10 @@
   margin-bottom: 20px;
 
   h2 {
-    font-family: $osl;
-    font-size: 14px;
+    font-family: $osb;
+    font-size: 1.2em;
     text-transform: uppercase;
+    color: $medgrey;
   }
 
   .titlebar, .content {
@@ -25,10 +26,11 @@
     //border-top-left-radius: 5px;
     //border-top-right-radius: 5px;
     background: $darkblue;
-    color: #fcfcfc;
+    color: #fff;
 
     h1 {
       font-size: 12px;
+      font-family: $ossb;
     }
 
     ul {
@@ -50,7 +52,7 @@
   .content {
     //border-bottom-left-radius: 5px;
     //border-bottom-right-radius: 5px;
-    background: #fcfcfc;
+    background: #f4f4f4;
     color: $darkgrey;
     font-size: 14px;
 

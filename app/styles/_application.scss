@@ -8,8 +8,9 @@
 
 body {
   background-color: $darkgrey;
-  font-family: $osr, "sans serif";
+  font-family: $osl, "sans serif";
   overflow-y: scroll;
+  font-size: 1em;
 }
 
 .row {
@@ -52,6 +53,10 @@ header {
 
 h1, h2, h3, h4, h5 {
   font-weight: normal;
+}
+
+h2 {
+  margin-bottom: 0.5em;
 }
 
 table {

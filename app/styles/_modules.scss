@@ -22,10 +22,10 @@
 
   .titlebar {
     text-transform: uppercase;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    //border-top-left-radius: 5px;
+    //border-top-right-radius: 5px;
     background: $darkblue;
-    color: #fff;
+    color: #fcfcfc;
 
     h1 {
       font-size: 12px;
@@ -48,9 +48,9 @@
   }
 
   .content {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background: #fff;
+    //border-bottom-left-radius: 5px;
+    //border-bottom-right-radius: 5px;
+    background: #fcfcfc;
     color: $darkgrey;
     font-size: 14px;
 

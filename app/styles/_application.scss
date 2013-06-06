@@ -50,6 +50,21 @@ header {
   position: relative;
 }
 
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+}
+
 table {
   width: 100%;
+}
+
+.panel {
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0px 3px 0px #EEE;
+  margin: 10px 0;
+}
+
+.panel.red {
+  border-left: 4px solid $ft-primary;
 }

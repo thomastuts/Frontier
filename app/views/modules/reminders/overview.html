@@ -4,11 +4,11 @@
 
 
 
-<div class="panel" ng-repeat="reminder in data.overview.reminders">
+<div class="panel red" ng-repeat="reminder in data.overview.reminders">
 
   <div class="row">
     <div class="small-10 columns">
-      <h3>{{reminder.name}}</h3>
+      <h2>{{reminder.name}}</h2>
     </div>
     <div class="small-2 columns text-right">
       <span ng-click="editReminder(reminder)"><i class="icon-edit"></i></span>

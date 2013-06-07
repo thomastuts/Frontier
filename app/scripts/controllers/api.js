@@ -5,7 +5,7 @@ angular.module('frontierApp')
 
     $scope.data = {
       explorer: null,
-      collections: storage.get('module-api').collections
+      collections: storage.get('module-api')
     };
 
     $scope.selectedCollection = null;
@@ -29,7 +29,7 @@ angular.module('frontierApp')
         history: []
       },
       methods: {
-        currentMethod: 'POST',
+        currentMethod: 'GET',
         availableMethods: ['GET', 'POST']
       },
       postParameters: [],
@@ -66,6 +66,32 @@ angular.module('frontierApp')
     $scope.addPostParameter = function () {
       var htmlString = '<tr> <td> <input type="text" class="post-key"/> </td> <td> <input type="text" class="post-value"/> </td> </tr>';
       $('.api table tbody').append(htmlString);
+    };
+
+    $scope.addToCollection = function () {
+      // TODO: save parameters
+      var url = $('#api-url').val();
+      if(url !== '') {
+        // loop through collections until you find the one with the right id
+        var collectionId = parseInt(($('#collections-dropdown').val()));
+        var api_call = {
+          name: url,
+          url: url,
+          method: {
+            type: $scope.module.methods.currentMethod
+          }
+        };
+
+        for(var i = 0; i < $scope.data.collections.collections.length; i++)
+        {
+          if( $scope.data.collections.collections[i].id === collectionId) {
+            $scope.data.collections.collections[i].api_calls.push(api_call);
+            break;
+          }
+        }
+
+        storage.set('module-api', $scope.data.collections);
+      }
     };
 
     $scope.exploreApi = function (method, url) {

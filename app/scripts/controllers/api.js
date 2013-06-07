@@ -32,9 +32,7 @@ angular.module('frontierApp')
         currentMethod: 'GET',
         availableMethods: ['GET', 'POST']
       },
-      postParameters: [
-
-      ],
+      postParameters: [],
       apiHistory: []
     };
 
@@ -86,9 +84,12 @@ angular.module('frontierApp')
 
           else {
 
+            $scope.url = $('#api-url').val();
+
             // API exploration by given URL (input)
             switch($scope.module.methods.currentMethod) {
               case 'GET':
+
                 console.log($scope.url);
 
                 $.get($scope.url, function (data) {
@@ -107,16 +108,21 @@ angular.module('frontierApp')
           }
           break;
         case 'POST':
-          console.log('Performing POST');
-          try {
+          $scope.url = $('#api-url').val();
+          console.log($scope.url);
             $.post($scope.url, {})
               .done(function(data) {
-                console.log(data);
+                $scope.apply(function () {
+                  data = JSON.stringify(data, null, 4);
+                  $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
+                  $('.api .code').html($scope.data.explorer);
+                })
+              })
+              .fail(function (data) {
+                data = JSON.stringify(data, null, 4);
+                $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
+                $('.api .code').html($scope.data.explorer);
               });
-          }
-          catch (e) {
-            console.warn(e.message);
-          }
       }
 
 

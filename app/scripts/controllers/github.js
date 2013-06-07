@@ -86,8 +86,13 @@ angular.module('frontierApp')
         $scope.$apply(function () {
           $scope.data.repo = data;
           $scope.data.repo.updated_at = moment($scope.data.repo.updated_at).format(storage.get('config').general.datetime_format);
-          console.log(data);
         });
+        console.log(data);
+        $.get(data.commits_url.substring(0, data.commits_url.length - 6), function (commits) {
+          $scope.$apply(function(){
+              $scope.data.repo.commits = commits;
+          });
+        })
       });
     };
 

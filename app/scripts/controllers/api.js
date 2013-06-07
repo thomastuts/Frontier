@@ -29,7 +29,7 @@ angular.module('frontierApp')
         history: []
       },
       methods: {
-        currentMethod: 'GET',
+        currentMethod: 'POST',
         availableMethods: ['GET', 'POST']
       },
       postParameters: [],
@@ -58,15 +58,20 @@ angular.module('frontierApp')
 
     $(document).on("change", "#api-method", function () {
       var method = $(this).val();
-      $scope.$apply(function(){
-          $scope.module.methods.currentMethod = method;
+      $scope.$apply(function () {
+        $scope.module.methods.currentMethod = method;
       });
     });
+
+    $scope.addPostParameter = function () {
+      var htmlString = '<tr> <td> <input type="text" class="post-key"/> </td> <td> <input type="text" class="post-value"/> </td> </tr>';
+      $('.api table tbody').append(htmlString);
+    };
 
     $scope.exploreApi = function (method, url) {
       viewer.goToView($scope, 'views/modules/api/explorer.html');
 
-      switch(method) {
+      switch (method) {
         case 'GET':
           // inline JSON explore
           if (url) {
@@ -87,7 +92,7 @@ angular.module('frontierApp')
             $scope.url = $('#api-url').val();
 
             // API exploration by given URL (input)
-            switch($scope.module.methods.currentMethod) {
+            switch ($scope.module.methods.currentMethod) {
               case 'GET':
 
                 console.log($scope.url);
@@ -109,20 +114,34 @@ angular.module('frontierApp')
           break;
         case 'POST':
           $scope.url = $('#api-url').val();
+
+          var postData = {};
+
+          // loop through all parameters and set them in the postData object
+          for (var i = 0; i < $('.post-key').length; i++) {
+            // only set parameter if the key isn't empty
+            if ($('.post-key').eq(i).val() !== "") {
+              postData[$('.post-key').eq(i).val()] = $('.post-value').eq(i).val();
+            }
+          }
+
+          console.log(postData);
+
+
           console.log($scope.url);
-            $.post($scope.url, {})
-              .done(function(data) {
-                $scope.apply(function () {
-                  data = JSON.stringify(data, null, 4);
-                  $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
-                  $('.api .code').html($scope.data.explorer);
-                })
-              })
-              .fail(function (data) {
+          $.post($scope.url, postData)
+            .done(function (data) {
+              $scope.apply(function () {
                 data = JSON.stringify(data, null, 4);
                 $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
                 $('.api .code').html($scope.data.explorer);
-              });
+              })
+            })
+            .fail(function (data) {
+              data = JSON.stringify(data, null, 4);
+              $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
+              $('.api .code').html($scope.data.explorer);
+            });
       }
 
 
@@ -131,8 +150,8 @@ angular.module('frontierApp')
     };
 
     $scope.previousApiCall = function () {
-      if($scope.module.apiHistory.length > 0) {
-        if($scope.module.apiHistory.length === 1) {
+      if ($scope.module.apiHistory.length > 0) {
+        if ($scope.module.apiHistory.length === 1) {
           $scope.exploreApi($scope.module.apiHistory[($scope.module.apiHistory.length - 1 )]);
         }
         else {

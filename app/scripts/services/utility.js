@@ -10,6 +10,9 @@ angular.module('frontierApp')
       removeLineBreaks: function (content) {
         content = content.replace(/(\r\n|\n|\r)/gm,"");
         return content;
+      },
+      getExtension: function (url) {
+        return (url = url.substr(1 + url.lastIndexOf("/")).split('?')[0]).substr(url.lastIndexOf(".")).toLowerCase();
       }
     };
   });

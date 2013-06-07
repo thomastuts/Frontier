@@ -10,7 +10,7 @@ angular.module('frontierApp')
 
     $scope.selectedCollection = null;
 
-    $scope.url = 'https://api.github.com/rate_limit'; // TODO: remember last request
+    $scope.url = 'https://api.github.com/users/thomastuts'; // TODO: remember last request
 
     $scope.module = {
       meta: {
@@ -50,10 +50,16 @@ angular.module('frontierApp')
 
     $(document).on("click", ".api-link", function () {
       var url = $(this).attr('data-link');
-      console.log(url);
-      // $('#api-url').val(url);
-      $scope.url = url;
-      $scope.exploreApi(url);
+      var extension = utility.getExtension(url);
+      // if the url is an image, open it in a new window
+      if (extension ===  '.png' || '.jpeg' || '.jpg' || '.gif') {
+        window.open(url);
+      }
+      else {
+        console.log(url);
+        $scope.url = url;
+        $scope.exploreApi('GET', url);
+      }
     });
 
     $(document).on("change", "#api-method", function () {

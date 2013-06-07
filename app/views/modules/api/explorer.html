@@ -28,6 +28,11 @@
       <table class="panel red table" ng-switch-when="POST">
         <thead>
         <tr>
+          <td>
+            <a class="button small" href="" ng-click="addPostParameter()">Add new parameter</a>
+          </td>
+        </tr>
+        <tr>
           <td>Key</td>
           <td>Value</td>
         </tr>
@@ -39,11 +44,6 @@
           </td>
           <td>
             <input type="text" class="post-value"/>
-          </td>
-        </tr>
-        <tr>
-          <td ng-click="addNewKey()">
-            Add new
           </td>
         </tr>
         </tbody>

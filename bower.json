@@ -14,7 +14,8 @@
     "highlightjs": "~7.3.0",
     "jquery.transit": "~0.9.9",
     "moment": "~2.0.0",
-    "angular-dragon-drop": "~0.0.1"
+    "angular-dragon-drop": "~0.0.1",
+    "angular-latest": "~1.1.5"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.5",

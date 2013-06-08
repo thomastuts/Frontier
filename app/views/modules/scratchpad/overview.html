@@ -1,0 +1,10 @@
+<ul class="actions toggle">
+  <li ng-click="showCollection()"><i class="icon-eye-open"></i> Browse notes</li>
+  <li ng-click="showNew()"><i class="icon-plus"></i> Add a new note</li>
+</ul>
+
+<div ng-repeat="snippet in data.overview.snippets | limitTo:5 | orderBy:'id'" class="panel red">
+  <h2>{{snippet.name}}</h2>
+  <p>{{snippet.description}}</p>
+  <p ng-click="showSnippet(snippet)"><i class="icon-chevron-sign-right"></i> View snippet</p>
+</div>

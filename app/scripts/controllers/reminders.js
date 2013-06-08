@@ -8,12 +8,14 @@ angular.module('frontierApp')
       new: {
         name: '',
         datetime: '',
-        type: ''
+        description: '',
+        location: '',
+        note: ''
       },
       edit: {
         name: '',
         datetime: '',
-        type: ''
+        description: ''
       }
     };
 
@@ -30,7 +32,7 @@ angular.module('frontierApp')
         open: true // true for full window, false for minimized version
       },
       views: {
-        currentView: 'views/modules/reminders/overview.html',
+        currentView: 'views/modules/reminders/new.html',
         history: []
       },
       alarm: false // true for active, false for not active
@@ -105,8 +107,11 @@ angular.module('frontierApp')
 
     $scope.saveReminder = function (view) {
 
+      console.log($scope.data.new.date + ' ' + $scope.data.new.time);
+
+      $scope.data.new.datetime = moment($scope.data.new.date + ' ' + $scope.data.new.time).format();
+
       var reminder, reminders;
-      var reminders_data = storage.get('module-reminders');
 
       switch (view) {
         case 'new':
@@ -120,23 +125,22 @@ angular.module('frontierApp')
             reminder.id = lastId + 1;
           }
           console.log(reminder);
-          reminders_data.reminders.push(reminder);
+          $scope.data.overview.reminders.push(reminder);
           break;
         case 'edit':
           // TODO: doesn't sync with storage
           console.log('Saving edited reminder for ' + $scope.data.edit.name);
           reminder = $scope.data.edit;
           for (var i = 0; i < reminders_data.reminders.length; i++) {
-            if (reminders_data.reminders[i].id === reminder.id) {
-              reminders_data.reminders[i] = reminder;
+            if ($scope.data.overview.reminders[i].id === reminder.id) {
+              $scope.data.overview.reminders[i] = reminder;
             }
           }
           break;
       }
 
-      console.log(reminders_data);
-      storage.set('module-reminders', reminders_data);
-      $scope.data.overview = reminders_data;
+      console.log($scope.data.overview);
+      storage.set('module-reminders', $scope.data.overview);
       viewer.goToView($scope, 'views/modules/reminders/overview.html');
     };
 

@@ -1,0 +1,31 @@
+<div class="panel red">
+  <div class="row">
+    <div class="small-12 columns">
+      <h2>Edit note</h2>
+
+      <div class="row collapse">
+        <div class="small-3 columns">
+          <span class="prefix radius">Name</span>
+        </div>
+        <div class="small-9 columns">
+          <input type="text" ng-model="data.edit.name"/>
+        </div>
+      </div>
+
+      <div class="row collapse">
+        <div class="small-3 columns">
+          <span class="prefix radius">Description</span>
+        </div>
+        <div class="small-9 columns">
+          <input type="text" ng-model="data.edit.description"/>
+        </div>
+      </div>
+
+      <h3>Note</h3>
+      <textarea name="scratchpad-editor" id="scratchpad-editor" class="code" cols="30" rows="10">{{data.edit.content}}</textarea>
+
+      <a ng-click="saveEdit()" class="button" href="">Save</a>
+
+    </div>
+  </div>
+</div>

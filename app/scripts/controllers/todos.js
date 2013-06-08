@@ -118,6 +118,8 @@ angular.module('frontierApp')
 
       $scope.data.new.id = (lastId + 1);
 
+      $scope.data.new.due_date = moment($scope.data.new.date + ' ' + $scope.data.new.time).format();
+
 
       $scope.data.overview.projects.push($scope.data.new);
       storage.set('module-todos', $scope.data.overview);

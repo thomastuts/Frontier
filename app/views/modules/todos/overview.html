@@ -8,7 +8,7 @@
       <h2 ng-click="showDetail(project)">{{project.name}}</h2>
     </div>
     <div class="small-3 columns text-right">
-      10-06-2013
+      {{project.due_date | date:'dd-MM-yyyy'}}
     </div>
   </div>
 

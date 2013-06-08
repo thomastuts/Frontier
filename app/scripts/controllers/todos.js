@@ -55,8 +55,7 @@ angular.module('frontierApp')
     };
 
     $scope.setUrgency = function () {
-      for(var i = 0; i < $scope.data.overview.projects.length; i++)
-      {
+      for (var i = 0; i < $scope.data.overview.projects.length; i++) {
         var diff = moment($scope.data.overview.projects[i].due_date).diff(moment(), 'days');
         if (diff < 4) {
           $scope.data.overview.projects[i].urgency = 'red';
@@ -73,9 +72,8 @@ angular.module('frontierApp')
     $scope.setUrgency();
 
     $scope.markAsCurrent = function (project, task) {
-      for(var i = 0; i < project.tasks.todo.length; i++)
-      {
-        if(project.tasks.todo[i] === task) {
+      for (var i = 0; i < project.tasks.todo.length; i++) {
+        if (project.tasks.todo[i] === task) {
           project.tasks.current.push(project.tasks.todo[i]);
           project.tasks.todo.splice(i, 1);
           storage.set('module-todos', $scope.data.overview);
@@ -85,13 +83,23 @@ angular.module('frontierApp')
     };
 
     $scope.markAsDone = function (project, task) {
-      for(var i = 0; i < project.tasks.current.length; i++)
-      {
-        if(project.tasks.current[i] === task) {
+      for (var i = 0; i < project.tasks.current.length; i++) {
+        if (project.tasks.current[i] === task) {
           project.tasks.done.push(project.tasks.current[i]);
           project.tasks.current.splice(i, 1);
           storage.set('module-todos', $scope.data.overview);
           break;
+        }
+      }
+    };
+
+    $scope.removeTask = function (type, task) {
+      $scope.data.project.tasks[type].splice(task, 1);
+
+      for (var i = 0; i < $scope.data.overview.projects.length; i++) {
+        if ($scope.data.overview.projects[i].id === $scope.data.project.id) {
+          $scope.data.overview.projects[i].tasks[type] = $scope.data.project.tasks[type];
+          storage.set('module-todos', $scope.data.overview);
         }
       }
     };
@@ -141,7 +149,7 @@ angular.module('frontierApp')
 
     $scope.removeProject = function () {
       for (var i = 0; i < $scope.data.overview.projects.length; i++) {
-        if ( $scope.data.overview.projects[i].id === $scope.data.project.id) {
+        if ($scope.data.overview.projects[i].id === $scope.data.project.id) {
           console.log('Found your project');
           $scope.data.overview.projects.splice(i, 1);
           storage.set('module-todos', $scope.data.overview);

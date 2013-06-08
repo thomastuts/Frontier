@@ -1,4 +1,4 @@
-<div class="panel red">
+<div class="panel {{data.project.urgency}}">
   <h2>{{data.project.name}}: due on {{data.project.due_date | date:'dd MMMM, yyyy'}}</h2>
 
   <p>{{data.project.description}}</p>
@@ -8,7 +8,7 @@
       <h3>Todo:</h3>
       <ul class="tasks">
         <li ng-repeat="task in data.project.tasks.todo">
-          {{task}} <i ng-click="markAsCurrent(project, task)" class="icon-download right"></i>
+          {{task}} <i ng-click="removeTask('todo', $index)" class="icon-remove right"></i>
         </li>
       </ul>
     </div>
@@ -18,27 +18,26 @@
       <h3>Current:</h3>
       <ul class="tasks">
         <li ng-repeat="task in data.project.tasks.current">
-          {{task}} <i ng-click="markAsDone(project, task)" class="icon-check-sign right"></i>
+          {{task}} <i ng-click="removeTask('current', $index)" class="icon-remove right"></i>
         </li>
       </ul>
     </div>
   </div>
-</div>
-
-<a ng-click="updateProject()" class="button" href="">Save project</a>
-<a ng-click="removeProject()" class="button alert" href="">Remove project</a>
-
-<div class="row">
-  <div class="span6">
-    <h3>Todo</h3>
-    <pre>{{data.project.tasks.todo | json}}</pre>
+  <div class="row">
+    <div class="small-12 columns">
+      <h3>Done:</h3>
+      <ul class="tasks">
+        <li ng-repeat="task in data.project.tasks.done">
+          {{task}} <i ng-click="removeTask('done', $index)" class="icon-remove right"></i>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="span6">
-    <h3>Current</h3>
-    <pre>{{data.project.tasks.current | json}}</pre>
-  </div>
-  <div class="span6">
-    <h3>Done</h3>
-    <pre>{{data.project.tasks.done | json}}</pre>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <a ng-click="updateProject()" class="button" href="">Save project</a>
+      <a ng-click="removeProject()" class="button alert" href="">Remove project</a>
+    </div>
   </div>
 </div>

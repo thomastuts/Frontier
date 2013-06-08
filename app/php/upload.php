@@ -1,6 +1,7 @@
 <?php
 	$error = "";
 	$msg = "";
+	$id = $_POST["id"];
 	$fileElementName = 'fileToUpload';
 	if(!empty($_FILES[$fileElementName]['error']))
 	{
@@ -42,10 +43,10 @@
 			$msg .= " File Size: " . @filesize($_FILES['fileToUpload']['tmp_name']);
 			//for security reason, we force to remove all uploaded file
 			@unlink($_FILES['fileToUpload']);
-			move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "../data/uploads/inspiration/" . $_FILES["fileToUpload"]["name"]);
+			move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "../data/uploads/inspiration/" . $id . '_' . $_FILES["fileToUpload"]["name"]);
 	}		
 	echo "{";
 	echo				"error: '" . $error . "',\n";
-	echo				"msg: '" . $_FILES['fileToUpload']['name'] . "'\n";
+	echo				"msg: '" . $id . '_' . $_FILES['fileToUpload']['name'] . "'\n";
 	echo "}";
 ?>

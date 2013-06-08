@@ -78,6 +78,8 @@ angular.module('frontierApp')
     };
 
     $scope.uploadFile = function () {
+      $scope.data.new.id = $scope.data.overview.sets.length + 1;
+
       $.ajaxFileUpload
       (
         {
@@ -85,13 +87,13 @@ angular.module('frontierApp')
           secureuri: false,
           fileElementId: 'fileToUpload',
           dataType: 'json',
-          data: {name: 'logan', id: 'id'},
+          data: {id: $scope.data.new.id},
           success: function (data, status) {
             if (typeof(data.error) != 'undefined') {
               if (data.error != '') {
                 alert(data.error);
               } else {
-                alert(data.msg);
+                $('#inspiration-shots-uploaded').append('<li>' + data.msg + '</li>');
               }
             }
           },
@@ -125,6 +127,13 @@ angular.module('frontierApp')
       var shots = [];
 
       shots = utility.separateNewlines($('#inspiration-shots').val());
+
+      var uploadedShots = $('#inspiration-shots-uploaded li');
+
+      for(var i = 0; i < uploadedShots.length; i++)
+      {
+          shots.push($('#inspiration-shots-uploaded li').eq(i).html());
+      }
 
       $scope.data.new.description = description;
       $scope.data.new.date_created = moment().format();

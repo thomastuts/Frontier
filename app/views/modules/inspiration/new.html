@@ -8,18 +8,19 @@
 
 <p>Upload a shot...</p>
 
-        <div class="row">
-          <form name="form" action="" method="POST" enctype="multipart/form-data">
-            <div class="small-2 columns">
-              <button class="small button" id="buttonUpload" ng-click="uploadFile()">Upload</button>
-            </div>
-            <div class="small-10 columns">
-              <input id="fileToUpload" type="file" size="45" name="fileToUpload" class="input">
-            </div>
-          </form>
-        </div>
+<div class="row">
+  <form name="form" action="" method="POST" enctype="multipart/form-data">
+    <div class="small-2 columns">
+      <button class="small button" id="buttonUpload" ng-click="uploadFile()">Upload</button>
+    </div>
+    <div class="small-10 columns">
+      <input id="fileToUpload" type="file" size="45" name="fileToUpload" class="input">
+    </div>
+  </form>
+</div>
 
-
+        <h3>Uploaded files:</h3>
+<ul id="inspiration-shots-uploaded"></ul>
 
 
 <p>...or link to an online image, separated by a new line:</p>

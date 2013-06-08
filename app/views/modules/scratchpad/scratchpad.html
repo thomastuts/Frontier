@@ -5,5 +5,10 @@
 
 <div class="panel">
   <h2>Title of snippet</h2>
-  <textarea name="" id="scratchpad" class="code" cols="30" rows="10"></textarea>
+  <div id="editor"></div>
+
 </div>
+<script>
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/monokai");
+</script>

@@ -1,5 +1,11 @@
+<ul class="blue actions">
+  <li ng-click="showEdit(data.project)"><i class="icon-edit"></i> Edit project</li>
+  <li ng-click="removeProject()"><i class="icon-remove"></i> Remove project</li>
+</ul>
+
 <div class="panel {{data.project.urgency}}">
   <h2>{{data.project.name}}: due on {{data.project.due_date | date:'dd MMMM, yyyy'}}</h2>
+
 
   <p>{{data.project.description}}</p>
 
@@ -31,13 +37,6 @@
           {{task}} <i ng-click="removeTask('done', $index)" class="icon-remove right"></i>
         </li>
       </ul>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="small-12 columns">
-      <a ng-click="updateProject()" class="button" href="">Save project</a>
-      <a ng-click="removeProject()" class="button alert" href="">Remove project</a>
     </div>
   </div>
 </div>

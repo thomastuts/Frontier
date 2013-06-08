@@ -13,7 +13,8 @@ angular.module('frontierApp')
           current: [],
           done: []
         }
-      }
+      },
+      edit: {}
     };
 
     console.log($scope.data.overview.projects);
@@ -131,19 +132,7 @@ angular.module('frontierApp')
 
       $scope.data.overview.projects.push($scope.data.new);
       storage.set('module-todos', $scope.data.overview);
-      viewer.goToView($scope, 'views/modules/todos/overview.html');
-    };
-
-    $scope.updateProject = function () {
-      var updatedProject = $scope.data.project;
-      for (var i = 0; i < $scope.data.overview.projects.length; i++) {
-        var project = $scope.data.overview.projects[i];
-        if (project.id === updatedProject.id) {
-          console.log('Found your project');
-          $scope.data.overview.projects[i] = updatedProject;
-          storage.set('module-todos', $scope.data.overview);
-        }
-      }
+      $scope.setUrgency();
       viewer.goToView($scope, 'views/modules/todos/overview.html');
     };
 
@@ -154,6 +143,39 @@ angular.module('frontierApp')
           $scope.data.overview.projects.splice(i, 1);
           storage.set('module-todos', $scope.data.overview);
           viewer.goToView($scope, 'views/modules/todos/overview.html', 'project');
+          break;
+        }
+      }
+    };
+
+    $scope.showEdit = function (project) {
+      $scope.data.edit = project;
+      $scope.data_temp = {
+        tasks: {
+          todo: $scope.data.edit.tasks.todo.join("\n"),
+          current: $scope.data.edit.tasks.current.join("\n"),
+          done: $scope.data.edit.tasks.done.join("\n")
+        }
+      };
+      console.log($scope.data_temp);
+      console.log($scope.data.edit);
+      viewer.goToView($scope, 'views/modules/todos/edit.html');
+    };
+
+    $scope.saveEditedProject = function () {
+      console.log('Saving edited project.');
+
+      $scope.data.edit.tasks.todo = utility.separateNewlines($('#project-todo').val());
+      $scope.data.edit.tasks.current = utility.separateNewlines($('#project-current').val());
+      $scope.data.edit.tasks.done = utility.separateNewlines($('#project-done').val());
+
+      console.log($scope.data.edit);
+
+      for (var i = 0; i < $scope.data.overview.projects.length; i++) {
+        if ($scope.data.overview.projects[i].id === $scope.data.edit.id) {
+          $scope.data.overview.projects[i] = $scope.data.edit;
+          storage.set('module-todos', $scope.data.overview);
+          viewer.goToView($scope, 'views/modules/todos/overview.html', 'edit');
           break;
         }
       }

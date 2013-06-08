@@ -74,6 +74,14 @@ table {
   margin: 10px 0;
 }
 
-.panel.red {
-  border-left: 4px solid $ft-primary;
+  .panel.red {
+    border-left: 4px solid $ft-primary;
+  }
+
+.sub-panel {
+  display: block;
+  padding: 10px;
+  background: #F9F9F9;
+  border: 1px solid #F1F1F1;
+  margin-bottom: 5px;
 }

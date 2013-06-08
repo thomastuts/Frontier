@@ -102,3 +102,12 @@ table {
 textarea {
   height: 4em;
 }
+
+.button {
+  border: 0;
+  border-bottom: 3px solid darken($ft-primary, 25%);
+
+  &:hover {
+    background: lighten($ft-primary, 5%);
+  }
+}

@@ -16,7 +16,7 @@
     <div class="small-12 columns">
       <h3>Todo:</h3>
       <ul class="tasks">
-        <li contenteditable="true" ng-repeat="task in project.tasks.todo">
+        <li ng-repeat="task in project.tasks.todo">
           {{task}} <i ng-click="markAsCurrent(project, task)" class="icon-download right"></i>
         </li>
       </ul>

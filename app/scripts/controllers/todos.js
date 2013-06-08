@@ -115,7 +115,19 @@ angular.module('frontierApp')
         }
       }
       viewer.goToView($scope, 'views/modules/todos/overview.html');
-    }
+    };
+
+    $scope.removeProject = function () {
+      for (var i = 0; i < $scope.data.overview.projects.length; i++) {
+        if ( $scope.data.overview.projects[i].id === $scope.data.project.id) {
+          console.log('Found your project');
+          $scope.data.overview.projects.splice(i, 1);
+          storage.set('module-todos', $scope.data.overview);
+          viewer.goToView($scope, 'views/modules/todos/overview.html', 'project');
+          break;
+        }
+      }
+    };
 
 
   });

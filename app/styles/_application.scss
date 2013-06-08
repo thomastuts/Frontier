@@ -72,10 +72,23 @@ table {
   background: #fff;
   box-shadow: 0px 3px 0px #EEE;
   margin: 10px 0;
+  margin-bottom: 20px;
 }
 
   .panel.red {
     border-left: 4px solid $ft-primary;
+  }
+
+  .panel.blue {
+    border-left: 4px solid $blue;
+  }
+
+  .panel.green {
+    border-left: 4px solid $green;
+  }
+
+  .panel.yellow {
+    border-left: 4px solid $yellow;
   }
 
 .sub-panel {

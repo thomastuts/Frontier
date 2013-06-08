@@ -16,6 +16,8 @@ angular.module('frontierApp')
       }
     };
 
+    console.log($scope.data.overview.projects);
+
     $scope.module = {
       meta: {
         version: '0.1',
@@ -51,6 +53,24 @@ angular.module('frontierApp')
       $scope.data.project = project;
       console.log($scope.data.project);
     };
+
+    $scope.setUrgency = function () {
+      for(var i = 0; i < $scope.data.overview.projects.length; i++)
+      {
+        var diff = moment($scope.data.overview.projects[i].due_date).diff(moment(), 'days');
+        if (diff < 4) {
+          $scope.data.overview.projects[i].urgency = 'red';
+        }
+        if (diff >= 4 && diff <= 10) {
+          $scope.data.overview.projects[i].urgency = 'yellow';
+        }
+        if (diff > 11) {
+          $scope.data.overview.projects[i].urgency = 'green';
+        }
+      }
+    };
+
+    $scope.setUrgency();
 
     $scope.markAsCurrent = function (project, task) {
       for(var i = 0; i < project.tasks.todo.length; i++)
@@ -97,6 +117,8 @@ angular.module('frontierApp')
       $scope.data.new.tasks = tasks;
 
       $scope.data.new.id = (lastId + 1);
+
+      $scope.data.new.due_date = moment($scope.data.new.date + ' ' + $scope.data.new.time).format();
 
 
       $scope.data.overview.projects.push($scope.data.new);

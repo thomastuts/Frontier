@@ -27,7 +27,7 @@ angular.module('frontierApp')
         open: true // true for full window, false for minimized version
       },
       views: {
-        currentView: 'views/modules/inspiration/new.html',
+        currentView: 'views/modules/inspiration/overview.html',
         history: []
       }
     };
@@ -52,6 +52,34 @@ angular.module('frontierApp')
       viewer.goToView($scope, 'views/modules/inspiration/edit.html');
       $scope.data.edit = inspirationset;
       console.log(inspirationset);
+    };
+
+    $scope.removeFromSet = function (shot) {
+      console.log('Removing from set:');
+      console.log(shot);
+      $scope.data.edit.shots.splice(shot, 1);
+    };
+
+    $scope.saveEdit = function () {
+      for (var i = 0; i < $scope.data.overview.sets.length; i++) {
+        if ($scope.data.overview.sets[i].id === $scope.data.edit.id) {
+          $scope.data.overview.sets[i] = $scope.data.edit;
+          storage.set('module-inspiration', $scope.data.overview);
+          $scope.showView('overview');
+          break;
+        }
+      }
+    };
+
+    $scope.removeSet = function () {
+      for (var i = 0; i < $scope.data.overview.sets.length; i++) {
+        if ($scope.data.overview.sets[i].id === $scope.data.edit.id) {
+          $scope.data.overview.sets.splice(i, 1);
+          storage.set('module-inspiration', $scope.data.overview);
+          $scope.showView('overview');
+          break;
+        }
+      }
     };
 
     $scope.showSlider = function (id) {
@@ -116,12 +144,6 @@ angular.module('frontierApp')
      *   -------
      */
 
-    // todo: make more userfriendly by adding a new input box on keydown of the previous one
-    // (check if there isn't one present, otherwise each keystroke will generate a new input)
-    $scope.addShot = function () {
-      $('.inspiration .shots').append('<input type="text" class="inspiration-shot"/> <br>');
-    };
-
     $scope.addSet = function () {
       var description = $('#inspiration-description').val();
       var shots = [];
@@ -130,9 +152,8 @@ angular.module('frontierApp')
 
       var uploadedShots = $('#inspiration-shots-uploaded li');
 
-      for(var i = 0; i < uploadedShots.length; i++)
-      {
-          shots.push($('#inspiration-shots-uploaded li').eq(i).html());
+      for (var i = 0; i < uploadedShots.length; i++) {
+        shots.push($('#inspiration-shots-uploaded li').eq(i).html());
       }
 
       $scope.data.new.description = description;
@@ -148,6 +169,4 @@ angular.module('frontierApp')
 
       viewer.goToView($scope, 'views/modules/inspiration/overview.html', 'new'); // last parameter 'new' is passed to viewer function to clear the data container
     };
-
-
   });

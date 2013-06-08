@@ -82,6 +82,14 @@ table {
     border-left: 4px solid $blue;
   }
 
+  .panel.green {
+    border-left: 4px solid $green;
+  }
+
+  .panel.yellow {
+    border-left: 4px solid $yellow;
+  }
+
 .sub-panel {
   display: block;
   padding: 10px;

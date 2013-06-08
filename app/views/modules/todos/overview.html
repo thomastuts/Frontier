@@ -2,7 +2,7 @@
   <li ng-click="showNew()"><i class="icon-plus"></i> Add new project</li>
 </ul>
 
-<div ng-repeat="project in data.overview.projects" class="panel red">
+<div ng-repeat="project in data.overview.projects" class="panel {{project.urgency}}">
   <div class="row project-header">
     <div class="small-9 columns">
       <h2 ng-click="showDetail(project)">{{project.name}}</h2>

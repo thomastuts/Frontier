@@ -10,7 +10,8 @@ angular.module('frontierApp')
         description: '',
         date_created: '',
         content: ''
-      }
+      },
+      snippet: {}
     };
 
     $scope.module = {
@@ -72,7 +73,11 @@ angular.module('frontierApp')
       storage.set('module-scratchpad', $scope.data.overview);
       console.log($scope.data.new);
       viewer.goToView($scope, 'views/modules/scratchpad/overview.html', 'new');
+    };
 
+    $scope.showSnippet = function (snippet) {
+      $scope.data.snippet = snippet;
+      viewer.goToView($scope, 'views/modules/scratchpad/snippet.html');
     };
 
 

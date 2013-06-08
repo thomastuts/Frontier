@@ -1,0 +1,11 @@
+<div class="panel">
+  <h2>{{data.snippet.name}}</h2>
+
+  <h3>Date added</h3>
+  <p>{{data.snippet.created_at | date:'dd-MM-yyyy'}}</p>
+
+  <h4>Description</h4>
+  <p>{{data.snippet.description}}</p>
+
+  <textarea name="scratchpad-editor" id="scratchpad-editor" class="code" cols="30" rows="10">{{data.snippet.content}}</textarea>
+</div>

@@ -144,12 +144,6 @@ angular.module('frontierApp')
      *   -------
      */
 
-    // todo: make more userfriendly by adding a new input box on keydown of the previous one
-    // (check if there isn't one present, otherwise each keystroke will generate a new input)
-    $scope.addShot = function () {
-      $('.inspiration .shots').append('<input type="text" class="inspiration-shot"/> <br>');
-    };
-
     $scope.addSet = function () {
       var description = $('#inspiration-description').val();
       var shots = [];

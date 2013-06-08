@@ -46,6 +46,6 @@
 	}		
 	echo "{";
 	echo				"error: '" . $error . "',\n";
-	echo				"msg: '" . $msg . "'\n";
+	echo				"msg: '" . $_FILES['fileToUpload']['name'] . "'\n";
 	echo "}";
 ?>

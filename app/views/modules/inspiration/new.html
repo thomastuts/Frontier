@@ -3,16 +3,29 @@
 <p>Name:</p>
 <input type="text" ng-model="data.new.name"/>
 
-        <p>Description:</p>
+<p>Description:</p>
 <textarea name="inspiration-description" id="inspiration-description" cols="30" rows="10"></textarea>
 
+<p>Upload a shot...</p>
 
-        <p>Shots:</p>
+        <div class="row">
+          <form name="form" action="" method="POST" enctype="multipart/form-data">
+            <div class="small-2 columns">
+              <button class="small button" id="buttonUpload" ng-click="uploadFile()">Upload</button>
+            </div>
+            <div class="small-10 columns">
+              <input id="fileToUpload" type="file" size="45" name="fileToUpload" class="input">
+            </div>
+          </form>
+        </div>
+
+
+
+
+<p>...or link to an online image, separated by a new line:</p>
 <div class="shots">
-  <input type="text" class="inspiration-shot"/><br>
+  <textarea name="inspiration-shots" id="inspiration-shots" cols="30" rows="20"></textarea>
 </div>
-
-<a class="button" href="" ng-click="addShot()"><i class="icon-plus-sign"></i></a>
 
 <div>
   <a class="button" href="" ng-click="addSet()">Add set to inspiration</a>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('frontierApp')
-  .controller('TodosCtrl', function ($scope, storage, viewer, ui) {
+  .controller('TodosCtrl', function ($scope, storage, viewer, ui, utility) {
     $scope.data = {
       overview: storage.get('module-todos'),
       project: null,
@@ -83,9 +83,9 @@ angular.module('frontierApp')
     $scope.saveNewProject = function () {
       // todo: empty tasks (newline without data) need to be remove from arrays
       var tasks = {
-        todo: $('#project-todo').val().split('\n'),
-        current: $('#project-current').val().split('\n'),
-        done: $('#project-done').val().split('\n')
+        todo: utility.separateNewlines($('#project-todo').val()),
+        current: utility.separateNewlines($('#project-current').val()),
+        done: utility.separateNewlines($('#project-done').val())
       };
 
       var lastId = 0;

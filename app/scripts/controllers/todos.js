@@ -13,7 +13,8 @@ angular.module('frontierApp')
           current: [],
           done: []
         }
-      }
+      },
+      edit: {}
     };
 
     console.log($scope.data.overview.projects);
@@ -100,6 +101,7 @@ angular.module('frontierApp')
         if ($scope.data.overview.projects[i].id === $scope.data.project.id) {
           $scope.data.overview.projects[i].tasks[type] = $scope.data.project.tasks[type];
           storage.set('module-todos', $scope.data.overview);
+          break;
         }
       }
     };
@@ -158,6 +160,7 @@ angular.module('frontierApp')
         }
       }
     };
+
 
 
   });

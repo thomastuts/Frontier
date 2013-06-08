@@ -16,6 +16,12 @@ angular.module('frontierApp')
       }
     };
 
+    // set urgency
+    for(var i = 0; i < $scope.data.overview.projects.length; i++)
+    {
+
+    }
+
     $scope.module = {
       meta: {
         version: '0.1',

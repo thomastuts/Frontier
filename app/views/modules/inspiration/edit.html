@@ -1,2 +1,17 @@
-<h2>{{data.edit.name}}</h2>
+<div class="panel red">
+  <h2>Set info</h2>
+  <p>Name:</p>
+  <input type="text" ng-model="data.edit.name"/>
 
+  <p>Description:</p>
+  <textarea name="inspiration-description" id="inspiration-description" cols="30" rows="10">{{data.edit.description}}</textarea>
+
+  <h2>Images</h2>
+  <div class="sub-panel" ng-repeat="shot in data.edit.shots">
+    <p>URL:</p>
+    <input type="text" ng-model="shot.image"/><i ng-click="removeFromSet($index)" class="icon-remove"></i>
+  </div>
+
+  <a ng-click="saveEdit()" class="button" href="">Save changes</a>
+  <a ng-click="removeSet()" class="button alert" href="">Remove set</a>
+</div>

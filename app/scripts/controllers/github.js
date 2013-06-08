@@ -92,7 +92,12 @@ angular.module('frontierApp')
           $scope.$apply(function(){
               $scope.data.repo.commits = commits;
           });
-        })
+        });
+        $.get(data.issues_url.substring(0, data.commits_url.length - 7), function (issues) {
+          $scope.$apply(function(){
+              $scope.data.repo.issues = issues;
+          });
+        });
       });
     };
 

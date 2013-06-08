@@ -13,6 +13,9 @@ angular.module('frontierApp')
       },
       getExtension: function (url) {
         return (url = url.substr(1 + url.lastIndexOf("/")).split('?')[0]).substr(url.lastIndexOf(".")).toLowerCase();
+      },
+      separateNewlines: function (string) {
+        return string.split('\n');
       }
     };
   });

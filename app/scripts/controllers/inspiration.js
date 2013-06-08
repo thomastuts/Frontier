@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('frontierApp')
-  .controller('InspirationCtrl', function ($scope, storage, viewer, ui) {
+  .controller('InspirationCtrl', function ($scope, storage, viewer, ui, utility) {
 
     $scope.data = {
       overview: storage.get('module-inspiration'),
@@ -27,7 +27,7 @@ angular.module('frontierApp')
         open: true // true for full window, false for minimized version
       },
       views: {
-        currentView: 'views/modules/inspiration/overview.html',
+        currentView: 'views/modules/inspiration/new.html',
         history: []
       }
     };
@@ -78,29 +78,26 @@ angular.module('frontierApp')
     };
 
     $scope.uploadFile = function () {
+      $scope.data.new.id = $scope.data.overview.sets.length + 1;
+
       $.ajaxFileUpload
       (
         {
-          url:'php/upload.php',
-          secureuri:false,
-          fileElementId:'fileToUpload',
+          url: 'php/upload.php',
+          secureuri: false,
+          fileElementId: 'fileToUpload',
           dataType: 'json',
-          data:{name:'logan', id:'id'},
-          success: function (data, status)
-          {
-            if(typeof(data.error) != 'undefined')
-            {
-              if(data.error != '')
-              {
+          data: {id: $scope.data.new.id},
+          success: function (data, status) {
+            if (typeof(data.error) != 'undefined') {
+              if (data.error != '') {
                 alert(data.error);
-              }else
-              {
-                alert(data.msg);
+              } else {
+                $('#inspiration-shots-uploaded').append('<li>' + data.msg + '</li>');
               }
             }
           },
-          error: function (data, status, e)
-          {
+          error: function (data, status, e) {
             alert(e);
           }
         }
@@ -128,23 +125,29 @@ angular.module('frontierApp')
     $scope.addSet = function () {
       var description = $('#inspiration-description').val();
       var shots = [];
-      for(var i = 0; i < $('.inspiration-shot').length; i++)
+
+      shots = utility.separateNewlines($('#inspiration-shots').val());
+
+      var uploadedShots = $('#inspiration-shots-uploaded li');
+
+      for(var i = 0; i < uploadedShots.length; i++)
       {
-        shots.push($('.inspiration-shot').eq(i).val());
+          shots.push($('#inspiration-shots-uploaded li').eq(i).html());
       }
+
       $scope.data.new.description = description;
       $scope.data.new.date_created = moment().format();
       $scope.data.new.shots = shots;
 
+      $scope.data.new.id = $scope.data.overview.sets.length + 1;
+
       // sync data locally and to storage
       $scope.data.overview.sets.push($scope.data.new);
       storage.set('module-inspiration', $scope.data.overview);
+      console.log($scope.data.overview);
 
       viewer.goToView($scope, 'views/modules/inspiration/overview.html', 'new'); // last parameter 'new' is passed to viewer function to clear the data container
     };
-
-
-
 
 
   });

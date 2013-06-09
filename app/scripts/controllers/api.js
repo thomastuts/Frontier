@@ -111,6 +111,19 @@ angular.module('frontierApp')
       viewer.goToView($scope, 'views/modules/api/newlink.html');
     };
 
+    $scope.saveEditedCollection = function () {
+      console.log($scope.data.edit);
+      for(var i = 0; i < $scope.data.collections.collections.length; i++)
+      {
+        if ($scope.data.collections.collections[i].id === $scope.data.edit.id) {
+          $scope.data.collections.collections[i] = $scope.data.edit;
+          storage.set('module-api', $scope.data.collections);
+          viewer.goToView($scope, 'views/modules/api/collections.html');
+          break;
+        }
+      }
+    };
+
     $scope.exploreApi = function (method, url) {
       viewer.goToView($scope, 'views/modules/api/explorer.html');
 

@@ -15,7 +15,7 @@
 
     <div class="row collapse">
       <div class="small-12 columns">
-        <div ng-click="exploreApi(link.method.type, link.url)" ng-repeat="link in collection.api_calls" class="sub-panel">
+        <div ng-repeat="link in collection.api_calls" class="sub-panel">
           <div class="row collapse">
             <div class="small-10 columns">
               <h4>{{link.name}}</h4>
@@ -25,6 +25,7 @@
                 {{link.method.type}}
               </div>
               <ul class="hover-actions">
+                <li><i ng-click="exploreApi(link.method.type, link.url)" class="icon-chevron-sign-right"></i></li>
                 <li><i ng-click="removeLink($event, collection, $index)" class="icon-remove"></i></li>
                 <li><i ng-click="editLink($event, collection, $index)" class="icon-edit"></i></li>
               </ul>

@@ -43,6 +43,8 @@ angular.module('frontierApp')
       storage.set('module-reminders', {reminders: []});
       storage.set('module-scratchpad', {snippets: []});
 
+      $('body').css('overflow', 'auto');
+
       $location.path('/');
     };
   });

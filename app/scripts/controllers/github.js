@@ -91,6 +91,10 @@ angular.module('frontierApp')
         $.get(data.commits_url.substring(0, data.commits_url.length - 6), function (commits) {
           $scope.$apply(function(){
               $scope.data.repo.commits = commits;
+              for(var i = 0; i < $scope.data.repo.commits.length; i++)
+              {
+                $scope.data.repo.commits[i].sha_short = $scope.data.repo.commits[i].sha.substring(10, -1);
+              }
           });
         });
         $.get(data.issues_url.substring(0, data.commits_url.length - 7), function (issues) {

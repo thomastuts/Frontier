@@ -160,7 +160,7 @@ angular.module('frontierApp')
       var uploadedShots = $('#inspiration-shots-uploaded li');
 
       for (var i = 0; i < uploadedShots.length; i++) {
-        shots.push($('#inspiration-shots-uploaded li').eq(i).html());
+        shots.push('data/uploads/inspiration/' + $('#inspiration-shots-uploaded li').eq(i).html());
       }
 
       $scope.data.new.description = description;

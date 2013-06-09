@@ -51,26 +51,33 @@ angular.module('frontierApp')
         ui.toggle($scope.module);
     };
 
+    $scope.getData = function () {
+      var api_user = $scope.module.config.apis.user;
+      $.get(api_user, function (data) {
+        $scope.$apply(function () {
+          $scope.data.overview.user = data;
+          console.log(data);
+        });
+      });
+
+      var api_repos = $scope.module.config.apis.repos;
+      $.get(api_repos, function (data) {
+        $scope.$apply(function () {
+          $scope.data.overview.repos = data;
+          console.log(data);
+        });
+      });
+    };
+
+    $scope.getData();
+
     /*
     *   ------------
     *   | OVERVIEW |
     *   ------------
     */
 
-    var api_user = $scope.module.config.apis.user;
-    $.get(api_user, function (data) {
-      $scope.$apply(function () {
-        $scope.data.overview.user = data;
-        console.log(data);
-      });
-    });
 
-    var api_repos = $scope.module.config.apis.repos;
-    $.get(api_repos, function (data) {
-      $scope.$apply(function () {
-        $scope.data.overview.repos = data;
-      });
-    });
 
     /*
      *   --------

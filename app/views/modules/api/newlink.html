@@ -27,7 +27,7 @@
       <option ng-repeat="method in module.methods.availableMethods" value="{{method}}">{{method}}</option>
     </select>
   </div>
-  <div ng-switch="module.methods.currentMethod">
+  <div ng-switch="module.methods.currentMethod.type">
     <table class="table" ng-switch-when="POST">
       <thead>
       <tr>

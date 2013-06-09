@@ -63,7 +63,7 @@ angular.module('frontierApp')
       var url = $(this).attr('data-link');
       var extension = utility.getExtension(url);
       // if the url is an image, open it in a new window
-      if (extension === '.png' || '.jpeg' || '.jpg' || '.gif') {
+      if (extension === '.png' || extension === '.jpeg' || extension === '.jpg' || extension === '.gif') {
         window.open(url);
       }
       else {
@@ -139,9 +139,17 @@ angular.module('frontierApp')
 
       viewer.goToView($scope, 'views/modules/api/explorer.html');
 
+      if(!method) {
+        method = 'GET';
+      }
+
       switch (method) {
         case 'GET':
           // inline JSON explore
+
+          $scope.module.methods.currentMethod.type = 'GET';
+          $scope.module.methods.currentMethod.data = {};
+
           if (url) {
             console.log('Exploring ' + url);
             $scope.url = url;
@@ -156,32 +164,24 @@ angular.module('frontierApp')
           }
 
           else {
+            console.log($scope.url);
+            url = $('#api-url').val();
+            $scope.url = url;
 
-            $scope.url = $('#api-url').val();
-
-            // API exploration by given URL (input)
-            switch ($scope.module.methods.currentMethod.type) {
-              case 'GET':
-
-                console.log($scope.url);
-
-                $.get($scope.url, function (data) {
-                  $scope.$apply(function () {
-                    data = JSON.stringify(data, null, 4);
-                    $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
+            $.get(url, function (data) {
+              $scope.$apply(function () {
+                data = JSON.stringify(data, null, 4);
+                $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
 //                console.log($scope.data.explorer);
-                    $('.api .code').html($scope.data.explorer);
-                  });
-                });
-                break;
-              case 'POST':
-                // TODO: perform post
-                console.log('Performing POST');
-            }
+                $('.api .code').html($scope.data.explorer);
+              });
+            });
           }
           break;
         case 'POST':
-          $scope.url = $('#api-url').val();
+          if(!url) {
+            url = $('#api-url').val();
+          }
 
           if (!postData) {
             postData = {};
@@ -195,11 +195,11 @@ angular.module('frontierApp')
             }
           }
 
-          console.log(postData);
+          $scope.url = url;
+          $scope.data.
 
 
-          console.log($scope.url);
-          $.post($scope.url, postData)
+          $.post(url, postData)
             .done(function (data) {
               $scope.apply(function () {
                 data = JSON.stringify(data, null, 4);
@@ -212,10 +212,17 @@ angular.module('frontierApp')
               $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
               $('.api .code').html($scope.data.explorer);
             });
+          $scope.module.apiHistory.push($scope.url);
+          $scope.module.methods.currentMethod = {
+            type: 'POST',
+            data: postData
+          };
+
+          break;
       }
 
+      $('#api-method').val(method);
 
-      $scope.module.apiHistory.push($scope.url);
 
     };
 

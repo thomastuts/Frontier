@@ -4,8 +4,9 @@ angular.module('frontierApp')
   .controller('ApiCtrl', function ($scope, storage, viewer, ui, utility) {
 
     $scope.data = {
-      explorer: null,
-      collections: storage.get('module-api')
+      explorer: {},
+      collections: storage.get('module-api'),
+      new: {}
     };
 
     $scope.selectedCollection = null;
@@ -25,7 +26,7 @@ angular.module('frontierApp')
         open: true // true for full window, false for minimized version
       },
       views: {
-        currentView: 'views/modules/api/collections.html',
+        currentView: 'views/modules/api/explorer.html',
         history: []
       },
       methods: {
@@ -203,6 +204,11 @@ angular.module('frontierApp')
       }
     };
 
+    $scope.editCollection = function (collection) {
+      $scope.data.edit = collection;
+      viewer.goToView($scope, 'views/modules/api/edit.html');
+    };
+
     $scope.removeLink = function ($event, collection, $index) {
       $event.stopPropagation();
       console.log('Removing a link');
@@ -228,6 +234,30 @@ angular.module('frontierApp')
 
     $scope.showCollections = function () {
       viewer.goToView($scope, 'views/modules/api/collections.html');
-    }
+    };
+
+    $scope.showNew = function () {
+      viewer.goToView($scope, 'views/modules/api/new.html');
+    };
+
+    $scope.saveNew = function () {
+      console.log($scope.data.new);
+      $scope.data.new.api_calls = [];
+
+      var collectionId;
+
+      if ($scope.data.collections.collections.length === 0) {
+        collectionId = 1;
+      }
+      else {
+        collectionId = ($scope.data.collections.collections[$scope.data.collections.collections.length - 1].id) + 1;
+      }
+
+      $scope.data.new.id = collectionId;
+
+      $scope.data.collections.collections.push($scope.data.new);
+      storage.set('module-api', $scope.data.collections);
+      viewer.goToView($scope, 'views/modules/api/collections.html', 'new');
+    };
 
   });

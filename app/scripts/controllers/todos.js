@@ -95,12 +95,14 @@ angular.module('frontierApp')
     };
 
     $scope.removeTask = function (type, task) {
-      $scope.data.project.tasks[type].splice(task, 1);
+      if (confirm("Are you sure you want to delete this task?")) {
+        $scope.data.project.tasks[type].splice(task, 1);
 
-      for (var i = 0; i < $scope.data.overview.projects.length; i++) {
-        if ($scope.data.overview.projects[i].id === $scope.data.project.id) {
-          $scope.data.overview.projects[i].tasks[type] = $scope.data.project.tasks[type];
-          storage.set('module-todos', $scope.data.overview);
+        for (var i = 0; i < $scope.data.overview.projects.length; i++) {
+          if ($scope.data.overview.projects[i].id === $scope.data.project.id) {
+            $scope.data.overview.projects[i].tasks[type] = $scope.data.project.tasks[type];
+            storage.set('module-todos', $scope.data.overview);
+          }
         }
       }
     };
@@ -137,13 +139,15 @@ angular.module('frontierApp')
     };
 
     $scope.removeProject = function () {
-      for (var i = 0; i < $scope.data.overview.projects.length; i++) {
-        if ($scope.data.overview.projects[i].id === $scope.data.project.id) {
-          console.log('Found your project');
-          $scope.data.overview.projects.splice(i, 1);
-          storage.set('module-todos', $scope.data.overview);
-          viewer.goToView($scope, 'views/modules/todos/overview.html', 'project');
-          break;
+      if (confirm("Are you sure you want to delete this project?")) {
+        for (var i = 0; i < $scope.data.overview.projects.length; i++) {
+          if ($scope.data.overview.projects[i].id === $scope.data.project.id) {
+            console.log('Found your project');
+            $scope.data.overview.projects.splice(i, 1);
+            storage.set('module-todos', $scope.data.overview);
+            viewer.goToView($scope, 'views/modules/todos/overview.html', 'project');
+            break;
+          }
         }
       }
     };

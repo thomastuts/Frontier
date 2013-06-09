@@ -104,13 +104,14 @@ angular.module('frontierApp')
     };
 
     $scope.removeSnippet = function (id) {
-      console.log('Removing snippet');
-      for(var i = 0; i < $scope.data.overview.snippets.length; i++)
-      {
-        if ($scope.data.overview.snippets[i].id === id) {
-          $scope.data.overview.snippets.splice(i, 1);
-          storage.set('module-scratchpad', $scope.data.overview);
-          break;
+      if (confirm("Are you sure you want to delete this snippet?")) {
+        console.log('Removing snippet');
+        for (var i = 0; i < $scope.data.overview.snippets.length; i++) {
+          if ($scope.data.overview.snippets[i].id === id) {
+            $scope.data.overview.snippets.splice(i, 1);
+            storage.set('module-scratchpad', $scope.data.overview);
+            break;
+          }
         }
       }
     };

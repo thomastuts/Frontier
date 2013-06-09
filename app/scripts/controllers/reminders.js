@@ -82,15 +82,17 @@ angular.module('frontierApp')
     };
 
     $scope.removeReminder = function (reminder) {
-      console.log('Removing reminder: ' + reminder.name);
-      for (var i = 0; i < $scope.data.overview.reminders.length; i++) {
-        // TODO: confirmation?
-        if ($scope.data.overview.reminders[i].id === reminder.id) {
-          $scope.data.overview.reminders.splice(i, 1);
-          $scope.saveReminders();
+      if (confirm("Are you sure you want to delete this reminder?")) {
+        console.log('Removing reminder: ' + reminder.name);
+        for (var i = 0; i < $scope.data.overview.reminders.length; i++) {
+          // TODO: confirmation?
+          if ($scope.data.overview.reminders[i].id === reminder.id) {
+            $scope.data.overview.reminders.splice(i, 1);
+            $scope.saveReminders();
+          }
         }
+        console.log($scope.data.overview);
       }
-      console.log($scope.data.overview);
     };
 
     $scope.saveReminders = function () {

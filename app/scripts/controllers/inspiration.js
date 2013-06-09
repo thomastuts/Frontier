@@ -148,7 +148,10 @@ angular.module('frontierApp')
       var description = $('#inspiration-description').val();
       var shots = [];
 
-      shots = utility.separateNewlines($('#inspiration-shots').val());
+      var inputShots = $('#inspiration-shots').val();
+      if (inputShots !== '') {
+        shots = utility.separateNewlines(inputShots);
+      }
 
       var uploadedShots = $('#inspiration-shots-uploaded li');
 

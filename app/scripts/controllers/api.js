@@ -3,10 +3,15 @@
 angular.module('frontierApp')
   .controller('ApiCtrl', function ($scope, storage, viewer, ui, utility) {
 
+    $scope.tempData = {
+      newLink: {}
+    };
+
     $scope.data = {
       explorer: {},
       collections: storage.get('module-api'),
-      new: {}
+      new: {},
+      newLink: {}
     };
 
     $scope.selectedCollection = null;
@@ -26,7 +31,7 @@ angular.module('frontierApp')
         open: true // true for full window, false for minimized version
       },
       views: {
-        currentView: 'views/modules/api/explorer.html',
+        currentView: 'views/modules/api/collections.html',
         history: []
       },
       methods: {
@@ -53,7 +58,7 @@ angular.module('frontierApp')
       var url = $(this).attr('data-link');
       var extension = utility.getExtension(url);
       // if the url is an image, open it in a new window
-      if (extension ===  '.png' || '.jpeg' || '.jpg' || '.gif') {
+      if (extension === '.png' || '.jpeg' || '.jpg' || '.gif') {
         window.open(url);
       }
       else {
@@ -78,7 +83,7 @@ angular.module('frontierApp')
     $scope.addToCollection = function () {
       // TODO: save parameters
       var url = $('#api-url').val();
-      if(url !== '') {
+      if (url !== '') {
         // loop through collections until you find the one with the right id
         var collectionId = parseInt(($('#collections-dropdown').val()));
         var api_call = {
@@ -89,9 +94,8 @@ angular.module('frontierApp')
           }
         };
 
-        for(var i = 0; i < $scope.data.collections.collections.length; i++)
-        {
-          if( $scope.data.collections.collections[i].id === collectionId) {
+        for (var i = 0; i < $scope.data.collections.collections.length; i++) {
+          if ($scope.data.collections.collections[i].id === collectionId) {
             $scope.data.collections.collections[i].api_calls.push(api_call);
             break;
           }
@@ -99,6 +103,12 @@ angular.module('frontierApp')
 
         storage.set('module-api', $scope.data.collections);
       }
+    };
+
+    $scope.showNewLink = function (collection) {
+      console.log(collection);
+      $scope.data.newLink = collection;
+      viewer.goToView($scope, 'views/modules/api/newlink.html');
     };
 
     $scope.exploreApi = function (method, url) {
@@ -194,8 +204,7 @@ angular.module('frontierApp')
     };
 
     $scope.removeCollection = function (collection) {
-      for(var i = 0; i < $scope.data.collections.collections.length; i++)
-      {
+      for (var i = 0; i < $scope.data.collections.collections.length; i++) {
         if ($scope.data.collections.collections[i].id === collection.id) {
           $scope.data.collections.collections.splice(i, 1);
           storage.set('module-api', $scope.data.collections);
@@ -213,8 +222,7 @@ angular.module('frontierApp')
       $event.stopPropagation();
       console.log('Removing a link');
       console.log(collection);
-      for(var i = 0; i < $scope.data.collections.collections.length; i++)
-      {
+      for (var i = 0; i < $scope.data.collections.collections.length; i++) {
         if ($scope.data.collections.collections[i].id === collection.id) {
           $scope.data.collections.collections[i].api_calls.splice($index, 1);
           storage.set('module-api', $scope.data.collections);
@@ -258,6 +266,54 @@ angular.module('frontierApp')
       $scope.data.collections.collections.push($scope.data.new);
       storage.set('module-api', $scope.data.collections);
       viewer.goToView($scope, 'views/modules/api/collections.html', 'new');
+    };
+
+    $scope.addNewLink = function () {
+      var method = $('#api-method').val();
+
+      switch (method) {
+        case 'GET':
+          $scope.tempData.newLink.method = {
+            type: method
+          };
+          break;
+        case 'POST':
+          var postData = {};
+
+          // loop through all parameters and set them in the postData object
+          for (var j = 0; j < $('.post-key').length; j++) {
+            var key = $('.post-key').eq(j).val();
+            var value = $('.post-value').eq(j).val();
+            if(!isNaN(parseInt(value))) {
+              value = parseInt(value);
+            }
+            // only set parameter if the key isn't empty
+            if (key !== "") {
+              postData[key] = value;
+            }
+          }
+          $scope.tempData.newLink.method = {
+            type: method,
+            data: postData
+          };
+          break;
+      }
+
+      $scope.data.newLink.api_calls.push($scope.tempData.newLink);
+
+      for(var k = 0; k < $scope.data.collections.collections.length; k++)
+      {
+        if ($scope.data.collections.collections[k].id === $scope.data.newLink.id) {
+          $scope.data.collections.collections[k] = $scope.data.newLink;
+
+          $scope.tempData.newLink = {};
+
+          viewer.goToView($scope, 'views/modules/api/collections.html');
+          break;
+        }
+      }
+
+      console.log($scope.tempData.newLink);
     };
 
   });

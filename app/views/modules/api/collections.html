@@ -17,10 +17,10 @@
       <div class="small-12 columns">
         <div ng-repeat="link in collection.api_calls" class="sub-panel">
           <div class="row collapse">
-            <div class="small-10 columns">
+            <div class="small-9 columns">
               <h4>{{link.name}}</h4>
             </div>
-            <div class="small-2 text-right columns">
+            <div class="small-3 text-right columns">
               <div class="method">
                 {{link.method.type}}
               </div>
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <a ng-click="addNewLink(collection)" href=""><i class="icon-plus"></i> Add new link</a>
+        <a ng-click="showNewLink(collection)" href=""><i class="icon-plus"></i> Add new link</a>
       </div>
     </div>
   </div>

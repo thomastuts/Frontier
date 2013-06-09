@@ -4,14 +4,16 @@ angular.module('frontierApp')
   .controller('ApiCtrl', function ($scope, storage, viewer, ui, utility) {
 
     $scope.tempData = {
-      newLink: {}
+      newLink: {},
+      editLink: {}
     };
 
     $scope.data = {
       explorer: {},
       collections: storage.get('module-api'),
       new: {},
-      newLink: {}
+      newLink: {},
+      editLink: {}
     };
 
     $scope.selectedCollection = null;
@@ -109,6 +111,13 @@ angular.module('frontierApp')
       console.log(collection);
       $scope.data.newLink = collection;
       viewer.goToView($scope, 'views/modules/api/newlink.html');
+    };
+
+    $scope.showEditLink = function (collection, link, $index) {
+      console.log(collection);
+      $scope.data.editLink = collection;
+      $scope.tempData.editLink = link;
+      viewer.goToView($scope, 'views/modules/api/editlink.html');
     };
 
     $scope.saveEditedCollection = function () {

@@ -113,3 +113,18 @@ textarea {
     background: lighten($ft-primary, 5%);
   }
 }
+
+.hover-actions {
+  display: none;
+  list-style-type: none;
+
+  li {
+    float: right;
+    margin-left: 10px;
+    line-height: 0px;
+
+    i {
+      line-height: 10px;
+    }
+  }
+}

@@ -25,7 +25,7 @@ angular.module('frontierApp')
         open: true // true for full window, false for minimized version
       },
       views: {
-        currentView: 'views/modules/api/explorer.html',
+        currentView: 'views/modules/api/collections.html',
         history: []
       },
       methods: {
@@ -188,6 +188,31 @@ angular.module('frontierApp')
         }
         else {
           $scope.exploreApi($scope.module.apiHistory[($scope.module.apiHistory.length - 2 )]);
+        }
+      }
+    };
+
+    $scope.removeCollection = function (collection) {
+      for(var i = 0; i < $scope.data.collections.collections.length; i++)
+      {
+        if ($scope.data.collections.collections[i].id === collection.id) {
+          $scope.data.collections.collections.splice(i, 1);
+          storage.set('module-api', $scope.data.collections);
+          break;
+        }
+      }
+    };
+
+    $scope.removeLink = function ($event, collection, $index) {
+      $event.stopPropagation();
+      console.log('Removing a link');
+      console.log(collection);
+      for(var i = 0; i < $scope.data.collections.collections.length; i++)
+      {
+        if ($scope.data.collections.collections[i].id === collection.id) {
+          $scope.data.collections.collections[i].api_calls.splice($index, 1);
+          storage.set('module-api', $scope.data.collections);
+          break;
         }
       }
     };

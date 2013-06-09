@@ -2,24 +2,37 @@
   <li ng-click="newCollection()"><i class="icon-plus"></i> Add new collection</li>
 </ul>
 
-<div ng-repeat="collection in data.collections.collections" class="panel">
+<div ng-repeat="collection in data.collections.collections | orderBy:'id'" class="panel red">
   <div class="row collapse">
-    <div class="small-12 columns">
-      <h3>{{collection.name}}</h3>
+    <div class="small-10 columns">
+      <h2>{{collection.name}}</h2>
+      <br>
+    </div>
+    <div class="small-2 text-right columns">
+      <i ng-click="editCollection(collection)" class="icon-edit"></i> &nbsp;
+      <i ng-click="removeCollection(collection)" class="icon-remove"></i>
     </div>
 
     <div class="row collapse">
       <div class="small-12 columns">
-        <div ng-click="exploreApi(link.method.type, link.url)" ng-repeat="link in collection.api_calls" class="row">
-          <div class="small-10 columns">
-            <h4>{{link.name}}</h4>
-          </div>
-          <div class="small-2 columns">
-            {{link.method.type}}
+        <div ng-click="exploreApi(link.method.type, link.url)" ng-repeat="link in collection.api_calls" class="sub-panel">
+          <div class="row collapse">
+            <div class="small-10 columns">
+              <h4>{{link.name}}</h4>
+            </div>
+            <div class="small-2 text-right columns">
+              <div class="method">
+                {{link.method.type}}
+              </div>
+              <ul class="hover-actions">
+                <li><i ng-click="removeLink($event, collection, $index)" class="icon-remove"></i></li>
+                <li><i ng-click="editLink($event, collection, $index)" class="icon-edit"></i></li>
+              </ul>
+            </div>
           </div>
         </div>
+        <a ng-click="addNewLink(collection)" href=""><i class="icon-plus"></i> Add new link</a>
       </div>
     </div>
   </div>
-
 </div>

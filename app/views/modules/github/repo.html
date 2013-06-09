@@ -18,7 +18,7 @@
     </div>
 
     <div class="panel red">
-      <h3>Commits ({{data.repo.commits.length}})</h3>
+      <h3>Last 10 commits (Total: {{data.repo.commits.length}})</h3>
       <table>
         <thead>
         <tr>
@@ -29,11 +29,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="commit in data.repo.commits">
+        <tr ng-repeat="commit in data.repo.commits | limitTo:10">
           <td>{{commit.commit.author.date | date:'dd-mm-yyyy'}}</td>
           <td>{{commit.commit.message}}</td>
           <td>{{commit.commit.author.name}}</td>
-          <td>{{commit.sha}}</td>
+          <td>{{commit.sha_short}}</td>
         </tr>
         </tbody>
       </table>

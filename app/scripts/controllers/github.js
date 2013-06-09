@@ -51,26 +51,33 @@ angular.module('frontierApp')
         ui.toggle($scope.module);
     };
 
+    $scope.getData = function () {
+      var api_user = $scope.module.config.apis.user;
+      $.get(api_user, function (data) {
+        $scope.$apply(function () {
+          $scope.data.overview.user = data;
+          console.log(data);
+        });
+      });
+
+      var api_repos = $scope.module.config.apis.repos;
+      $.get(api_repos, function (data) {
+        $scope.$apply(function () {
+          $scope.data.overview.repos = data;
+          console.log(data);
+        });
+      });
+    };
+
+    $scope.getData();
+
     /*
     *   ------------
     *   | OVERVIEW |
     *   ------------
     */
 
-    var api_user = $scope.module.config.apis.user;
-    $.get(api_user, function (data) {
-      $scope.$apply(function () {
-        $scope.data.overview.user = data;
-        console.log(data);
-      });
-    });
 
-    var api_repos = $scope.module.config.apis.repos;
-    $.get(api_repos, function (data) {
-      $scope.$apply(function () {
-        $scope.data.overview.repos = data;
-      });
-    });
 
     /*
      *   --------
@@ -91,6 +98,10 @@ angular.module('frontierApp')
         $.get(data.commits_url.substring(0, data.commits_url.length - 6), function (commits) {
           $scope.$apply(function(){
               $scope.data.repo.commits = commits;
+              for(var i = 0; i < $scope.data.repo.commits.length; i++)
+              {
+                $scope.data.repo.commits[i].sha_short = $scope.data.repo.commits[i].sha.substring(10, -1);
+              }
           });
         });
         $.get(data.issues_url.substring(0, data.commits_url.length - 7), function (issues) {

@@ -15,6 +15,16 @@
     overflow: auto;
   }
 
+  .sub-panel:hover {
+    .hover-actions {
+      display: inline-block;
+    }
+
+    .method {
+      display: none;
+    }
+  }
+
   #api-url {
     display: block;
     width: 100%;

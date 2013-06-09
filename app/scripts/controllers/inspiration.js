@@ -57,7 +57,9 @@ angular.module('frontierApp')
     $scope.removeFromSet = function (shot) {
       console.log('Removing from set:');
       console.log(shot);
-      $scope.data.edit.shots.splice(shot, 1);
+      if (confirm("Are you sure you want to delete this shot?")) {
+        $scope.data.edit.shots.splice(shot, 1);
+      }
     };
 
     $scope.saveEdit = function () {
@@ -72,12 +74,14 @@ angular.module('frontierApp')
     };
 
     $scope.removeSet = function () {
-      for (var i = 0; i < $scope.data.overview.sets.length; i++) {
-        if ($scope.data.overview.sets[i].id === $scope.data.edit.id) {
-          $scope.data.overview.sets.splice(i, 1);
-          storage.set('module-inspiration', $scope.data.overview);
-          $scope.showView('overview');
-          break;
+      if (confirm("Are you sure you want to delete this set?")) {
+        for (var i = 0; i < $scope.data.overview.sets.length; i++) {
+          if ($scope.data.overview.sets[i].id === $scope.data.edit.id) {
+            $scope.data.overview.sets.splice(i, 1);
+            storage.set('module-inspiration', $scope.data.overview);
+            $scope.showView('overview');
+            break;
+          }
         }
       }
     };

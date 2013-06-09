@@ -238,11 +238,13 @@ angular.module('frontierApp')
     };
 
     $scope.removeCollection = function (collection) {
-      for (var i = 0; i < $scope.data.collections.collections.length; i++) {
-        if ($scope.data.collections.collections[i].id === collection.id) {
-          $scope.data.collections.collections.splice(i, 1);
-          storage.set('module-api', $scope.data.collections);
-          break;
+      if(confirm("Are you sure you want to delete this collection?")) {
+        for (var i = 0; i < $scope.data.collections.collections.length; i++) {
+          if ($scope.data.collections.collections[i].id === collection.id) {
+            $scope.data.collections.collections.splice(i, 1);
+            storage.set('module-api', $scope.data.collections);
+            break;
+          }
         }
       }
     };
@@ -256,11 +258,13 @@ angular.module('frontierApp')
       $event.stopPropagation();
       console.log('Removing a link');
       console.log(collection);
-      for (var i = 0; i < $scope.data.collections.collections.length; i++) {
-        if ($scope.data.collections.collections[i].id === collection.id) {
-          $scope.data.collections.collections[i].api_calls.splice($index, 1);
-          storage.set('module-api', $scope.data.collections);
-          break;
+      if (confirm("Are you sure you want to delete this link?")) {
+        for (var i = 0; i < $scope.data.collections.collections.length; i++) {
+          if ($scope.data.collections.collections[i].id === collection.id) {
+            $scope.data.collections.collections[i].api_calls.splice($index, 1);
+            storage.set('module-api', $scope.data.collections);
+            break;
+          }
         }
       }
     };

@@ -33,11 +33,14 @@ angular.module('frontierApp')
         open: true // true for full window, false for minimized version
       },
       views: {
-        currentView: 'views/modules/api/collections.html',
+        currentView: 'views/modules/api/explorer.html',
         history: []
       },
       methods: {
-        currentMethod: 'GET',
+        currentMethod: {
+          type: 'GET',
+          data: {}
+        },
         availableMethods: ['GET', 'POST']
       },
       postParameters: [],
@@ -73,7 +76,7 @@ angular.module('frontierApp')
     $(document).on("change", "#api-method", function () {
       var method = $(this).val();
       $scope.$apply(function () {
-        $scope.module.methods.currentMethod = method;
+        $scope.module.methods.currentMethod.type = method;
       });
     });
 
@@ -122,8 +125,7 @@ angular.module('frontierApp')
 
     $scope.saveEditedCollection = function () {
       console.log($scope.data.edit);
-      for(var i = 0; i < $scope.data.collections.collections.length; i++)
-      {
+      for (var i = 0; i < $scope.data.collections.collections.length; i++) {
         if ($scope.data.collections.collections[i].id === $scope.data.edit.id) {
           $scope.data.collections.collections[i] = $scope.data.edit;
           storage.set('module-api', $scope.data.collections);
@@ -133,7 +135,8 @@ angular.module('frontierApp')
       }
     };
 
-    $scope.exploreApi = function (method, url) {
+    $scope.exploreApi = function (method, url, postData) {
+
       viewer.goToView($scope, 'views/modules/api/explorer.html');
 
       switch (method) {
@@ -157,7 +160,7 @@ angular.module('frontierApp')
             $scope.url = $('#api-url').val();
 
             // API exploration by given URL (input)
-            switch ($scope.module.methods.currentMethod) {
+            switch ($scope.module.methods.currentMethod.type) {
               case 'GET':
 
                 console.log($scope.url);
@@ -180,13 +183,15 @@ angular.module('frontierApp')
         case 'POST':
           $scope.url = $('#api-url').val();
 
-          var postData = {};
+          if (!postData) {
+            postData = {};
 
-          // loop through all parameters and set them in the postData object
-          for (var i = 0; i < $('.post-key').length; i++) {
-            // only set parameter if the key isn't empty
-            if ($('.post-key').eq(i).val() !== "") {
-              postData[$('.post-key').eq(i).val()] = $('.post-value').eq(i).val();
+            // loop through all parameters and set them in the postData object
+            for (var i = 0; i < $('.post-key').length; i++) {
+              // only set parameter if the key isn't empty
+              if ($('.post-key').eq(i).val() !== "") {
+                postData[$('.post-key').eq(i).val()] = $('.post-value').eq(i).val();
+              }
             }
           }
 
@@ -306,7 +311,7 @@ angular.module('frontierApp')
           for (var j = 0; j < $('.post-key').length; j++) {
             var key = $('.post-key').eq(j).val();
             var value = $('.post-value').eq(j).val();
-            if(!isNaN(parseInt(value))) {
+            if (!isNaN(parseInt(value))) {
               value = parseInt(value);
             }
             // only set parameter if the key isn't empty
@@ -323,13 +328,15 @@ angular.module('frontierApp')
 
       $scope.data.newLink.api_calls.push($scope.tempData.newLink);
 
-      for(var k = 0; k < $scope.data.collections.collections.length; k++)
-      {
+      for (var k = 0; k < $scope.data.collections.collections.length; k++) {
         if ($scope.data.collections.collections[k].id === $scope.data.newLink.id) {
           $scope.data.collections.collections[k] = $scope.data.newLink;
 
+          // clear data container
           $scope.tempData.newLink = {};
 
+          // persist data
+          storage.set('module-api', $scope.data.collections);
           viewer.goToView($scope, 'views/modules/api/collections.html');
           break;
         }

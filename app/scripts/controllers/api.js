@@ -33,11 +33,14 @@ angular.module('frontierApp')
         open: true // true for full window, false for minimized version
       },
       views: {
-        currentView: 'views/modules/api/collections.html',
+        currentView: 'views/modules/api/explorer.html',
         history: []
       },
       methods: {
-        currentMethod: 'GET',
+        currentMethod: {
+          type: 'GET',
+          data: {}
+        },
         availableMethods: ['GET', 'POST']
       },
       postParameters: [],
@@ -73,7 +76,7 @@ angular.module('frontierApp')
     $(document).on("change", "#api-method", function () {
       var method = $(this).val();
       $scope.$apply(function () {
-        $scope.module.methods.currentMethod = method;
+        $scope.module.methods.currentMethod.type = method;
       });
     });
 
@@ -134,6 +137,7 @@ angular.module('frontierApp')
     };
 
     $scope.exploreApi = function (method, url) {
+
       viewer.goToView($scope, 'views/modules/api/explorer.html');
 
       switch (method) {
@@ -157,7 +161,7 @@ angular.module('frontierApp')
             $scope.url = $('#api-url').val();
 
             // API exploration by given URL (input)
-            switch ($scope.module.methods.currentMethod) {
+            switch ($scope.module.methods.currentMethod.type) {
               case 'GET':
 
                 console.log($scope.url);

@@ -24,7 +24,7 @@
 
 <div class="row">
   <div class="small-12 columns">
-    <div ng-switch="module.methods.currentMethod">
+    <div ng-switch="module.methods.currentMethod.type">
       <table class="panel red table" ng-switch-when="POST">
         <thead>
         <tr>
@@ -56,7 +56,7 @@
   <div class="small-5 small-offset-6 columns">
     <div class="row">
       <div class="small-6 columns">
-        <a class="button" ng-click="exploreApi(module.methods.currentMethod)">SEND</a>
+        <a class="button" ng-click="exploreApi(module.methods.currentMethod.type)">SEND</a>
       </div>
       <div class="small-6 columns">
         <a class="button" ng-click="clearData()">CLEAR</a>

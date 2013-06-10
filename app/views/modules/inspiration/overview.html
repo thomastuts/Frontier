@@ -2,33 +2,42 @@
   <li ng-click="showView('new')"><i class="icon-plus"></i> Add new set</li>
 </ul>
 
-<div class="panel red" ng-click="showSet(set)" ng-repeat="set in data.overview.sets">
-  <i ng-click="showSlider(set.id)" class="right icon-eye-open"></i>
-  <i ng-click="showEdit(set)" class="right icon-edit"></i>
-
-  <h2>{{set.name}}</h2>
-  <p>{{set.description}}</p>
-
-  <div id="slider-{{set.id}}" class="flexslider">
-    <ul class="slides">
-      <li ng-repeat="shot in set.shots">
-        <img ng-src="{{shot}}" alt=""/>
-      </li>
-    </ul>
+<div ng-switch="data.overview.sets.length">
+  <div ng-switch-when="0">
+    <div class="panel red">
+      <p>Looks like you don't have any inspiration sets yet. You can add one <a ng-click="showView('new')" class="inline-link" href="">here</a>.</p>
+    </div>
   </div>
-  <div id="carousel-{{set.id}}" class="flexslider">
-    <ul class="slides">
-      <li ng-repeat="shot in set.shots">
-        <img ng-src="{{shot}}" alt=""/>
-      </li>
-    </ul>
+  <div ng-switch-default="">
+    <div class="panel red" ng-click="showSet(set)" ng-repeat="set in data.overview.sets">
+      <i ng-click="showSlider(set.id)" class="right icon-eye-open"></i>
+      <i ng-click="showEdit(set)" class="right icon-edit"></i>
+
+      <h2>{{set.name}}</h2>
+      <p>{{set.description}}</p>
+
+      <div id="slider-{{set.id}}" class="flexslider">
+        <ul class="slides">
+          <li ng-repeat="shot in set.shots">
+            <img ng-src="{{shot}}" alt=""/>
+          </li>
+        </ul>
+      </div>
+      <div id="carousel-{{set.id}}" class="flexslider">
+        <ul class="slides">
+          <li ng-repeat="shot in set.shots">
+            <img ng-src="{{shot}}" alt=""/>
+          </li>
+        </ul>
+      </div>
+
+      <script>
+        $(window).load(function() {
+          // The slider being synced must be initialized first
+
+        });
+      </script>
+
+    </div>
   </div>
-
-  <script>
-    $(window).load(function() {
-      // The slider being synced must be initialized first
-
-    });
-  </script>
-
 </div>

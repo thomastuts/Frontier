@@ -1,43 +1,88 @@
 <div class="carousel">
   <div class="slide">
     <div class="row">
-      <div class="small-6 small-centered columns">
-        <h1>Hi there!</h1>
-        <p>Before we hit the ground running, let's get to know eachother a little first.</p>
+      <div class="small-9 small-centered columns">
+        <h1>Hello!</h1>
+        <h2>Welcome to Frontier.</h2>
+        <p>Before we can get started, I just need to ask you a couple things.</p>
 
-        <p>What's your name?</p>
+        <a class="carousel-button" ng-click="nextSlide()" href="">Okay</a>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <div class="row">
+      <div class="small-9 small-centered columns">
+
+        <p>What's your name? This way I don't have to call you Human every time.</p>
         <input type="text" ng-model="config.general.username" />
 
-        <p>What is your preferred date & time format? This is used for displaying the date & clock in various places in the app.</p>
-        <input type="text" ng-model="config.general.datetime_format" />
-
+        <a class="carousel-button" ng-click="prevSlide()" href="">Back</a>
         <a class="carousel-button" ng-click="nextSlide()" href="">Next</a>
       </div>
     </div>
   </div>
   <div class="slide">
     <div class="row">
-      <div class="small-6 small-centered columns">
-        <h1>Github</h1>
-        <p>If you have a Github account, please give me your username.</p>
+      <div class="small-9 small-centered columns">
+        <p>Do you have a Github profile? If you do, please enter your username below so I can display your Github data in the proper module. If you don't, you should sign up
+          <a target="_blank" href="https://github.com/signup/free">here</a>!</p>
 
         <input type="text" ng-model="github.username" />
 
+        <a class="carousel-button" ng-click="prevSlide()" href="">Back</a>
         <a class="carousel-button" ng-click="nextSlide()" href="">Next</a>
       </div>
     </div>
   </div>
   <div class="slide">
     <div class="row">
-      <div class="small-6 small-centered columns">
-        <h1>Done!</h1>
-        <p>Looks like we're all set. Enjoy the new productivity.</p>
-        <p>If you've found any bugs, please resport them on the <a href="https://github.com/thomastuts/Frontier">Github repo.</a></p>
+      <div class="small-9 small-centered columns">
+        <p>{{config.general.username}}, would you like me to show you how Frontier works?</p>
 
-        <a class="carousel-button" ng-click="saveConfiguration()" href="">Start</a>
+        <a class="carousel-button right" ng-click="prevSlide()" href="">Go back</a>
+        <a class="carousel-button" ng-click="nextSlide()" href="">Yes</a>
+        <a class="carousel-button" ng-click="skipToEnd()" href="">No thanks</a>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <div class="row">
+      <div class="small-9 small-centered columns">
+        <p>Frontier is a collection of modules that help you be more efficient during development and designing.</p>
+        <p>This way, all the stuff you need to think about (To-do, reminder, ...) is in one location.</p>
+
+        <p>Each module has three icons in its menu bar:</p>
+
+        <div class="row collapse" style="margin-top: 0 !important;">
+          <div class="small-4 columns text-center">
+            <i class="icon-ellipsis-horizontal icon-3x"></i>
+            <p>Show more actions</p>
+          </div>
+          <div class="small-4 columns text-center">
+            <i class="icon-chevron-left icon-3x"></i>
+            <p>Go to the previous view</p>
+          </div>
+          <div class="small-4 columns text-center">
+            <i class="icon-chevron-up icon-3x"></i>
+            <p>Minimize (or maximize) the module</p>
+          </div>
+        </div>
+
+        <a class="carousel-button left" ng-click="prevSlide()" href="">Go back</a>
+        <a class="carousel-button right" ng-click="nextSlide()" href="">Okay, got it</a>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <div class="row">
+      <div class="small-9 small-centered columns">
+        <p>Thank you, I have everything I need! Enjoy your productivity boost. If you have any issues or suggestions, please report them at the <a target="_blank" href="https://github.com/thomastuts/Frontier">Github repo</a>.</p>
+
+        <a class="carousel-button" ng-click="prevSlide()" href="">Back</a>
+        <a class="carousel-button" ng-click="saveConfiguration()" href="">Let's roll!</a>
       </div>
     </div>
   </div>
 
 </div>
-

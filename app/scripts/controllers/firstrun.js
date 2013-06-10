@@ -28,6 +28,15 @@ angular.module('frontierApp')
       $scope.currentSlide++;
     };
 
+    $scope.prevSlide = function () {
+      $scope.currentSlide--;
+      $('.carousel').transition({marginLeft: ($scope.currentSlide - 1) * 100 * (- 1) + '%'});
+    };
+
+    $scope.skipToEnd = function () {
+      $('.carousel').transition({marginLeft: '-500%'});
+    };
+
     $scope.saveConfiguration = function () {
       console.log($scope.config);
       console.log($scope.github);
@@ -47,4 +56,11 @@ angular.module('frontierApp')
 
       $location.path('/');
     };
+
+    // center rows vertically
+    $('.row').flexVerticalCenter();
+
+    $(window).resize(function () {
+      $('.row').flexVerticalCenter();
+    });
   });

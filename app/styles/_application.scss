@@ -128,3 +128,13 @@ textarea {
     }
   }
 }
+
+.inline-link {
+  color: $ft-primary;
+  border-bottom: 1px solid $ft-primary;
+
+  &:hover {
+    color: darken($ft-primary, 30%);
+    border-bottom: 1px solid darken($ft-primary, 30%);
+  }
+}

@@ -2,12 +2,12 @@
   <div class="small-12 columns">
     <div class="panel red">
       <h2>{{data.repo.name}}</h2>
-      <p>Last updated at {{data.repo.updated_at}}</p>
-      <p>Owner: {{data.repo.owner.login}}</p>
+      <p>Last updated at {{data.repo.updated_at | date:'dd-mm-yyyy'}}</p>
+      <p>Owner: <a class="inline-link" target="_blank" href="{{data.repo.owner.html_url}}">{{data.repo.owner.login}}</a></p>
     </div>
 
     <div class="panel red">
-      <div class="sub-panel">
+      <div>
         <h3>Issues ({{data.repo.issues.length}})</h3>
         <div ng-repeat="issue in data.repo.issues" class="sub-panel">
           <h4>{{issue.title}} by {{issue.user.login}}</h4>
@@ -22,10 +22,10 @@
       <table>
         <thead>
         <tr>
-          <td>Date</td>
-          <td>Message</td>
-          <td>Author</td>
-          <td>SHA hash</td>
+          <th width="80">Date</th>
+          <th>Message</th>
+          <th>Author</th>
+          <th>SHA hash</th>
         </tr>
         </thead>
         <tbody>

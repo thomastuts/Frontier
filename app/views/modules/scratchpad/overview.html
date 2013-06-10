@@ -3,13 +3,25 @@
   <li ng-click="showNew()"><i class="icon-plus"></i> Add a new note</li>
 </ul>
 
-<div ng-repeat="snippet in data.overview.snippets | limitTo:5 | orderBy:'id'" class="panel red">
+<div ng-switch="data.overview.snippets.length">
+  <div ng-switch-when="0">
+    <div class="panel red">
+      <p>Your scratchpad is empty! <a ng-click="showNew()" class="inline-link" href="">Add</a> a new snippet.</p>
+    </div>
+  </div>
+  <div ng-switch-default="">
+    <div ng-repeat="snippet in data.overview.snippets | limitTo:5 | orderBy:'id'" class="panel red">
 
-  <i ng-click="removeSnippet(snippet.id)" class="icon-remove right"></i>
-  <i ng-click="showEdit(snippet)" class="icon-edit right"></i>
+      <i ng-click="removeSnippet(snippet.id)" class="icon-remove right"></i>
+      <i ng-click="showEdit(snippet)" class="icon-edit right"></i>
 
 
-  <h2>{{snippet.name}}</h2>
-  <p>{{snippet.description}}</p>
-  <p ng-click="showSnippet(snippet)"><i class="icon-chevron-sign-right"></i> View snippet</p>
+      <h2>{{snippet.name}}</h2>
+
+      <p>{{snippet.description}}</p>
+
+      <p ng-click="showSnippet(snippet)"><i class="icon-chevron-sign-right"></i> View snippet</p>
+    </div>
+  </div>
 </div>
+

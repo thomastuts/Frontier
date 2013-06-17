@@ -16,6 +16,9 @@ angular.module('frontierApp')
       },
       separateNewlines: function (string) {
         return string.split('\n');
+      },
+      checkEqualStrings: function (string_one, string_two) {
+        return string_one.toLowerCase() == string_two.toLowerCase();
       }
     };
   });

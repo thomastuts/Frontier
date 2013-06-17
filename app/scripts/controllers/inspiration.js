@@ -163,39 +163,65 @@ angular.module('frontierApp')
     $scope.addSet = function () {
       var description = $('#inspiration-description').val();
       var shots = [];
+      $scope.data.new.id = $scope.data.overview.sets.length + 1;
+
+      var uploadedShots = $('#inspiration-shots-uploaded li');
+
+      for (var j = 0; j < uploadedShots.length; j++) {
+        shots.push('data/uploads/inspiration/' + $('#inspiration-shots-uploaded li').eq(j).html());
+      }
 
       var inputShots = $('#inspiration-shots').val();
       if (inputShots !== '') {
-        shots = utility.separateNewlines(inputShots);
+        inputShots = utility.separateNewlines(inputShots);
       }
 
-      for(var i = 0; i < shots.length; i++)
+      // split all URLs
+      for(var i = 0; i < inputShots.length; i++)
       {
-        if (shots[i] === "") {
-          shots.splice(i, 1);
+        if (inputShots[i] === "") {
+          inputShots.splice(i, 1);
         }
       }
 
-      console.log(shots);
-/*
-      var uploadedShots = $('#inspiration-shots-uploaded li');
+      if (inputShots.length > 0) {
+        $.post('php/save_to_local.php', { images: inputShots, id: $scope.data.new.id })
+          .done(function(data) {
+            // use PHP response to push the links into the shots array
+            shots = shots.concat(JSON.parse(data));
+            $scope.data.new.description = description;
+            $scope.data.new.date_created = moment().format();
+            $scope.data.new.shots = shots;
 
-      for (var i = 0; i < uploadedShots.length; i++) {
-        shots.push('data/uploads/inspiration/' + $('#inspiration-shots-uploaded li').eq(i).html());
+            console.log($scope.data.new);
+
+            // sync data locally and to storage
+            $scope.data.overview.sets.push($scope.data.new);
+            storage.set('module-inspiration', $scope.data.overview);
+            console.log($scope.data.overview);
+
+            viewer.goToView($scope, 'views/modules/inspiration/overview.html', 'new'); // last parameter 'new' is passed to viewer function to clear the data container
+          });
+      }
+      else {
+        $scope.data.new.description = description;
+        $scope.data.new.date_created = moment().format();
+        $scope.data.new.shots = shots;
+
+        console.log($scope.data.new);
+
+        // sync data locally and to storage
+        $scope.data.overview.sets.push($scope.data.new);
+        storage.set('module-inspiration', $scope.data.overview);
+        console.log($scope.data.overview);
+
+        viewer.goToView($scope, 'views/modules/inspiration/overview.html', 'new'); // last parameter 'new' is passed to viewer function to clear the data container
       }
 
-      $scope.data.new.description = description;
-      $scope.data.new.date_created = moment().format();
-      $scope.data.new.shots = shots;
+      // send URLs to PHP service to save files locally
 
-      $scope.data.new.id = $scope.data.overview.sets.length + 1;
 
-      // sync data locally and to storage
-      $scope.data.overview.sets.push($scope.data.new);
-      storage.set('module-inspiration', $scope.data.overview);
-      console.log($scope.data.overview);
 
-      viewer.goToView($scope, 'views/modules/inspiration/overview.html', 'new'); // last parameter 'new' is passed to viewer function to clear the data container*/
     };
 
     $scope.addLinkToExistingSet = function () {

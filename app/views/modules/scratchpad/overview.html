@@ -3,6 +3,15 @@
   <li ng-click="showNew()"><i class="icon-plus"></i> Add a new note</li>
 </ul>
 
+<div class="search row collapse">
+  <div class="small-1 columns">
+    <span class="prefix radius"><i class="icon-search"></i></span>
+  </div>
+  <div class="small-11 columns">
+    <input type="text" ng-model="search"/>
+  </div>
+</div>
+
 <div ng-switch="data.overview.snippets.length">
   <div ng-switch-when="0">
     <div class="panel red">
@@ -10,7 +19,7 @@
     </div>
   </div>
   <div ng-switch-default="">
-    <div ng-repeat="snippet in data.overview.snippets | limitTo:5 | orderBy:'id'" class="panel red">
+    <div ng-repeat="snippet in data.overview.snippets | limitTo:5 | orderBy:'id' | filter:search" class="panel red">
       <div class="row">
         <div class="small-9 columns">
           <h2>{{snippet.name}}</h2>

@@ -1,3 +1,12 @@
+<div class="search row collapse">
+  <div class="small-1 columns">
+    <span class="prefix radius"><i class="icon-search"></i></span>
+  </div>
+  <div class="small-11 columns">
+    <input type="text" ng-model="search"/>
+  </div>
+</div>
+
 <div class="row">
   <div class="small-12 columns">
     <div class="panel red">
@@ -6,16 +15,25 @@
       <p>Owner: <a class="inline-link" target="_blank" href="{{data.repo.owner.html_url}}">{{data.repo.owner.login}}</a></p>
     </div>
 
-    <div class="panel red">
-      <div>
-        <h3>Issues ({{data.repo.issues.length}})</h3>
-        <div ng-repeat="issue in data.repo.issues" class="sub-panel">
-          <h4>{{issue.title}} by {{issue.user.login}}</h4>
-          <h5>{{issue.created_at | date:'dd-mm-yyyy'}}</h5>
-          <p>{{issue.body}}</p>
+    <div ng-switch="data.repo.issues.length">
+      <div ng-switch-when="0">
+
+      </div>
+      <div ng-switch-default="">
+        <div class="panel red">
+          <div>
+            <h3>Issues ({{data.repo.issues.length}})</h3>
+            <div ng-repeat="issue in data.repo.issues | filter:search" class="sub-panel">
+              <h4>{{issue.title}} by {{issue.user.login}}</h4>
+              <h5>{{issue.created_at | date:'dd-mm-yyyy'}}</h5>
+              <p>{{issue.body}}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+
 
     <div class="panel red">
       <h3>Last 10 commits (Total: {{data.repo.commits.length}})</h3>
@@ -29,7 +47,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="commit in data.repo.commits | limitTo:10">
+        <tr ng-repeat="commit in data.repo.commits | limitTo:10 | filter:search">
           <td>{{commit.commit.author.date | date:'dd-mm-yyyy'}}</td>
           <td>{{commit.commit.message}}</td>
           <td>{{commit.commit.author.name}}</td>

@@ -34,7 +34,7 @@ angular.module('frontierApp')
         open: true // true for full window, false for minimized version
       },
       views: {
-        currentView: 'views/modules/reminders/new.html',
+        currentView: 'views/modules/reminders/overview.html',
         history: []
       }
     };

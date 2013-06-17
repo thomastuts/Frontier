@@ -21,16 +21,17 @@
           <span ng-click="removeReminder(reminder)"><i class="icon-remove"></i></span>
         </div>
       </div>
-      <div class="row">
-        <div class="small-12 columns">
-          {{reminder.datetime}}
-        </div>
+      <div class="sub-panel">
+        <h3>Date & time</h3>
+        <p>{{reminder.datetime  | date:'dd MMMM yyyy @ HH:mm'}}</p>
+
+        <h3>Location</h3>
+        <p>{{reminder.location}}</p>
+
+        <h3>Note</h3>
+        <p>{{reminder.note}}</p>
       </div>
-      <div class="row">
-        <small-12 class="columns">
-          {{reminder.location}}
-        </small-12>
-      </div>
+
     </div>
   </div>
 

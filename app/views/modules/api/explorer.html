@@ -53,31 +53,24 @@
 </div>
 
 <div class="row">
-  <div class="small-5 small-offset-6 columns">
-    <div class="row">
-      <div class="small-6 columns">
-        <a class="button" ng-click="exploreApi(module.methods.currentMethod.type)">SEND</a>
-      </div>
-      <div class="small-6 columns">
-        <a class="button" ng-click="clearData()">CLEAR</a>
-      </div>
-    </div>
+  <div class="small-12 columns text-right">
+    <a class="button" ng-click="exploreApi(module.methods.currentMethod.type)">SEND</a>
+    <a class="button" ng-click="clearData()">CLEAR</a>
   </div>
 </div>
 <div class="row">
   <div class="small-4 columns">
-    Current method: {{module.methods.currentMethod}}
     <i ng-click="previousApiCall()" class="icon-mail-reply icon-large previous"></i>
   </div>
   <div class="small-8 columns">
     <div class="row">
-      <div class="small-11 columns text-right">
+      <div class="small-9 columns text-right">
         <select name="" id="collections-dropdown">
           <option ng-repeat="collection in data.collections.collections" value="{{collection.id}}">{{collection.name}}</option>
         </select>
       </div>
-      <div class="small-1 columns text-right">
-        <i ng-click="addToCollection()" class="icon-plus-sign"></i>
+      <div class="small-3 columns text-right">
+        <i ng-click="addToCollection()" class="icon-plus-sign"></i> Add to collection
       </div>
     </div>
 

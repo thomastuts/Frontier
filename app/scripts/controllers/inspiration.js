@@ -3,6 +3,12 @@
 angular.module('frontierApp')
   .controller('InspirationCtrl', function ($scope, storage, viewer, ui, utility) {
 
+    $scope.tempData = {
+      addNewLink: {
+        image: ''
+      }
+    };
+
     $scope.data = {
       overview: storage.get('module-inspiration'),
       new: {
@@ -11,7 +17,8 @@ angular.module('frontierApp')
         date_created: '',
         date_updated: '',
         shots: []
-      }
+      },
+      addNewLink: {}
     };
 
     $scope.module = {
@@ -52,6 +59,11 @@ angular.module('frontierApp')
       viewer.goToView($scope, 'views/modules/inspiration/edit.html');
       $scope.data.edit = inspirationset;
       console.log(inspirationset);
+    };
+
+    $scope.showAddNewLink = function (set) {
+      $scope.data.addNewLink = set;
+      viewer.goToView($scope, 'views/modules/inspiration/addnewlink.html');
     };
 
     $scope.removeFromSet = function (shot) {
@@ -175,5 +187,19 @@ angular.module('frontierApp')
       console.log($scope.data.overview);
 
       viewer.goToView($scope, 'views/modules/inspiration/overview.html', 'new'); // last parameter 'new' is passed to viewer function to clear the data container
+    };
+
+    $scope.addLinkToExistingSet = function () {
+      var image = $scope.tempData.addNewLink.image;
+      $scope.data.addNewLink.shots.push(image);
+      for(var i = 0; i < $scope.data.overview.sets.length; i++)
+      {
+        if ($scope.data.overview.sets[i].id === $scope.data.addNewLink.id) {
+          $scope.data.overview.sets[i] = $scope.data.addNewLink;
+          storage.set('module-inspiration', $scope.data.overview);
+          viewer.goToView($scope, 'views/modules/inspiration/overview.html', 'addNewLink');
+          break;
+        }
+      }
     };
   });

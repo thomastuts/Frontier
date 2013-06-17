@@ -10,6 +10,7 @@
   </div>
   <div ng-switch-default="">
     <div class="panel red" ng-click="showSet(set)" ng-repeat="set in data.overview.sets">
+      <i ng-click="showAddNewLink(set)" class="right icon-plus"></i>
       <i ng-click="showSlider(set.id)" class="right icon-eye-open"></i>
       <i ng-click="showEdit(set)" class="right icon-edit"></i>
 
@@ -30,13 +31,6 @@
           </li>
         </ul>
       </div>
-
-      <script>
-        $(window).load(function() {
-          // The slider being synced must be initialized first
-
-        });
-      </script>
 
     </div>
   </div>

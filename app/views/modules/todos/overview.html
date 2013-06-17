@@ -13,7 +13,7 @@
     <div ng-repeat="project in data.overview.projects" class="panel {{project.urgency}}">
       <div class="row project-header">
         <div class="small-9 columns">
-          <h2 ng-click="showDetail(project)">{{project.name}}</h2>
+          <a ng-click="showDetail(project)" class="inline-link" href="">{{project.name}}</a>
         </div>
         <div class="small-3 columns text-right">
           {{project.due_date | date:'dd-MM-yyyy'}}

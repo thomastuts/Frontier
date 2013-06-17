@@ -19,7 +19,8 @@
     "ace": "~1.1.01",
     "ace-builds": "~1.1.01",
     "flexslider": "latest",
-    "typeahead.js": "~0.9.2"
+    "typeahead.js": "~0.9.2",
+    "jt.timepicker": "~1.1.9"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.5",

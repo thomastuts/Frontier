@@ -34,7 +34,7 @@ angular.module('frontierApp')
         open: true // true for full window, false for minimized version
       },
       views: {
-        currentView: 'views/modules/reminders/overview.html',
+        currentView: 'views/modules/reminders/new.html',
         history: []
       }
     };
@@ -98,7 +98,9 @@ angular.module('frontierApp')
 
     $scope.saveReminder = function (view) {
 
+      console.log($('#reminder-time').val());
       console.log($scope.data.new.date + ' ' + $scope.data.new.time);
+      $scope.data.new.time = $('#reminder-time').val();
 
       $scope.data.new.datetime = moment($scope.data.new.date + ' ' + $scope.data.new.time).format();
 

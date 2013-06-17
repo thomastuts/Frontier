@@ -28,7 +28,7 @@
               <span class="prefix radius">Time</span>
             </div>
             <div class="small-9 columns">
-              <input type="text" ng-model="data.new.time"/>
+              <input ng-model="data.new.time" id="reminder-time" type="text"/>
             </div>
           </div>
         </div>
@@ -68,6 +68,10 @@
 </div>
 
 <script>
+  $('#reminder-time').timepicker({
+    step: 15,
+    timeFormat: 'H:i'
+  });
   $('#reminder-location').typeahead({
     name: 'location',
     local: JSON.parse(localStorage.getItem('ft-module-reminders')).locations

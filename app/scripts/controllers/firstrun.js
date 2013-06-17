@@ -49,7 +49,7 @@ angular.module('frontierApp')
       storage.set('module-inspiration', {sets: []});
       storage.set('module-reminders', {reminders: []});
       storage.set('module-todos', {projects: []});
-      storage.set('module-reminders', {reminders: []});
+      storage.set('module-reminders', {reminders: [], locations: []});
       storage.set('module-scratchpad', {snippets: []});
 
       $('body').css('overflow', 'auto');

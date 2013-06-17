@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('frontierApp')
-  .controller('RemindersCtrl', function ($scope, viewer, ui, storage) {
+  .controller('RemindersCtrl', function ($scope, viewer, ui, storage, utility) {
 
     $scope.data = {
       overview: storage.get('module-reminders'),
@@ -119,6 +119,22 @@ angular.module('frontierApp')
         case 'new':
           console.log('Saving new reminder for ' + $scope.data.new.name);
           reminder = $scope.data.new;
+          $scope.data.new.location = $('#reminder-location').val();
+
+          var newLocation = true;
+
+          // Loop through location, if not in array add a new one
+          for(var j = 0; j < $scope.data.overview.locations.length; j++)
+          {
+            if (utility.checkEqualStrings($scope.data.overview.locations[j], $scope.data.new.location)) {
+              newLocation = false;
+            }
+          }
+
+          if(newLocation) {
+            $scope.data.overview.locations.push($scope.data.new.location);
+          }
+
           if ($scope.data.overview.reminders.length === 0) {
             reminder.id = 1;
           }

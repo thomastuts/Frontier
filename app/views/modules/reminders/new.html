@@ -46,7 +46,7 @@
           <span class="prefix radius">Location</span>
         </div>
         <div class="small-9 columns">
-          <input type="text" ng-model="data.new.location"/>
+          <input type="text" id="reminder-location"/>
         </div>
       </div>
       <div class="row collapse">
@@ -66,3 +66,10 @@
   </div>
 
 </div>
+
+<script>
+  $('#reminder-location').typeahead({
+    name: 'location',
+    local: JSON.parse(localStorage.getItem('ft-module-reminders')).locations
+  })
+</script>

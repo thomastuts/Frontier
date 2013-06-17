@@ -154,3 +154,16 @@ textarea {
     border-bottom: 1px solid darken($ft-primary, 30%);
   }
 }
+
+.tt-dropdown-menu {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-top: -12px;
+
+  .tt-suggestion {
+    &:hover {
+      color: $ft-primary;
+    }
+  }
+}

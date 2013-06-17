@@ -169,6 +169,15 @@ angular.module('frontierApp')
         shots = utility.separateNewlines(inputShots);
       }
 
+      for(var i = 0; i < shots.length; i++)
+      {
+        if (shots[i] === "") {
+          shots.splice(i, 1);
+        }
+      }
+
+      console.log(shots);
+/*
       var uploadedShots = $('#inspiration-shots-uploaded li');
 
       for (var i = 0; i < uploadedShots.length; i++) {
@@ -186,7 +195,7 @@ angular.module('frontierApp')
       storage.set('module-inspiration', $scope.data.overview);
       console.log($scope.data.overview);
 
-      viewer.goToView($scope, 'views/modules/inspiration/overview.html', 'new'); // last parameter 'new' is passed to viewer function to clear the data container
+      viewer.goToView($scope, 'views/modules/inspiration/overview.html', 'new'); // last parameter 'new' is passed to viewer function to clear the data container*/
     };
 
     $scope.addLinkToExistingSet = function () {

@@ -9,6 +9,12 @@ angular.module('frontierApp')
       },
       removeLineBreaks: function (content) {
         content = content.replace(/(\r\n|\n|\r)/gm,"");
+        for(var i = 0; i < content.length; i++)
+        {
+          if (content[i] === '\n' || content[i] === "") {
+            content.splice(i, 1);
+          }
+        }
         return content;
       },
       getExtension: function (url) {

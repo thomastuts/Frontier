@@ -1,5 +1,5 @@
 <ul class="actions">
-  <li ng-click="showNew()"><i class="icon-plus"></i> Add new collection</li>
+  <li ng-click="showNew()"><i class="icon-plus no-hover"></i> Add new collection</li>
 </ul>
 
 <div ng-repeat="collection in data.collections.collections | orderBy:'id'" class="panel red">
@@ -22,7 +22,7 @@
             </div>
             <div class="small-3 text-right columns">
               <div class="method">
-                {{link.method.type}}
+                {{link.method.type.type}}
               </div>
               <ul class="hover-actions">
                 <li><i ng-click="exploreApi(link.method.type, link.url, link.method.data)" class="icon-chevron-sign-right"></i></li>
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <a ng-click="showNewLink(collection)" href=""><i class="icon-plus"></i> Add new link</a>
+        <a ng-click="showNewLink(collection)" href=""><i class="icon-plus"></i> Add link to collection</a>
       </div>
     </div>
   </div>

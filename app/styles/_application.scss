@@ -7,7 +7,9 @@
 }
 
 body {
-  background-color: $darkgrey;
+  //background-color: $darkgrey;
+  background-image: url('images/bokeh.jpg');
+  background-size: cover;
   font-family: $osl, "sans serif";
   overflow-y: scroll;
   font-size: 1em;
@@ -165,5 +167,22 @@ textarea {
     &:hover {
       color: $ft-primary;
     }
+  }
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  opacity: 0.15;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.no-hover {
+  opacity: 1;
+
+  &:hover {
+    cursor: auto;
   }
 }

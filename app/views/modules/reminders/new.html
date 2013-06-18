@@ -75,5 +75,7 @@
   $('#reminder-location').typeahead({
     name: 'location',
     local: JSON.parse(localStorage.getItem('ft-module-reminders')).locations
-  })
+  });
+  console.log("\n--TYPEAHEAD SOURCE:--\n");
+  console.log(JSON.parse(localStorage.getItem('ft-module-reminders')).locations);
 </script>

@@ -44,9 +44,6 @@
             </div>
           </div>
         </div>
-
-
-
       </div>
 
 
@@ -61,18 +58,36 @@
 
           <div class="row">
             <div class="small-6 columns">
-              <h3>Left side</h3>
+              <h2>Left side</h2>
               <ul>
-                <li ng-repeat="module in data.config.dashboard.left">{{module}}</li>
+                <li class="sub-panel" ng-repeat="module in data.config.dashboard.left">
+                  {{module}}
+                  <i ng-click="moveToRight($index)" class="icon-arrow-right right"></i>
+                  <i ng-click="leftMoveUp($index)" class="icon-arrow-up right"></i>
+                  <i ng-click="leftMoveDown($index)" class="icon-arrow-down right"></i>
+                </li>
               </ul>
             </div>
-            <div class="small-6 columns">
-              <h3>Right side</h3>
+            <div class="small-6 columns text-right">
+              <h2>Right side</h2>
               <ul>
-                <li ng-repeat="module in data.config.dashboard.right">{{module}}</li>
+                <li class="sub-panel" ng-repeat="module in data.config.dashboard.right">
+                  <i ng-click="moveToLeft($index)" class="icon-arrow-left left"></i>
+                  <i ng-click="rightMoveUp($index)" class="icon-arrow-up left"></i>
+                  <i ng-click="rightMoveDown($index)" class="icon-arrow-down left"></i>
+                  {{module}}
+                </li>
               </ul>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="panel">
+          <a ng-click="saveSettings()" class="button" href="">Save settings</a>
+          * Saving settings will cause the application to reload.
         </div>
       </div>
     </div>

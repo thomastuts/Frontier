@@ -121,6 +121,12 @@ table {
   background: #F9F9F9;
   border: 1px solid #F1F1F1;
   margin-bottom: 5px;
+
+  i {
+    margin-left: 5px;
+
+
+  }
 }
 
 textarea {
@@ -192,5 +198,5 @@ textarea {
 }
 
 .settings {
-  display: none;
+  //display: none;
 }

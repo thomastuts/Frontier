@@ -43,7 +43,12 @@ angular.module('frontierApp')
         },
         availableMethods: ['GET', 'POST']
       },
-      postParameters: [],
+      postParameters: [
+        {
+          key: '',
+          value: ''
+        }
+      ],
       apiHistory: []
     };
 
@@ -73,6 +78,11 @@ angular.module('frontierApp')
       }
     });
 
+    $(document).on("click", ".post-remove", function (e) {
+      var row = e.currentTarget.parentNode.parentNode;
+      $(row).remove();
+    });
+
     $(document).on("change", "#api-method", function () {
       var method = $(this).val();
       $scope.$apply(function () {
@@ -81,8 +91,16 @@ angular.module('frontierApp')
     });
 
     $scope.addPostParameter = function () {
-      var htmlString = '<tr> <td> <input type="text" class="post-key"/> </td> <td> <input type="text" class="post-value"/> </td> </tr>';
-      $('.api table tbody').append(htmlString);
+      $scope.module.postParameters.push({
+        key: '',
+        value: ''
+      });
+      /*var htmlString = '<tr> <td> <input type="text" class="post-key"/> </td> <td> <input type="text" class="post-value"/> </td> </tr>';
+      $('.api table tbody').append(htmlString);*/
+    };
+
+    $scope.debug = function () {
+      console.log($scope.module.postParameters);
     };
 
     $scope.addToCollection = function () {
@@ -139,7 +157,7 @@ angular.module('frontierApp')
 
       viewer.goToView($scope, 'views/modules/api/explorer.html');
 
-      if(!method) {
+      if (!method) {
         method = 'GET';
       }
 
@@ -179,27 +197,28 @@ angular.module('frontierApp')
           }
           break;
         case 'POST':
-          if(!url) {
+          if (!url) {
             url = $('#api-url').val();
           }
 
           if (!postData) {
-            postData = {};
-
-            // loop through all parameters and set them in the postData object
-            for (var i = 0; i < $('.post-key').length; i++) {
+            for (var j = 0; j < $scope.module.postParameters.length; j++) {
+              var key = $scope.module.postParameters[i].key;
+              var value = $scope.module.postParameters[i].value;
+              if (!isNaN(parseInt(value))) {
+                value = parseInt(value);
+              }
               // only set parameter if the key isn't empty
-              if ($('.post-key').eq(i).val() !== "") {
-                postData[$('.post-key').eq(i).val()] = $('.post-value').eq(i).val();
+              if (key !== "") {
+                postData[key] = value;
               }
             }
           }
 
           $scope.url = url;
-          $scope.data.
 
 
-          $.post(url, postData)
+            $.post(url, postData)
             .done(function (data) {
               $scope.apply(function () {
                 data = JSON.stringify(data, null, 4);
@@ -260,7 +279,7 @@ angular.module('frontierApp')
     };
 
     $scope.removeCollection = function (collection) {
-      if(confirm("Are you sure you want to delete this collection?")) {
+      if (confirm("Are you sure you want to delete this collection?")) {
         for (var i = 0; i < $scope.data.collections.collections.length; i++) {
           if ($scope.data.collections.collections[i].id === collection.id) {
             $scope.data.collections.collections.splice(i, 1);
@@ -291,8 +310,17 @@ angular.module('frontierApp')
       }
     };
 
-    $scope.testje = function () {
-      console.log('TEEEESTTTTT');
+    $scope.removePostParameter = function (index) {
+
+      if($scope.module.postParameters.length === 1) {
+        $scope.module.postParameters[0] = {
+          key: '',
+          value: ''
+        }
+      }
+      else {
+        $scope.module.postParameters.splice(index, 1);
+      }
     };
 
     $scope.clearData = function () {
@@ -341,9 +369,9 @@ angular.module('frontierApp')
           var postData = {};
 
           // loop through all parameters and set them in the postData object
-          for (var j = 0; j < $('.post-key').length; j++) {
-            var key = $('.post-key').eq(j).val();
-            var value = $('.post-value').eq(j).val();
+          for (var j = 0; j < $scope.module.postParameters.length; j++) {
+            var key = $scope.module.postParameters[i].key;
+            var value = $scope.module.postParameters[i].value;
             if (!isNaN(parseInt(value))) {
               value = parseInt(value);
             }

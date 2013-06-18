@@ -68,17 +68,30 @@
           <tr>
             <td>Key</td>
             <td>Value</td>
+            <td></td>
           </tr>
           </thead>
           <tbody>
-          <tr>
+          <tr ng-repeat="postparam in module.postParameters">
+            <td>
+              <input type="text" ng-model="postparam.key"/>
+            </td>
+            <td>
+              <input type="text" ng-model="postparam.value"/>
+            </td>
+            <td>
+              <i ng-click="removePostParameter($index)" class="post-remove icon-remove"></i>
+            </td>
+          </tr>
+         <!-- <tr>
             <td>
               <input type="text" class="post-key"/>
             </td>
             <td>
               <input type="text" class="post-value"/>
             </td>
-          </tr>
+            <td><i class="post-remove icon-remove"></i></td>
+          </tr>-->
           </tbody>
         </table>
         <a class="inline-link" href="" ng-click="addPostParameter()"><i class="icon-plus no-hover"></i> Add new
@@ -92,6 +105,7 @@
 <div class="row">
   <div class="small-12 columns">
     <ul class="actions">
+      <!--<li ng-click="debug()">Debug</li>-->
       <li ng-click="previousApiCall()"><i class="icon-mail-reply no-hover"></i> Previous request</li>
       <li ng-click="clearData()"><i class="icon-trash no-hover"></i> Clear data</li>
       <li class="main-action" ng-click="exploreApi(module.methods.currentMethod.type)"><i

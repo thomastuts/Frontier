@@ -30,7 +30,7 @@
               <span class="prefix radius">Time</span>
             </div>
             <div class="small-9 columns">
-              <input type="text" ng-model="data.new.time"/>
+              <input type="text" id="project-time" ng-model="data.new.time"/>
             </div>
           </div>
         </div>
@@ -70,3 +70,10 @@
   </div>
 
 </div>
+
+<script>
+  $('#project-time').timepicker({
+    step: 15,
+    timeFormat: 'H:i'
+  });
+</script>

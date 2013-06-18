@@ -9,7 +9,7 @@ angular.module('frontierApp')
     };
 
     $scope.data = {
-      explorer: {},
+      explorer: null,
       collections: storage.get('module-api'),
       new: {},
       newLink: {},
@@ -354,6 +354,10 @@ angular.module('frontierApp')
       }
 
       console.log($scope.tempData.newLink);
+    };
+
+    $scope.showAddToCurrent = function () {
+      $('#addToExistingCollection').fadeToggle();
     };
 
   });

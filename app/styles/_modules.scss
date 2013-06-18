@@ -76,6 +76,10 @@
       border-left: 4px solid $blue;
       padding: 10px 0;
 
+      .main-action {
+        color: $ft-primary;
+      }
+
       li {
         display: inline;
         padding: 8px 15px;

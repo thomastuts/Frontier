@@ -3,11 +3,11 @@
 angular.module('frontierApp')
   .factory('dashboard', function () {
 
-    var dashboardLeft = JSON.parse(localStorage.getItem('ft-config')).dashboard.left;
-    var dashboardRight = JSON.parse(localStorage.getItem('ft-config')).dashboard.right;
-
     return {
       render: function () {
+        var dashboardLeft = JSON.parse(localStorage.getItem('ft-config')).dashboard.left;
+        var dashboardRight = JSON.parse(localStorage.getItem('ft-config')).dashboard.right;
+
         var selector;
         for (var i = 0; i < dashboardLeft.length; i++) {
           selector = 'div[ng-controller="' + dashboardLeft[i] + 'Ctrl"]';

@@ -39,6 +39,10 @@ angular.module('frontierApp')
       }
     };
 
+    for (var i = 0; i < $scope.data.overview.reminders.length; i++) {
+      $scope.data.overview.reminders[i].datetime_human = moment($scope.data.overview.reminders[i].datetime).calendar();
+    }
+
     $scope.setUrgency = window.setInterval(function () {
 
     }, 1000);
@@ -98,7 +102,9 @@ angular.module('frontierApp')
 
     $scope.saveReminder = function (view) {
 
+      console.log($('#reminder-time').val());
       console.log($scope.data.new.date + ' ' + $scope.data.new.time);
+      $scope.data.new.time = $('#reminder-time').val();
 
       $scope.data.new.datetime = moment($scope.data.new.date + ' ' + $scope.data.new.time).format();
 
@@ -113,14 +119,13 @@ angular.module('frontierApp')
           var newLocation = true;
 
           // Loop through location, if not in array add a new one
-          for(var j = 0; j < $scope.data.overview.locations.length; j++)
-          {
+          for (var j = 0; j < $scope.data.overview.locations.length; j++) {
             if (utility.checkEqualStrings($scope.data.overview.locations[j], $scope.data.new.location)) {
               newLocation = false;
             }
           }
 
-          if(newLocation) {
+          if (newLocation) {
             $scope.data.overview.locations.push($scope.data.new.location);
           }
 

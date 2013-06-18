@@ -21,16 +21,8 @@
           <span ng-click="removeReminder(reminder)"><i class="icon-remove"></i></span>
         </div>
       </div>
-      <div class="sub-panel">
-        <h3>Date & time</h3>
-        <p>{{reminder.datetime  | date:'dd MMMM yyyy @ HH:mm'}}</p>
-
-        <h3>Location</h3>
-        <p>{{reminder.location}}</p>
-
-        <h3>Note</h3>
-        <p>{{reminder.note}}</p>
-      </div>
+      <p><i class="icon-time no-hover"></i> {{reminder.datetime_human}}</p>
+      <p><i class="icon-map-marker no-hover"></i> {{reminder.location}}</p>
 
     </div>
   </div>

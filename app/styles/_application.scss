@@ -7,7 +7,9 @@
 }
 
 body {
-  background-color: $darkgrey;
+  //background-color: $darkgrey;
+  background-image: url('images/bokeh.jpg');
+  background-size: cover;
   font-family: $osl, "sans serif";
   overflow-y: scroll;
   font-size: 1em;
@@ -152,5 +154,35 @@ textarea {
   &:hover {
     color: darken($ft-primary, 30%);
     border-bottom: 1px solid darken($ft-primary, 30%);
+  }
+}
+
+.tt-dropdown-menu {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-top: -12px;
+
+  .tt-suggestion {
+    &:hover {
+      color: $ft-primary;
+    }
+  }
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  opacity: 0.15;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.no-hover {
+  opacity: 1;
+
+  &:hover {
+    cursor: auto;
   }
 }

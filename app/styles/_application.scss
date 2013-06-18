@@ -7,10 +7,6 @@
 }
 
 body {
-  //background-color: $darkgrey;
-  background-image: url('images/google_play.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
   background-color: $darkgrey;
   font-family: $osl, "sans serif";
   overflow-y: scroll;
@@ -187,4 +183,8 @@ textarea {
   &:hover {
     cursor: auto;
   }
+}
+
+.settings {
+  display: none;
 }

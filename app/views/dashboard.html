@@ -2,10 +2,7 @@
   <div ng-controller="HeaderCtrl" class="row">
     <div class="small-12 columns">
       <ul class="left">
-        <li ng-switch on="data.general.username">
-          <span ng-switch-when="null">Frontier - You, but only more productive.</span>
-          <span ng-switch-default="">Hello, {{data.general.username}}!</span>
-        </li>
+        <li>Hello, {{data.general.username}}! <i ng-click="toggleSettings()" class="icon-cogs"></i></li>
       </ul>
       <ul class="right">
         <li>{{timer}}</li>
@@ -16,7 +13,7 @@
 
 <div class="row">
   <div class="dashboard-full large-12 columns">
-
+    <div ng-include="'views/settings.html'"></div>
   </div>
 </div>
 

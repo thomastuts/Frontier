@@ -18,4 +18,8 @@ angular.module('frontierApp')
       console.log(e.message);
     }
 
+    $scope.toggleSettings = function () {
+      $('.settings').fadeToggle(250);
+    };
+
   });

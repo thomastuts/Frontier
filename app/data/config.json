@@ -3,7 +3,8 @@
     "username": "Thomas",
     "datetime_format": "dddd DD/MM | H:mm:ss"
   },
-  "meta": {
-    "version": "0.0.1"
+  "dashboard": {
+    "left": ["Api", "Github", "Scratchpad", "LocalStorage"],
+    "right": ["Reminders", "Inspiration", "Todos"]
   }
 }

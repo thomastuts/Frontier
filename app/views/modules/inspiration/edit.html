@@ -1,3 +1,8 @@
+<ul class="actions">
+  <li ng-click="saveEdit()"><i class="icon-save no-hover"></i> Save changes</li>
+  <li ng-click="removeSet()"><i class="icon-trash no-hover"></i> Remove set</li>
+</ul>
+
 <div class="panel red">
   <h2>Set info</h2>
   <p>Name:</p>
@@ -8,10 +13,13 @@
 
   <h2>Images</h2>
   <div class="sub-panel" ng-repeat="shot in data.edit.shots">
-    <p>URL:</p>
-    <input type="text" ng-model="shot.image"/><i ng-click="removeFromSet($index)" class="icon-remove"></i>
+    <div class="row">
+      <div class="small-11 columns">
+        {{shot}}
+      </div>
+      <div class="small-1 columns text-right">
+        <i ng-click="removeFromSet($index)" class="icon-remove"></i>
+      </div>
+    </div>
   </div>
-
-  <a ng-click="saveEdit()" class="button" href="">Save changes</a>
-  <a ng-click="removeSet()" class="button alert" href="">Remove set</a>
 </div>

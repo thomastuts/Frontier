@@ -3,6 +3,6 @@ dist
 .tmp
 .sass-cache
 app/components
-app/styles/*.css7
+app/styles/*.css
 app/data/uploads/inspiration/*.jpg
 app/data/uploads/inspiration/*.png

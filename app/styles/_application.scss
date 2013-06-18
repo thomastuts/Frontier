@@ -8,8 +8,10 @@
 
 body {
   //background-color: $darkgrey;
-  background-image: url('images/bokeh.jpg');
+  background-image: url('images/google_play.jpg');
+  background-repeat: no-repeat;
   background-size: cover;
+  background-color: $darkgrey;
   font-family: $osl, "sans serif";
   overflow-y: scroll;
   font-size: 1em;

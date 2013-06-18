@@ -212,7 +212,7 @@ angular.module('frontierApp')
               $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
               $('.api .code').html($scope.data.explorer);
             });
-          $scope.module.apiHistory.push($scope.url);
+
           $scope.module.methods.currentMethod = {
             type: 'POST',
             data: postData
@@ -222,18 +222,40 @@ angular.module('frontierApp')
       }
 
       $('#api-method').val(method);
+      $scope.module.apiHistory.push({
+        url: url,
+        method: {
+          type: method,
+          data: postData
+        }
+      });
 
 
     };
 
     $scope.previousApiCall = function () {
       if ($scope.module.apiHistory.length > 0) {
+
+        var method;
+        var url;
+        var postData;
+
         if ($scope.module.apiHistory.length === 1) {
-          $scope.exploreApi($scope.module.apiHistory[($scope.module.apiHistory.length - 1 )]);
+          method = $scope.module.apiHistory[($scope.module.apiHistory.length - 1 )].method.type;
+          url = $scope.module.apiHistory[($scope.module.apiHistory.length - 1 )].url;
+          postData = $scope.module.apiHistory[($scope.module.apiHistory.length - 1 )].postData;
         }
         else {
-          $scope.exploreApi($scope.module.apiHistory[($scope.module.apiHistory.length - 2 )]);
+          method = $scope.module.apiHistory[($scope.module.apiHistory.length - 2 )].method.type;
+          url = $scope.module.apiHistory[($scope.module.apiHistory.length - 2 )].url;
+          postData = $scope.module.apiHistory[($scope.module.apiHistory.length - 2 )].postData;
         }
+
+        // remove last request from array
+
+        $scope.module.apiHistory.pop();
+
+        $scope.exploreApi(method, url, postData);
       }
     };
 

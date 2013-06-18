@@ -16,6 +16,10 @@ angular.module('frontierApp')
       general: {
         username: '',
         datetime_format: 'dddd DD/MM | H:mm:ss'
+      },
+      dashboard: {
+        left: ['Api', 'Github', 'Scratchpad'],
+        right: ['Todos', 'Reminders', 'Inspiration']
       }
     };
 

@@ -85,9 +85,15 @@
         display: inline;
         padding: 8px 15px;
         cursor: pointer;
+        margin-right: -4px;
+        border-right: 1px solid #efefef;
+        
+        &:last-child {
+          border-left: none;
+        }
 
         &:hover {
-          background: darken(#fff, 2%);
+          background: #f8f8f8;
         }
       }
     }

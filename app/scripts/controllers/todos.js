@@ -119,6 +119,24 @@ angular.module('frontierApp')
         done: utility.separateNewlines($('#project-done').val())
       };
 
+      for (var i = 0; i < tasks.todo.length; i++) {
+        if (tasks.todo[i] === "") {
+          tasks.todo.splice(i, 1);
+        }
+      }
+
+      for (var j = 0; j < tasks.current.length; j++) {
+        if (tasks.current[j] === "") {
+          tasks.current.splice(j, 1);
+        }
+      }
+
+      for (var k = 0; k < tasks.done.length; k++) {
+        if (tasks.done[k] === "") {
+          tasks.done.splice(k, 1);
+        }
+      }
+
       var lastId = 0;
 
       if ($scope.data.overview.projects.length !== 0) {

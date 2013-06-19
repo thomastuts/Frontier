@@ -2,7 +2,7 @@
   <div class="small-12 columns">
     <div class="panel red">
       <h2>{{data.repo.name}}</h2>
-      <p>Last updated at {{data.repo.updated_at | date:'dd-mm-yyyy'}}</p>
+      <p>Last updated at {{data.repo.updated_at | date:'dd-MM-yyyy'}}</p>
       <p>Owner: <a class="inline-link" target="_blank" href="{{data.repo.owner.html_url}}">{{data.repo.owner.login}}</a></p>
     </div>
 
@@ -26,7 +26,7 @@
               <div class="row">
                 <div class="small-10 columns">
                   <h3>{{issue.title}}</h3>
-                  <p>by <a target="_blank" class="inline-link" href="http://github.com/{{issue.user.login}}">{{issue.user.login}}</a> on {{issue.created_at | date:'dd-mm-yyyy'}}</p>
+                  <p>by <a target="_blank" class="inline-link" href="http://github.com/{{issue.user.login}}">{{issue.user.login}}</a> on {{issue.created_at | date:'dd-MM-yyyy'}}</p>
                 </div>
                 <div class="small-2 columns text-right">
                   <a target="_blank" href="{{data.repo.html_url}}/issues/{{issue.number}}"><i class="icon-chevron-sign-right icon-2x"></i></a>
@@ -41,7 +41,7 @@
 
 
     <div class="panel red">
-      <h2>Last 10 commits (Total: {{data.repo.commits.length}})</h2>
+      <h2>Last 10 commits</h2>
       <div class="search row collapse">
         <div class="small-1 columns">
           <span class="prefix radius"><i class="icon-search"></i></span>
@@ -61,7 +61,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="commit in data.repo.commits | limitTo:10 | filter:search.commits">
-          <td>{{commit.commit.author.date | date:'dd-mm-yyyy'}}</td>
+          <td>{{commit.commit.author.date | date:'dd-MM-yyyy'}}</td>
           <td>{{commit.commit.message}}</td>
           <td>{{commit.commit.author.name}}</td>
           <td><a target="_blank" class="inline-link" href="{{commit.html_url}}">{{commit.sha_short}}</a></td>

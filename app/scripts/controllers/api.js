@@ -18,7 +18,8 @@ angular.module('frontierApp')
 
     $scope.selectedCollection = null;
 
-    $scope.url = 'https://api.github.com/users/thomastuts'; // TODO: remember last request
+//    $scope.url = 'https://api.github.com/users/' + storage.get('module-github').username; // TODO: remember last request
+    $scope.url = 'http://localhost/ads/api/index.php/users';
 
     $scope.module = {
       meta: {
@@ -205,6 +206,7 @@ angular.module('frontierApp')
           }
 
           if (!postData) {
+            postData = {};
             for (var j = 0; j < $scope.module.postParameters.length; j++) {
               var key = $scope.module.postParameters[j].key;
               var value = $scope.module.postParameters[j].value;
@@ -223,12 +225,11 @@ angular.module('frontierApp')
 
             $.post(url, postData)
             .done(function (data) {
-              $scope.apply(function () {
+                console.log(data);
                 data = JSON.stringify(data, null, 4);
                 $scope.module.apiHistory.push(data);
                 $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
                 $('.api .code').html($scope.data.explorer);
-              })
             })
             .fail(function (data) {
               data = JSON.stringify(data, null, 4);

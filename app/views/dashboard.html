@@ -1,12 +1,14 @@
 <header>
   <div ng-controller="HeaderCtrl" class="row">
     <div class="small-12 columns">
-      <ul class="left">
-        <li>Hello, {{data.general.username}}! <i ng-click="toggleSettings()" class="icon-cogs"></i></li>
-      </ul>
-      <ul class="right">
-        <li>{{timer}}</li>
-      </ul>
+      <div class="row collapse">
+        <div class="large-6 columns">
+          Hello, {{data.general.username}}! <i ng-click="toggleSettings()" class="icon-cogs"></i>
+        </div>
+        <div class="large-6 columns text-right">
+          {{timer}}
+        </div>
+      </div>
     </div>
   </div>
 </header>

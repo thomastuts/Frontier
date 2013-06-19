@@ -1,5 +1,5 @@
 <ul class="actions toggle">
-  <li ng-click="showCollection()"><i class="icon-eye-open no-hover"></i> Browse notes</li>
+  <!--<li ng-click="showCollection()"><i class="icon-eye-open no-hover"></i> Browse notes</li>-->
   <li ng-click="showNew()"><i class="icon-plus no-hover"></i> Add a new note</li>
 </ul>
 
@@ -20,20 +20,11 @@
   </div>
   <div ng-switch-default="">
     <div ng-repeat="snippet in data.overview.snippets | limitTo:5 | orderBy:'id' | filter:search" class="panel red">
-      <div class="row">
-        <div class="small-9 columns">
-          <h2>{{snippet.name}}</h2>
-
-          <p>{{snippet.description}}</p>
-        </div>
-        <div class="small-3 columns text-right">
-          <br>
-          <i ng-click="showSnippet(snippet)" class="icon-chevron-sign-right icon-2x"></i>
-        </div>
-      </div>
-
       <i ng-click="removeSnippet(snippet.id)" class="icon-remove right"></i>
       <i ng-click="showEdit(snippet)" class="icon-edit right"></i>
+
+      <a ng-click="showSnippet(snippet)" href=""><h2 class="link">{{snippet.name}}</h2></a>
+      <p>{{snippet.description}}</p>
 
     </div>
   </div>

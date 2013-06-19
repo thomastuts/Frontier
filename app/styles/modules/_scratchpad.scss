@@ -1,6 +1,20 @@
+@import "../variables";
+
 .scratchpad {
   .code {
     height: 30em;
+  }
+
+  .link {
+    color: $ft-primary;
+
+    &:hover {
+      color: darken($ft-primary, 30%);
+    }
+  }
+
+  .content i {
+    margin-left: 10px;
   }
 
   .editor-container {

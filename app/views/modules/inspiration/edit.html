@@ -15,7 +15,7 @@
   <div class="sub-panel" ng-repeat="shot in data.edit.shots">
     <div class="row">
       <div class="small-11 columns">
-        {{shot}}
+        <img ng-src="{{shot}}" alt=""/>
       </div>
       <div class="small-1 columns text-right">
         <i ng-click="removeFromSet($index)" class="icon-remove"></i>

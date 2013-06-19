@@ -136,6 +136,9 @@ angular.module('frontierApp')
             var lastId = $scope.data.overview.reminders[($scope.data.overview.reminders.length - 1)].id;
             reminder.id = lastId + 1;
           }
+
+          $scope.data.new.datetime_human = moment($scope.data.new.datetime).calendar();
+
           console.log(reminder);
           $scope.data.overview.reminders.push(reminder);
           break;

@@ -137,7 +137,7 @@ angular.module('frontierApp')
               if (data.error != '') {
                 alert(data.error);
               } else {
-                $('#inspiration-shots-uploaded').append('<li class="sub-panel">' + data.msg + '<i data-file="' + data.msg + '" class="icon-remove right remove-upload"></i></li>');
+                $('#inspiration-shots-uploaded').append('<li data-file="' + data.msg + '" class="sub-panel">' + data.msg + '<i data-file="' + data.msg + '" class="icon-remove right remove-upload"></i></li>');
               }
             }
           },
@@ -174,7 +174,7 @@ angular.module('frontierApp')
       var uploadedShots = $('#inspiration-shots-uploaded li');
 
       for (var j = 0; j < uploadedShots.length; j++) {
-        shots.push('data/uploads/inspiration/' + $('#inspiration-shots-uploaded li').eq(j).html());
+        shots.push('data/uploads/inspiration/' + $('#inspiration-shots-uploaded li').eq(j).attr('data-file'));
       }
 
       var inputShots = $('#inspiration-shots').val();

@@ -18,8 +18,8 @@ angular.module('frontierApp')
 
     $scope.selectedCollection = null;
 
-    $scope.url = 'https://api.github.com/users/' + storage.get('module-github').username; // TODO: remember last request
-//    $scope.url = 'http://localhost/ads/api/index.php/users';
+//    $scope.url = 'https://api.github.com/users/' + storage.get('module-github').username; // TODO: remember last request
+    $scope.url = '';
 
     $scope.module = {
       meta: {
@@ -346,7 +346,7 @@ angular.module('frontierApp')
 
       $scope.data.collections.collections.push($scope.data.new);
       storage.set('module-api', $scope.data.collections);
-      viewer.goToView($scope, 'views/modules/api/collections.html', 'new');
+      viewer.goToView($scope, 'views/modules/api/explorer.html', 'new');
     };
 
     $scope.addNewLink = function () {

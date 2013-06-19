@@ -154,6 +154,8 @@ angular.module('frontierApp')
 
     $scope.showEdit = function (project) {
       $scope.data.edit = project;
+      $scope.data.edit.time = moment($scope.data.edit.due_date).format('H:mm');
+      $scope.data.edit.date = moment($scope.data.edit.due_date).format('YYYY-MM-DD');
       $scope.data_temp = {
         tasks: {
           todo: $scope.data.edit.tasks.todo.join("\n"),
@@ -172,6 +174,8 @@ angular.module('frontierApp')
       $scope.data.edit.tasks.todo = utility.separateNewlines($('#project-todo').val());
       $scope.data.edit.tasks.current = utility.separateNewlines($('#project-current').val());
       $scope.data.edit.tasks.done = utility.separateNewlines($('#project-done').val());
+
+      $scope.data.edit.due_date = moment($scope.data.edit.date + ' ' + $scope.data.edit.time);
 
       console.log($scope.data.edit);
 

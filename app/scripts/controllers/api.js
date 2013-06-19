@@ -203,8 +203,8 @@ angular.module('frontierApp')
 
           if (!postData) {
             for (var j = 0; j < $scope.module.postParameters.length; j++) {
-              var key = $scope.module.postParameters[i].key;
-              var value = $scope.module.postParameters[i].value;
+              var key = $scope.module.postParameters[j].key;
+              var value = $scope.module.postParameters[j].value;
               if (!isNaN(parseInt(value))) {
                 value = parseInt(value);
               }

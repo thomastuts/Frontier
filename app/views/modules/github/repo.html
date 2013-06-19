@@ -13,7 +13,7 @@
       <div ng-switch-default="">
         <div class="panel red issues">
           <div>
-            <h2>Issues ({{data.repo.issues.length}})</h2>
+            <h2>Last 10 issues</h2>
             <div class="search row collapse">
               <div class="small-1 columns">
                 <span class="prefix radius"><i class="icon-search"></i></span>
@@ -22,7 +22,7 @@
                 <input type="text" ng-model="search.issues"/>
               </div>
             </div>
-            <div ng-repeat="issue in data.repo.issues | filter:search.issues" class="sub-panel">
+            <div ng-repeat="issue in data.repo.issues | filter:search.issues | limitTo:10" class="sub-panel">
               <div class="row">
                 <div class="small-10 columns">
                   <h3>{{issue.title}}</h3>

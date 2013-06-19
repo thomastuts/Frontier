@@ -74,7 +74,8 @@ angular.module('frontierApp')
     };
 
     $scope.addNewSnippet = function () {
-      var snippet = $('#scratchpad-editor').val();
+      var editor = ace.edit("editor");
+      var snippet = editor.getValue();
       console.log(snippet);
 
       var snippetId;

@@ -11,3 +11,5 @@ Frontier is a small webapp with several modules that make the life of developers
 * Clone the project.
 * Run `npm install` and `bower install` to install all dependencies.
 * Run `grunt server` to preview.
+
+For full functionality, you will need to symlink the `dist` folder to a server stack like XAMP or MAMP (or anything else that runs PHP).

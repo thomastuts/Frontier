@@ -137,7 +137,7 @@ angular.module('frontierApp')
               if (data.error != '') {
                 alert(data.error);
               } else {
-                $('#inspiration-shots-uploaded').append('<li class="sub-panel">' + data.msg + '</li>');
+                $('#inspiration-shots-uploaded').append('<li class="sub-panel">' + data.msg + '<i data-file="' + data.msg + '" class="icon-remove right remove-upload"></i></li>');
               }
             }
           },
@@ -147,6 +147,12 @@ angular.module('frontierApp')
         }
       )
     };
+
+    $(document).on("click", ".remove-upload", function () {
+      var filename = $(this).attr('data-file');
+      $(this).parent().remove();
+    });
+
 
     /*
      *   ------------
@@ -177,8 +183,7 @@ angular.module('frontierApp')
       }
 
       // split all URLs
-      for(var i = 0; i < inputShots.length; i++)
-      {
+      for (var i = 0; i < inputShots.length; i++) {
         if (inputShots[i] === "") {
           inputShots.splice(i, 1);
         }
@@ -186,7 +191,7 @@ angular.module('frontierApp')
 
       if (inputShots.length > 0) {
         $.post('php/save_to_local.php', { images: inputShots, id: $scope.data.new.id })
-          .done(function(data) {
+          .done(function (data) {
             // use PHP response to push the links into the shots array
             shots = shots.concat(JSON.parse(data));
             $scope.data.new.description = description;
@@ -221,14 +226,12 @@ angular.module('frontierApp')
       // send URLs to PHP service to save files locally
 
 
-
     };
 
     $scope.addLinkToExistingSet = function () {
       var image = $scope.tempData.addNewLink.image;
       $scope.data.addNewLink.shots.push(image);
-      for(var i = 0; i < $scope.data.overview.sets.length; i++)
-      {
+      for (var i = 0; i < $scope.data.overview.sets.length; i++) {
         if ($scope.data.overview.sets[i].id === $scope.data.addNewLink.id) {
           $scope.data.overview.sets[i] = $scope.data.addNewLink;
           storage.set('module-inspiration', $scope.data.overview);

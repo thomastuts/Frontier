@@ -174,6 +174,7 @@ angular.module('frontierApp')
             $.get($scope.url, function (data) {
               $scope.$apply(function () {
                 data = JSON.stringify(data, null, 4);
+                $scope.module.apiHistory.push(data);
                 $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
 //            console.log($scope.data.explorer);
                 $('.api .code').html($scope.data.explorer);
@@ -187,8 +188,10 @@ angular.module('frontierApp')
             $scope.url = url;
 
             $.get(url, function (data) {
+
               $scope.$apply(function () {
                 data = JSON.stringify(data, null, 4);
+                $scope.module.apiHistory.push(data);
                 $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
 //                console.log($scope.data.explorer);
                 $('.api .code').html($scope.data.explorer);
@@ -222,6 +225,7 @@ angular.module('frontierApp')
             .done(function (data) {
               $scope.apply(function () {
                 data = JSON.stringify(data, null, 4);
+                $scope.module.apiHistory.push(data);
                 $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
                 $('.api .code').html($scope.data.explorer);
               })
@@ -241,13 +245,7 @@ angular.module('frontierApp')
       }
 
       $('#api-method').val(method);
-      $scope.module.apiHistory.push({
-        url: url,
-        method: {
-          type: method,
-          data: postData
-        }
-      });
+
 
 
     };
@@ -255,26 +253,20 @@ angular.module('frontierApp')
     $scope.previousApiCall = function () {
       if ($scope.module.apiHistory.length > 0) {
 
-        var method;
-        var url;
-        var postData;
+        var data;
 
         if ($scope.module.apiHistory.length === 1) {
-          method = $scope.module.apiHistory[($scope.module.apiHistory.length - 1 )].method.type;
-          url = $scope.module.apiHistory[($scope.module.apiHistory.length - 1 )].url;
-          postData = $scope.module.apiHistory[($scope.module.apiHistory.length - 1 )].postData;
+          data = $scope.module.apiHistory[($scope.module.apiHistory.length - 1 )];
         }
         else {
-          method = $scope.module.apiHistory[($scope.module.apiHistory.length - 2 )].method.type;
-          url = $scope.module.apiHistory[($scope.module.apiHistory.length - 2 )].url;
-          postData = $scope.module.apiHistory[($scope.module.apiHistory.length - 2 )].postData;
+          data = $scope.module.apiHistory[($scope.module.apiHistory.length - 2 )];
         }
-
-        // remove last request from array
 
         $scope.module.apiHistory.pop();
 
-        $scope.exploreApi(method, url, postData);
+//        data = JSON.stringify(data, null, 4);
+        $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
+        $('.api .code').html($scope.data.explorer);
       }
     };
 

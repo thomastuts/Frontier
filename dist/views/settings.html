@@ -1,0 +1,95 @@
+<div ng-controller="SettingsCtrl" class="module settings">
+  <div class="titlebar clearfix">
+    <ul class="left">
+      <li><i class="icon-cogs no-hover"></i></li>
+      <li><h1>Settings</h1></li>
+    </ul>
+    <ul class="right">
+      <li><i ng-click="toggleSettings()" class="icon-remove"></i></li>
+    </ul>
+    <div style="clear: both"></div>
+  </div>
+  <div class="content">
+    <div class="row">
+      <div class="large-6 columns">
+
+        <div class="panel">
+          <h2>General</h2>
+          <div class="row collapse">
+            <div class="small-4 columns">
+              <span class="prefix radius">Name</span>
+            </div>
+            <div class="small-8 columns">
+              <input type="text" ng-model="data.config.general.username" />
+            </div>
+          </div>
+          <div class="row collapse">
+            <div class="small-4 columns">
+              <span class="prefix radius">Datetime format</span>
+            </div>
+            <div class="small-8 columns">
+              <input type="text" ng-model="data.config.general.datetime_format" />
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Github</h2>
+          <div class="row collapse">
+            <div class="small-4 columns">
+              <span class="prefix radius">Username</span>
+            </div>
+            <div class="small-8 columns">
+              <input type="text" ng-model="data.github.username" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="large-6 columns">
+        <div class="panel">
+          <h2>Module placement</h2>
+          <p>
+            You can decide for yourself which modules get placed where. Just re-arrange them here to whatever configuration you like
+          and your workspace will adjust accordingly.
+          </p>
+
+          <div class="row">
+            <div class="small-6 columns">
+              <h2>Left side</h2>
+              <ul>
+                <li class="sub-panel" ng-repeat="module in data.config.dashboard.left">
+                  {{module}}
+                  <i ng-click="moveToRight($index)" class="icon-arrow-right right"></i>
+                  <i ng-click="leftMoveUp($index)" class="icon-arrow-up right"></i>
+                  <i ng-click="leftMoveDown($index)" class="icon-arrow-down right"></i>
+                </li>
+              </ul>
+            </div>
+            <div class="small-6 columns text-right">
+              <h2>Right side</h2>
+              <ul>
+                <li class="sub-panel" ng-repeat="module in data.config.dashboard.right">
+                  <i ng-click="moveToLeft($index)" class="icon-arrow-left left"></i>
+                  <i ng-click="rightMoveUp($index)" class="icon-arrow-up left"></i>
+                  <i ng-click="rightMoveDown($index)" class="icon-arrow-down left"></i>
+                  {{module}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="panel">
+          <a ng-click="saveSettings()" class="button" href="">Save settings</a>
+          * Saving settings will cause the application to reload.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

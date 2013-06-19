@@ -1,0 +1,14 @@
+{
+  "name": "components-font-awesome",
+  "description": "Font Awesome, the iconic font designed for use with Twitter Bootstrap.",
+  "version": "3.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/components/font-awesome.git"
+  },
+  "main": "css/font-awesome.css",
+  "gitHead": "6eabb246e3d870bb861e7a3acbe4fa9c2741802f",
+  "readme": "Font Awesome\r\n============\r\n\r\nShim repository for Font Awesome.\r\n\r\nThe full suite of pictographic icons, examples, and documentation can be found at:\r\nhttp://fortawesome.github.com/Font-Awesome/\r\n\r\n\r\nPackage Managers\r\n----------------\r\n\r\n* [Bower](http://bower.io): `components-font-awesome`\r\n* [Component](https://github.com/component/component): `components/font-awesome`\r\n* [Composer](http://packagist.org/packages/components/font-awesome): `components/font-awesome`\r\n\r\n\r\nLicense\r\n-------\r\n\r\n- The Font Awesome font is licensed under the SIL Open Font License - http://scripts.sil.org/OFL\r\n- Font Awesome CSS, LESS, and SASS files are licensed under the MIT License - http://opensource.org/licenses/mit-license.html\r\n- The Font Awesome pictograms are licensed under the CC BY 3.0 License - http://creativecommons.org/licenses/by/3.0/\r\n- Attribution is no longer required in Font Awesome 3.0, but much appreciated: \"Font Awesome by Dave Gandy - http://fortawesome.github.com/Font-Awesome\"\r\n",
+  "readmeFilename": "README.md",
+  "_id": "components-font-awesome@3.1.0"
+}

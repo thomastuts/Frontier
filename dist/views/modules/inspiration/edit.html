@@ -1,0 +1,25 @@
+<ul class="actions">
+  <li ng-click="saveEdit()"><i class="icon-save no-hover"></i> Save changes</li>
+  <li ng-click="removeSet()"><i class="icon-trash no-hover"></i> Remove set</li>
+</ul>
+
+<div class="panel red">
+  <h2>Set info</h2>
+  <p>Name:</p>
+  <input type="text" ng-model="data.edit.name"/>
+
+  <p>Description:</p>
+  <textarea name="inspiration-description" id="inspiration-description" cols="30" rows="10">{{data.edit.description}}</textarea>
+
+  <h2>Images</h2>
+  <div class="sub-panel" ng-repeat="shot in data.edit.shots">
+    <div class="row">
+      <div class="small-11 columns">
+        <img ng-src="{{shot}}" alt=""/>
+      </div>
+      <div class="small-1 columns text-right">
+        <i ng-click="removeFromSet($index)" class="icon-remove"></i>
+      </div>
+    </div>
+  </div>
+</div>

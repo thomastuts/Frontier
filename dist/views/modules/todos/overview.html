@@ -1,0 +1,45 @@
+<ul class="blue actions toggle">
+  <li ng-click="showNew()"><i class="icon-plus no-hover"></i> Add new project</li>
+</ul>
+
+<div ng-switch="data.overview.projects.length">
+  <div ng-switch-when="0">
+    <div class="panel red">
+      <p>Either you're a very hard worker, or you're hiding something from me. Are you sure you have nothing to do? You can add a project
+        <a ng-click="showNew()" class="inline-link" href="">here</a>.</p>
+    </div>
+  </div>
+  <div ng-switch-default="">
+    <div ng-repeat="project in data.overview.projects" class="panel {{project.urgency}}">
+      <div class="row project-header">
+        <div class="small-9 columns">
+          <a ng-click="showDetail(project)" class="inline-link" href="">{{project.name}}</a>
+        </div>
+        <div class="small-3 columns text-right">
+          {{project.due_date | date:'d-MM-yyyy'}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <h3>Todo:</h3>
+          <ul class="tasks">
+            <li ng-repeat="task in project.tasks.todo">
+              {{task}} <i ng-click="markAsCurrent(project, task)" class="icon-download right"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+          <h3>Current:</h3>
+          <ul class="tasks">
+            <li ng-repeat="task in project.tasks.current">
+              {{task}} <i ng-click="markAsDone(project, task)" class="icon-check-sign right"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+{
+  "collections": [
+    {
+      "id": 1,
+      "name": "Data.Gent Demografie",
+      "description": "A dataset that uses part of the Open Data made available by the city of Ghent.",
+      "api_calls": [
+        {
+          "name": "Overzicht Demografische Onderwerpen",
+          "url": "http://datatank.gent.be/Bevolking/OverzichtDemografischeOnderwerpen.json",
+          "method": {
+            "type": "GET"
+          }
+        },
+        {
+          "name": "Bevolkingssamenstelling: Geslacht",
+          "url": "http://datatank.gent.be/Bevolking/BevolkingssamenstellingGeslacht.json",
+          "method": {
+            "type": "GET"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Github Thomas",
+      "description": "Github collection for Thomas Tuts",
+      "api_calls": [
+        {
+          "name": "Profile",
+          "url": "https://api.github.com/users/thomastuts",
+          "method": {
+            "type": "GET"
+          }
+        },
+        {
+          "name": "Rate limit",
+          "url": "https://api.github.com/rate_limit",
+          "method": {
+            "type": "GET"
+          }
+        }
+      ]
+    }
+
+  ]
+}

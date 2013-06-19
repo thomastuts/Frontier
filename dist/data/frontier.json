@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "version": "0.0.1"
+  },
+  "config": {
+    "general": {
+      "username": "Thomas",
+      "datetime_format": "dddd DD/MM | H:mm:ss"
+    }
+  },
+  "data": {
+    "modules": {
+      "github": {
+        "username": "thomastuts"
+      }
+    }
+  }
+}

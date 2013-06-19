@@ -1,0 +1,51 @@
+<ul class="actions toggle">
+  <li ng-click="showView('new')"><i class="icon-plus no-hover"></i> Add new set</li>
+</ul>
+
+<div ng-switch="data.overview.sets.length">
+  <div ng-switch-when="0">
+    <div class="panel red">
+      <p>Looks like you don't have any inspiration sets yet. You can add one <a ng-click="showView('new')" class="inline-link" href="">here</a>.</p>
+    </div>
+  </div>
+  <div ng-switch-default="">
+    <div class="panel red" ng-click="showSet(set)" ng-repeat="set in data.overview.sets">
+      <i ng-click="showAddNewLink(set)" class="right icon-plus"></i>
+      <i ng-click="showSlider(set.id)" class="right icon-eye-open"></i>
+      <i ng-click="showEdit(set)" class="right icon-edit"></i>
+
+      <h2>{{set.name}}</h2>
+      <p>{{set.description}}</p>
+
+      <div ng-switch="set.shots.length">
+        <div ng-switch-when="0">
+          <p>You don't have any shots in this inspiration set yet. Add a new shot above with the + sign.</p>
+        </div>
+        <div ng-switch-default="">
+          <div id="slider-{{set.id}}" class="flexslider">
+            <ul class="slides">
+              <li ng-repeat="shot in set.shots">
+                <img ng-src="{{shot}}" alt=""/>
+              </li>
+            </ul>
+          </div>
+          <div ng-switch="set.shots.length">
+            <div ng-switch-when="1">
+
+            </div>
+            <div ng-switch-default="">
+              <div id="carousel-{{set.id}}" class="flexslider">
+                <ul class="slides">
+                  <li ng-repeat="shot in set.shots">
+                    <img ng-src="{{shot}}" alt=""/>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="panel red">
+  <div class="row">
+    <div class="small-12 columns">
+      <h2>New reminder</h2>
+
+      <div class="row collapse">
+        <div class="small-3 columns">
+          <span class="prefix radius">Name</span>
+        </div>
+        <div class="small-9 columns">
+          <input type="text" ng-model="data.new.name"/>
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-6 columns">
+          <div class="row collapse">
+            <div class="small-3 columns">
+              <span class="prefix radius">Date</span>
+            </div>
+            <div class="small-9 columns">
+              <input type="date" ng-model="data.new.date"/>
+            </div>
+          </div>
+        </div>
+        <div class="small-5 small-offset-1 columns">
+          <div class="row collapse">
+            <div class="small-3 columns">
+              <span class="prefix radius">Time</span>
+            </div>
+            <div class="small-9 columns">
+              <input ng-model="data.new.time" id="reminder-time" type="text"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-3 columns">
+          <span class="prefix radius">Description</span>
+        </div>
+        <div class="small-9 columns">
+          <input type="text" ng-model="data.new.type"/>
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-3 columns">
+          <span class="prefix radius">Location</span>
+        </div>
+        <div class="small-9 columns">
+          <input type="text" id="reminder-location"/>
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-3 columns">
+          <span class="prefix radius">Note</span>
+        </div>
+        <div class="small-9 columns">
+          <input type="text" ng-model="data.new.note"/>
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-2 small-offset-10 columns">
+          <a class="button" ng-click="saveReminder('new')" href="">Save</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  $('#reminder-time').timepicker({
+    step: 15,
+    timeFormat: 'H:i'
+  });
+  $('#reminder-location').typeahead({
+    name: 'location',
+    local: JSON.parse(localStorage.getItem('ft-module-reminders')).locations
+  });
+  console.log("\n--TYPEAHEAD SOURCE:--\n");
+  console.log(JSON.parse(localStorage.getItem('ft-module-reminders')).locations);
+</script>

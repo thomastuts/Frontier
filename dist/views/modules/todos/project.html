@@ -1,0 +1,42 @@
+<ul class="blue actions">
+  <li ng-click="showEdit(data.project)"><i class="icon-edit no-hover"></i> Edit project</li>
+  <li ng-click="removeProject()"><i class="icon-remove no-hover"></i> Remove project</li>
+</ul>
+
+<div class="panel {{data.project.urgency}}">
+  <h2>{{data.project.name}}: due on {{data.project.due_date | date:'dd MMMM, yyyy'}}</h2>
+
+
+  <p>{{data.project.description}}</p>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <h3>Todo:</h3>
+      <ul class="tasks">
+        <li ng-repeat="task in data.project.tasks.todo">
+          {{task}} <i ng-click="removeTask('todo', $index)" class="icon-remove right"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <h3>Current:</h3>
+      <ul class="tasks">
+        <li ng-repeat="task in data.project.tasks.current">
+          {{task}} <i ng-click="removeTask('current', $index)" class="icon-remove right"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <h3>Done:</h3>
+      <ul class="tasks">
+        <li ng-repeat="task in data.project.tasks.done">
+          {{task}} <i ng-click="removeTask('done', $index)" class="icon-remove right"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

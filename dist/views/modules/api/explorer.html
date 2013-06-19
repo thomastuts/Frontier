@@ -1,0 +1,126 @@
+<ul class="actions toggle">
+  <li ng-click="showCollections()"><i class="icon-magnet no-hover"></i> Show collections</li>
+  <li ng-click="showAddToCurrent()"><i class="icon-plus no-hover"></i> Add to collection</li>
+</ul>
+
+<div class="panel blue hide" id="addToExistingCollection">
+  <div class="row">
+    <div class="small-12 columns">
+
+      <div class="row collapse">
+        <div class="small-3 columns">
+          <span class="prefix radius">Collection</span>
+        </div>
+        <div class="small-9 columns">
+          <select name="" id="collections-dropdown">
+            <option ng-repeat="collection in data.collections.collections" value="{{collection.id}}">
+              {{collection.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns text-right">
+          <a ng-click="addToCollection()" class="inline-link" href=""><i class="icon-plus-sign no-hover"></i> Add to collection</a>
+        </div>
+      </div>
+    </div>
+    <!--<div class="small-9 columns text-right">
+      <select name="" id="collections-dropdown">
+        <option ng-repeat="collection in data.collections.collections" value="{{collection.id}}">{{collection.name}}</option>
+      </select>
+    </div>
+    <div class="small-3 columns text-right">
+      <i ng-click="addToCollection()" class="icon-plus-sign"></i> Add to collection
+    </div>-->
+  </div>
+</div>
+
+<div class="panel">
+  <h2>URL & method</h2>
+
+  <div class="row collapse">
+    <div class="small-3 columns">
+      <span class="prefix radius">URL</span>
+    </div>
+    <div class="small-9 columns">
+      <input type="text" id="api-url" ng-model="url"/>
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="small-3 columns">
+      <span class="prefix radius">METHOD</span>
+    </div>
+    <select class="small-9 columns" name="methods" id="api-method">
+      <option ng-repeat="method in module.methods.availableMethods" value="{{method}}">{{method}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <div ng-switch="module.methods.currentMethod.type">
+      <div ng-switch-when="POST" class="panel red">
+        <h2>POST parameters</h2>
+        <table class="table">
+          <thead>
+          <tr>
+            <td>Key</td>
+            <td>Value</td>
+            <td></td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="postparam in module.postParameters">
+            <td>
+              <input type="text" ng-model="postparam.key"/>
+            </td>
+            <td>
+              <input type="text" ng-model="postparam.value"/>
+            </td>
+            <td>
+              <i ng-click="removePostParameter($index)" class="post-remove icon-remove"></i>
+            </td>
+          </tr>
+         <!-- <tr>
+            <td>
+              <input type="text" class="post-key"/>
+            </td>
+            <td>
+              <input type="text" class="post-value"/>
+            </td>
+            <td><i class="post-remove icon-remove"></i></td>
+          </tr>-->
+          </tbody>
+        </table>
+        <a class="inline-link" href="" ng-click="addPostParameter()"><i class="icon-plus no-hover"></i> Add new
+          parameter</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <ul class="actions">
+      <!--<li ng-click="debug()">Debug</li>-->
+      <li ng-click="previousApiCall()"><i class="icon-mail-reply no-hover"></i> Previous request</li>
+      <li ng-click="parseToConsole()"><i class="icon-terminal no-hover"></i> Parse to console</li>
+      <li ng-click="clearData()"><i class="icon-trash no-hover"></i> Clear data</li>
+      <li class="main-action" ng-click="exploreApi(module.methods.currentMethod.type)"><i
+              class="icon-chevron-right no-hover"></i> Send request
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="small-12 columns">
+<pre class="code">
+{{data.explorer}}
+</pre>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="module {{module.meta.name}}">
+  <div class="titlebar clearfix">
+    <ul class="left">
+      <li><i class="{{module.menubar.icon}} no-hover"></i></li>
+      <li><h1>{{module.menubar.title}}</h1></li>
+    </ul>
+    <ul class="right">
+      <li>
+        <i ng-click="toggleActions()" class="icon-ellipsis-horizontal"></i>
+      </li>
+      <li>
+        <i ng-click="goBack()" class="icon-chevron-left"></i>
+      </li>
+      <li>
+        <i ng-click="toggle()" class="toggle icon-chevron-up"></i>
+      </li>
+    </ul>
+    <div style="clear: both"></div>
+  </div>
+  <div class="content">
+    <div ng-include="module.views.currentView"></div>
+  </div>
+</div>

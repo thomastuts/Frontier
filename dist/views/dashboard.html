@@ -1,0 +1,60 @@
+<header>
+  <div ng-controller="HeaderCtrl" class="row">
+    <div class="small-12 columns">
+      <div class="row collapse">
+        <div class="large-6 columns">
+          Hello, {{data.general.username}}! <i ng-click="toggleSettings()" class="icon-cogs"></i>
+        </div>
+        <div class="large-6 columns text-right">
+          {{timer}}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="row">
+  <div class="dashboard-full large-12 columns">
+    <div ng-include="'views/settings.html'"></div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="dashboard-left large-6 columns">
+
+    <div ng-controller="ApiCtrl">
+      <div ng-include="'views/modules/template.html'"></div>
+    </div>
+
+    <div ng-controller="ScratchpadCtrl">
+      <div ng-include="'views/modules/template.html'"></div>
+    </div>
+
+    <div ng-controller="GithubCtrl">
+      <div ng-include="'views/modules/template.html'"></div>
+    </div>
+
+    <!--<div ng-controller="LocalStorageCtrl">-->
+      <!--<div ng-include="'views/modules/template.html'"></div>-->
+    <!--</div>-->
+  </div>
+
+  <div class="dashboard-right large-6 columns">
+
+    <div ng-controller="RemindersCtrl">
+      <div ng-include="'views/modules/template.html'"></div>
+    </div>
+
+    <div ng-controller="InspirationCtrl">
+      <div ng-include="'views/modules/template.html'"></div>
+    </div>
+
+    <div ng-controller="TodosCtrl">
+      <div ng-include="'views/modules/template.html'"></div>
+    </div>
+
+  </div>
+
+</div>
+

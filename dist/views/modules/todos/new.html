@@ -1,0 +1,79 @@
+<div class="panel red">
+  <div class="row">
+    <div class="small-12 columns">
+      <h2>New project</h2>
+
+      <p>Add items below in their respective status box. Items are separated by a new line.</p>
+
+      <div class="row collapse">
+        <div class="small-3 columns">
+          <span class="prefix radius">Name</span>
+        </div>
+        <div class="small-9 columns">
+          <input type="text" ng-model="data.new.name"/>
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-6 columns">
+          <div class="row collapse">
+            <div class="small-3 columns">
+              <span class="prefix radius">Date</span>
+            </div>
+            <div class="small-9 columns">
+              <input type="date" ng-model="data.new.date"/>
+            </div>
+          </div>
+        </div>
+        <div class="small-5 small-offset-1 columns">
+          <div class="row collapse">
+            <div class="small-3 columns">
+              <span class="prefix radius">Time</span>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" id="project-time" ng-model="data.new.time"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-3 columns">
+          <span class="prefix radius">Description</span>
+        </div>
+        <div class="small-9 columns">
+          <input type="text" ng-model="data.new.description"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <label>To-do:</label>
+          <textarea name="project-todo" id="project-todo" cols="30" rows="10"></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <label>Current:</label>
+          <textarea name="project-current" id="project-current" cols="30" rows="10"></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <label>Done:</label>
+          <textarea name="project-done" id="project-done" cols="30" rows="10"></textarea>
+        </div>
+      </div>
+
+      <a class="button" ng-click="saveNewProject()" href="">Add project</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  $('#project-time').timepicker({
+    step: 15,
+    timeFormat: 'H:i'
+  });
+</script>

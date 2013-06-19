@@ -1,0 +1,32 @@
+<ul class="actions toggle">
+  <!--<li ng-click="showCollection()"><i class="icon-eye-open no-hover"></i> Browse notes</li>-->
+  <li ng-click="showNew()"><i class="icon-plus no-hover"></i> Add a new note</li>
+</ul>
+
+<div class="search row collapse">
+  <div class="small-1 columns">
+    <span class="prefix radius"><i class="icon-search"></i></span>
+  </div>
+  <div class="small-11 columns">
+    <input type="text" ng-model="search"/>
+  </div>
+</div>
+
+<div ng-switch="data.overview.snippets.length">
+  <div ng-switch-when="0">
+    <div class="panel red">
+      <p>Your scratchpad is empty! <a ng-click="showNew()" class="inline-link" href="">Add</a> a new snippet.</p>
+    </div>
+  </div>
+  <div ng-switch-default="">
+    <div ng-repeat="snippet in data.overview.snippets | limitTo:5 | orderBy:'id' | filter:search" class="panel red">
+      <i ng-click="removeSnippet(snippet.id)" class="icon-remove right"></i>
+      <i ng-click="showEdit(snippet)" class="icon-edit right"></i>
+
+      <a ng-click="showSnippet(snippet)" href=""><h2 class="link">{{snippet.name}}</h2></a>
+      <p>{{snippet.description}}</p>
+
+    </div>
+  </div>
+</div>
+

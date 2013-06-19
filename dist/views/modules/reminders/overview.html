@@ -1,0 +1,31 @@
+<ul class="actions toggle">
+  <li ng-click="newReminder()"><i class="icon-plus no-hover"></i> Add new reminder</li>
+</ul>
+
+<div ng-switch="data.overview.reminders.length">
+  <div ng-switch-when="0">
+    <div class="panel red">
+      <p>You don't seem to have any reminders yet. You can add a new one <a class="inline-link" ng-click="newReminder()"
+                                                                            href="">here</a>.</p>
+    </div>
+  </div>
+  <div ng-switch-default="">
+    <div class="panel red" ng-repeat="reminder in data.overview.reminders">
+
+      <div class="row">
+        <div class="small-10 columns">
+          <h2>{{reminder.name}}</h2>
+        </div>
+        <div class="small-2 columns text-right">
+          <span ng-click="editReminder(reminder)"><i class="icon-edit"></i></span>
+          <span ng-click="removeReminder(reminder)"><i class="icon-remove"></i></span>
+        </div>
+      </div>
+      <p><i class="icon-time no-hover"></i> {{reminder.datetime_human}}</p>
+      <p><i class="icon-map-marker no-hover"></i> {{reminder.location}}</p>
+
+    </div>
+  </div>
+
+</div>
+

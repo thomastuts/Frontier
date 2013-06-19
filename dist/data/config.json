@@ -1,0 +1,10 @@
+{
+  "general": {
+    "username": "Thomas",
+    "datetime_format": "dddd DD/MM | H:mm:ss"
+  },
+  "dashboard": {
+    "left": ["Api", "Github", "Scratchpad", "LocalStorage"],
+    "right": ["Reminders", "Inspiration", "Todos"]
+  }
+}

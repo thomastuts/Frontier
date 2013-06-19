@@ -1,0 +1,56 @@
+<div class="panel red">
+  <h2>{{data.newLink.name}}</h2>
+  <h3>Add a new link</h3>
+
+  <div class="row collapse">
+    <div class="small-3 columns">
+      <span class="prefix radius">Name</span>
+    </div>
+    <div class="small-9 columns">
+      <input type="text" ng-model="tempData.newLink.name" />
+    </div>
+  </div>
+
+  <div class="row collapse">
+    <div class="small-3 columns">
+      <span class="prefix radius">URL</span>
+    </div>
+    <div class="small-9 columns">
+      <input type="text" ng-model="tempData.newLink.url" />
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="small-3 columns">
+      <span class="prefix radius">METHOD</span>
+    </div>
+    <select class="small-9 columns" name="methods" id="api-method">
+      <option ng-repeat="method in module.methods.availableMethods" value="{{method}}">{{method}}</option>
+    </select>
+  </div>
+  <div ng-switch="module.methods.currentMethod.type">
+    <table class="table" ng-switch-when="POST">
+      <thead>
+      <tr>
+        <td>
+          <a class="button small" href="" ng-click="addPostParameter()">Add new parameter</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Key</td>
+        <td>Value</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <input type="text" class="post-key"/>
+        </td>
+        <td>
+          <input type="text" class="post-value"/>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <a class="button" ng-click="addNewLink()" href="">Add</a>
+</div>

@@ -17,7 +17,7 @@ angular.module('frontierApp')
       edit: {}
     };
 
-    console.log($scope.data.overview.projects);
+    // console.log($scope.data.overview.projects);
 
     $scope.module = {
       meta: {
@@ -52,7 +52,7 @@ angular.module('frontierApp')
     $scope.showDetail = function (project) {
       viewer.goToView($scope, 'views/modules/todos/project.html', 'project');
       $scope.data.project = project;
-      console.log($scope.data.project);
+      // console.log($scope.data.project);
     };
 
     $scope.setUrgency = function () {
@@ -160,7 +160,7 @@ angular.module('frontierApp')
       if (confirm("Are you sure you want to delete this project?")) {
         for (var i = 0; i < $scope.data.overview.projects.length; i++) {
           if ($scope.data.overview.projects[i].id === $scope.data.project.id) {
-            console.log('Found your project');
+            // console.log('Found your project');
             $scope.data.overview.projects.splice(i, 1);
             storage.set('module-todos', $scope.data.overview);
             viewer.goToView($scope, 'views/modules/todos/overview.html', 'project');
@@ -181,13 +181,13 @@ angular.module('frontierApp')
           done: $scope.data.edit.tasks.done.join("\n")
         }
       };
-      console.log($scope.data_temp);
-      console.log($scope.data.edit);
+      // console.log($scope.data_temp);
+      // console.log($scope.data.edit);
       viewer.goToView($scope, 'views/modules/todos/edit.html');
     };
 
     $scope.saveEditedProject = function () {
-      console.log('Saving edited project.');
+      // console.log('Saving edited project.');
 
       $scope.data.edit.tasks.todo = utility.separateNewlines($('#project-todo').val());
       $scope.data.edit.tasks.current = utility.separateNewlines($('#project-current').val());
@@ -195,7 +195,7 @@ angular.module('frontierApp')
 
       $scope.data.edit.due_date = moment($scope.data.edit.date + ' ' + $scope.data.edit.time);
 
-      console.log($scope.data.edit);
+      // console.log($scope.data.edit);
 
       for (var i = 0; i < $scope.data.overview.projects.length; i++) {
         if ($scope.data.overview.projects[i].id === $scope.data.edit.id) {

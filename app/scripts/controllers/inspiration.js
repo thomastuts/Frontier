@@ -58,7 +58,7 @@ angular.module('frontierApp')
     $scope.showEdit = function (inspirationset) {
       viewer.goToView($scope, 'views/modules/inspiration/edit.html');
       $scope.data.edit = inspirationset;
-      console.log(inspirationset);
+      // console.log(inspirationset);
     };
 
     $scope.showAddNewLink = function (set) {
@@ -67,8 +67,8 @@ angular.module('frontierApp')
     };
 
     $scope.removeFromSet = function (shot) {
-      console.log('Removing from set:');
-      console.log(shot);
+      // console.log('Removing from set:');
+      // console.log(shot);
       if (confirm("Are you sure you want to delete this shot?")) {
         $scope.data.edit.shots.splice(shot, 1);
       }
@@ -198,12 +198,12 @@ angular.module('frontierApp')
             $scope.data.new.date_created = moment().format();
             $scope.data.new.shots = shots;
 
-            console.log($scope.data.new);
+            // console.log($scope.data.new);
 
             // sync data locally and to storage
             $scope.data.overview.sets.push($scope.data.new);
             storage.set('module-inspiration', $scope.data.overview);
-            console.log($scope.data.overview);
+            // console.log($scope.data.overview);
 
             viewer.goToView($scope, 'views/modules/inspiration/overview.html', 'new'); // last parameter 'new' is passed to viewer function to clear the data container
           });
@@ -213,12 +213,12 @@ angular.module('frontierApp')
         $scope.data.new.date_created = moment().format();
         $scope.data.new.shots = shots;
 
-        console.log($scope.data.new);
+        // console.log($scope.data.new);
 
         // sync data locally and to storage
         $scope.data.overview.sets.push($scope.data.new);
         storage.set('module-inspiration', $scope.data.overview);
-        console.log($scope.data.overview);
+        // console.log($scope.data.overview);
 
         viewer.goToView($scope, 'views/modules/inspiration/overview.html', 'new'); // last parameter 'new' is passed to viewer function to clear the data container
       }

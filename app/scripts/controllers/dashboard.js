@@ -9,5 +9,5 @@ angular.module('frontierApp')
     $include.attr('ng-include', templateString);
     $module.append($include);
 
-    // console.log($module);
+    // // console.log($module);
   });

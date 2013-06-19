@@ -137,7 +137,7 @@ angular.module('frontierApp')
               if (data.error != '') {
                 alert(data.error);
               } else {
-                $('#inspiration-shots-uploaded').append('<li>' + data.msg + '</li>');
+                $('#inspiration-shots-uploaded').append('<li class="sub-panel">' + data.msg + '</li>');
               }
             }
           },

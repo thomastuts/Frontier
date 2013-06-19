@@ -56,7 +56,7 @@ angular.module('frontierApp')
       $.get(api_user, function (data) {
         $scope.$apply(function () {
           $scope.data.overview.user = data;
-          console.log(data);
+          // console.log(data);
         });
       });
 
@@ -64,7 +64,7 @@ angular.module('frontierApp')
       $.get(api_repos, function (data) {
         $scope.$apply(function () {
           $scope.data.overview.repos = data;
-          console.log(data);
+          // console.log(data);
         });
       });
     };
@@ -94,8 +94,11 @@ angular.module('frontierApp')
           $scope.data.repo = data;
           $scope.data.repo.updated_at = moment($scope.data.repo.updated_at).format(storage.get('config').general.datetime_format);
         });
+        console.log("\n--REPO--\n");
         console.log(data);
         $.get(data.commits_url.substring(0, data.commits_url.length - 6), function (commits) {
+          console.log("\n--COMMITS--\n");
+          console.log(commits);
           $scope.$apply(function(){
               $scope.data.repo.commits = commits;
             $scope.data.repo.commits_url = $scope.data.repo.commits_url.substring(0, $scope.data.repo.commits_url.length - 6) + '/';
@@ -106,6 +109,8 @@ angular.module('frontierApp')
           });
         });
         $.get(data.issues_url.substring(0, data.commits_url.length - 7), function (issues) {
+          console.log("\n--ISSUES--\n");
+          console.log(issues);
           $scope.$apply(function(){
               $scope.data.repo.issues = issues;
           });

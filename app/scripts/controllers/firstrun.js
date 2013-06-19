@@ -42,8 +42,8 @@ angular.module('frontierApp')
     };
 
     $scope.saveConfiguration = function () {
-      console.log($scope.config);
-      console.log($scope.github);
+      // console.log($scope.config);
+      // console.log($scope.github);
 
       storage.set('config', $scope.config);
       storage.set('module-github', $scope.github);

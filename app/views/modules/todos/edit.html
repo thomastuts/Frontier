@@ -28,7 +28,7 @@
               <span class="prefix radius">Time</span>
             </div>
             <div class="small-9 columns">
-              <input type="text" ng-model="data.edit.time"/>
+              <input type="text" id="project-time" ng-model="data.edit.time"/>
             </div>
           </div>
         </div>
@@ -52,7 +52,8 @@
       <div class="row">
         <div class="small-12 columns">
           <label>Current:</label>
-          <textarea name="project-current" id="project-current" cols="30" rows="10">{{data_temp.tasks.current}}</textarea>
+          <textarea name="project-current" id="project-current" cols="30"
+                    rows="10">{{data_temp.tasks.current}}</textarea>
         </div>
       </div>
 
@@ -68,3 +69,4 @@
   </div>
 
 </div>
+

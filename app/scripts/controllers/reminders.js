@@ -76,7 +76,7 @@ angular.module('frontierApp')
 
     $scope.removeReminder = function (reminder) {
       if (confirm("Are you sure you want to delete this reminder?")) {
-        console.log('Removing reminder: ' + reminder.name);
+        // console.log('Removing reminder: ' + reminder.name);
         for (var i = 0; i < $scope.data.overview.reminders.length; i++) {
           // TODO: confirmation?
           if ($scope.data.overview.reminders[i].id === reminder.id) {
@@ -84,12 +84,12 @@ angular.module('frontierApp')
             $scope.saveReminders();
           }
         }
-        console.log($scope.data.overview);
+        // console.log($scope.data.overview);
       }
     };
 
     $scope.saveReminders = function () {
-      console.log('Saving ALL reminders.');
+      // console.log('Saving ALL reminders.');
       storage.set('module-reminders', $scope.data.overview);
     };
 
@@ -102,8 +102,8 @@ angular.module('frontierApp')
 
     $scope.saveReminder = function (view) {
 
-      console.log($('#reminder-time').val());
-      console.log($scope.data.new.date + ' ' + $scope.data.new.time);
+      // console.log($('#reminder-time').val());
+      // console.log($scope.data.new.date + ' ' + $scope.data.new.time);
       $scope.data.new.time = $('#reminder-time').val();
 
       $scope.data.new.datetime = moment($scope.data.new.date + ' ' + $scope.data.new.time).format();
@@ -112,7 +112,7 @@ angular.module('frontierApp')
 
       switch (view) {
         case 'new':
-          console.log('Saving new reminder for ' + $scope.data.new.name);
+          // console.log('Saving new reminder for ' + $scope.data.new.name);
           reminder = $scope.data.new;
           $scope.data.new.location = $('#reminder-location').val();
 
@@ -136,12 +136,15 @@ angular.module('frontierApp')
             var lastId = $scope.data.overview.reminders[($scope.data.overview.reminders.length - 1)].id;
             reminder.id = lastId + 1;
           }
-          console.log(reminder);
+
+          $scope.data.new.datetime_human = moment($scope.data.new.datetime).calendar();
+
+          // console.log(reminder);
           $scope.data.overview.reminders.push(reminder);
           break;
         case 'edit':
           // TODO: doesn't sync with storage
-          console.log('Saving edited reminder for ' + $scope.data.edit.name);
+          // console.log('Saving edited reminder for ' + $scope.data.edit.name);
           reminder = $scope.data.edit;
           for (var i = 0; i < $scope.data.overview.reminders.length; i++) {
             if ($scope.data.overview.reminders[i].id === reminder.id) {
@@ -151,7 +154,7 @@ angular.module('frontierApp')
           break;
       }
 
-      console.log($scope.data.overview);
+      // console.log($scope.data.overview);
       storage.set('module-reminders', $scope.data.overview);
       viewer.goToView($scope, 'views/modules/reminders/overview.html');
     };
@@ -164,7 +167,7 @@ angular.module('frontierApp')
 
     $scope.editReminder = function (reminder) {
       viewer.goToView($scope, 'views/modules/reminders/edit.html', 'edit');
-      console.log('Editing reminder ' + reminder.name);
+      // console.log('Editing reminder ' + reminder.name);
       $scope.data.edit = reminder;
     };
 

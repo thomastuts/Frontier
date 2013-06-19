@@ -14,7 +14,7 @@ angular.module('frontierApp')
       },
       set: function (storage, content) {
         localStorage.setItem('ft-' + storage, JSON.stringify(content));
-        console.log('Done setting ft-' + storage);
+        // console.log('Done setting ft-' + storage);
       },
 
       // exports to string
@@ -32,7 +32,7 @@ angular.module('frontierApp')
       import: function (storage, content) {
         // TODO: check if string is valid JSON before inserting
         localStorage.setItem('ft-' + storage, content);
-        console.log('Imported JSON string to ft-' + storage);
+        // console.log('Imported JSON string to ft-' + storage);
       }
     };
   });

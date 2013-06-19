@@ -1,33 +1,35 @@
-<h2>New inspiration set</h2>
+<div class="panel red">
+  <h2>New inspiration set</h2>
 
-<p>Name:</p>
-<input type="text" ng-model="data.new.name"/>
+  <p>Name:</p>
+  <input type="text" ng-model="data.new.name"/>
 
-<p>Description:</p>
-<textarea name="inspiration-description" id="inspiration-description" cols="30" rows="10"></textarea>
+  <p>Description:</p>
+  <textarea name="inspiration-description" id="inspiration-description" cols="30" rows="10"></textarea>
 
-<p>Upload a shot...</p>
+  <p>Upload a shot...</p>
 
-<div class="row">
-  <form name="form" action="" method="POST" enctype="multipart/form-data">
-    <div class="small-2 columns">
-      <button class="small button" id="buttonUpload" ng-click="uploadFile()">Upload</button>
-    </div>
-    <div class="small-10 columns">
-      <input id="fileToUpload" type="file" size="45" name="fileToUpload" class="input">
-    </div>
-  </form>
-</div>
+  <div class="row">
+    <form name="form" action="" method="POST" enctype="multipart/form-data">
+      <div class="small-2 columns">
+        <button class="small button" id="buttonUpload" ng-click="uploadFile()">Upload</button>
+      </div>
+      <div class="small-10 columns">
+        <input id="fileToUpload" type="file" size="45" name="fileToUpload" class="input">
+      </div>
+    </form>
+  </div>
 
-        <h3>Uploaded files:</h3>
-<ul id="inspiration-shots-uploaded"></ul>
+  <h3>Uploaded files:</h3>
+  <ul id="inspiration-shots-uploaded"></ul>
 
+  <br>
+  <p>...or link to an online image, separated by a new line:</p>
+  <div class="shots">
+    <textarea name="inspiration-shots" id="inspiration-shots" cols="30" rows="20"></textarea>
+  </div>
 
-<p>...or link to an online image, separated by a new line:</p>
-<div class="shots">
-  <textarea name="inspiration-shots" id="inspiration-shots" cols="30" rows="20"></textarea>
-</div>
-
-<div>
-  <a class="button" href="" ng-click="addSet()">Add set to inspiration</a>
+  <div>
+    <a class="button" href="" ng-click="addSet()">Add set to inspiration</a>
+  </div>
 </div>

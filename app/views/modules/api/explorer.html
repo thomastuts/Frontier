@@ -62,8 +62,8 @@
   <div class="small-12 columns">
     <div ng-switch="module.methods.currentMethod.type">
       <div ng-switch-when="POST" class="panel red">
+        <h2>POST parameters</h2>
         <table class="table">
-          <h2>POST parameters</h2>
           <thead>
           <tr>
             <td>Key</td>
@@ -107,6 +107,7 @@
     <ul class="actions">
       <!--<li ng-click="debug()">Debug</li>-->
       <li ng-click="previousApiCall()"><i class="icon-mail-reply no-hover"></i> Previous request</li>
+      <li ng-click="parseToConsole()"><i class="icon-terminal no-hover"></i> Parse to console</li>
       <li ng-click="clearData()"><i class="icon-trash no-hover"></i> Clear data</li>
       <li class="main-action" ng-click="exploreApi(module.methods.currentMethod.type)"><i
               class="icon-chevron-right no-hover"></i> Send request

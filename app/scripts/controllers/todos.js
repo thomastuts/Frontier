@@ -17,7 +17,7 @@ angular.module('frontierApp')
       edit: {}
     };
 
-    console.log($scope.data.overview.projects);
+    // console.log($scope.data.overview.projects);
 
     $scope.module = {
       meta: {
@@ -52,7 +52,7 @@ angular.module('frontierApp')
     $scope.showDetail = function (project) {
       viewer.goToView($scope, 'views/modules/todos/project.html', 'project');
       $scope.data.project = project;
-      console.log($scope.data.project);
+      // console.log($scope.data.project);
     };
 
     $scope.setUrgency = function () {
@@ -119,6 +119,24 @@ angular.module('frontierApp')
         done: utility.separateNewlines($('#project-done').val())
       };
 
+      for (var i = 0; i < tasks.todo.length; i++) {
+        if (tasks.todo[i] === "") {
+          tasks.todo.splice(i, 1);
+        }
+      }
+
+      for (var j = 0; j < tasks.current.length; j++) {
+        if (tasks.current[j] === "") {
+          tasks.current.splice(j, 1);
+        }
+      }
+
+      for (var k = 0; k < tasks.done.length; k++) {
+        if (tasks.done[k] === "") {
+          tasks.done.splice(k, 1);
+        }
+      }
+
       var lastId = 0;
 
       if ($scope.data.overview.projects.length !== 0) {
@@ -142,7 +160,7 @@ angular.module('frontierApp')
       if (confirm("Are you sure you want to delete this project?")) {
         for (var i = 0; i < $scope.data.overview.projects.length; i++) {
           if ($scope.data.overview.projects[i].id === $scope.data.project.id) {
-            console.log('Found your project');
+            // console.log('Found your project');
             $scope.data.overview.projects.splice(i, 1);
             storage.set('module-todos', $scope.data.overview);
             viewer.goToView($scope, 'views/modules/todos/overview.html', 'project');
@@ -154,6 +172,8 @@ angular.module('frontierApp')
 
     $scope.showEdit = function (project) {
       $scope.data.edit = project;
+      $scope.data.edit.time = moment($scope.data.edit.due_date).format('H:mm');
+      $scope.data.edit.date = moment($scope.data.edit.due_date).format('YYYY-MM-DD');
       $scope.data_temp = {
         tasks: {
           todo: $scope.data.edit.tasks.todo.join("\n"),
@@ -161,19 +181,21 @@ angular.module('frontierApp')
           done: $scope.data.edit.tasks.done.join("\n")
         }
       };
-      console.log($scope.data_temp);
-      console.log($scope.data.edit);
+      // console.log($scope.data_temp);
+      // console.log($scope.data.edit);
       viewer.goToView($scope, 'views/modules/todos/edit.html');
     };
 
     $scope.saveEditedProject = function () {
-      console.log('Saving edited project.');
+      // console.log('Saving edited project.');
 
       $scope.data.edit.tasks.todo = utility.separateNewlines($('#project-todo').val());
       $scope.data.edit.tasks.current = utility.separateNewlines($('#project-current').val());
       $scope.data.edit.tasks.done = utility.separateNewlines($('#project-done').val());
 
-      console.log($scope.data.edit);
+      $scope.data.edit.due_date = moment($scope.data.edit.date + ' ' + $scope.data.edit.time);
+
+      // console.log($scope.data.edit);
 
       for (var i = 0; i < $scope.data.overview.projects.length; i++) {
         if ($scope.data.overview.projects[i].id === $scope.data.edit.id) {

@@ -33,7 +33,7 @@ angular.module('frontierApp')
       }
     };
 
-    console.log($scope.data.overview);
+    // console.log($scope.data.overview);
 
     $scope.goBack = function () {
       viewer.goBack($scope);
@@ -74,8 +74,9 @@ angular.module('frontierApp')
     };
 
     $scope.addNewSnippet = function () {
-      var snippet = $('#scratchpad-editor').val();
-      console.log(snippet);
+      var editor = ace.edit("editor");
+      var snippet = editor.getValue();
+      // console.log(snippet);
 
       var snippetId;
 
@@ -94,7 +95,7 @@ angular.module('frontierApp')
 
       $scope.data.overview.snippets.push($scope.data.new);
       storage.set('module-scratchpad', $scope.data.overview);
-      console.log($scope.data.new);
+      // console.log($scope.data.new);
       viewer.goToView($scope, 'views/modules/scratchpad/overview.html', 'new');
     };
 
@@ -105,7 +106,7 @@ angular.module('frontierApp')
 
     $scope.removeSnippet = function (id) {
       if (confirm("Are you sure you want to delete this snippet?")) {
-        console.log('Removing snippet');
+        // console.log('Removing snippet');
         for (var i = 0; i < $scope.data.overview.snippets.length; i++) {
           if ($scope.data.overview.snippets[i].id === id) {
             $scope.data.overview.snippets.splice(i, 1);

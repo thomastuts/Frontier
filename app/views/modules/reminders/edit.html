@@ -15,7 +15,7 @@
         <span class="prefix radius">Time</span>
       </div>
       <div class="small-9 columns">
-        <input type="text" ng-model="data.edit.datetime"/>
+        <input type="text" id="reminder-time" ng-model="data.edit.time"/>
       </div>
     </div>
     <div class="row collapse">
@@ -32,5 +32,11 @@
       </div>
     </div>
   </div>
-
 </div>
+
+<script>
+  $('#reminder-time').timepicker({
+    step: 15,
+    timeFormat: 'H:i'
+  });
+</script>

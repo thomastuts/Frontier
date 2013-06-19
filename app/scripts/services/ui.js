@@ -11,7 +11,7 @@ angular.module('frontierApp')
         var open = toggledModule.ui.open;
         var $toggle = $('.' + name + ' .toggle');
 
-        console.log(open);
+        // console.log(open);
 
         if(open === true) {
           console.warn('Minimizing...');

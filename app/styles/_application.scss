@@ -130,7 +130,7 @@ table {
 }
 
 textarea {
-  height: 4em;
+  min-height: 8em;
 }
 
 .button {
@@ -198,5 +198,5 @@ textarea {
 }
 
 .settings {
-  //display: none;
+  display: none;
 }

@@ -21,11 +21,19 @@
         </div>
       </div>
 
-      <h3>Note</h3>
-      <textarea name="scratchpad-editor" id="scratchpad-editor" class="code" cols="30" rows="10">{{data.new.content}}</textarea>
+
+      <div class="editor-container">
+        <div id="editor"></div>
+      </div>
 
       <a ng-click="addNewSnippet()" class="button" href="">Save</a>
 
     </div>
   </div>
 </div>
+
+<script>
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/monokai");
+  editor.getSession().setMode("ace/mode/javascript");
+</script>

@@ -23,9 +23,9 @@ angular.module('frontierApp')
     $scope.loadStorage = function () {
       var storageName = $('#select-storage').val();
       $('#storage-name').val(storageName);
-      console.log(storageName);
+      // console.log(storageName);
       var content = storage.export(storageName);
-      console.log(content);
+      // console.log(content);
       $('#storage-content').val(content);
     };
 
@@ -33,8 +33,8 @@ angular.module('frontierApp')
     $scope.saveStorage = function () {
       var name = $('#storage-name').val();
       var content = utility.removeLineBreaks($('#storage-content').val());
-      console.log(name);
-      console.log(content);
+      // console.log(name);
+      // console.log(content);
       storage.import(name, content);
     }
   });

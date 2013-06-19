@@ -18,7 +18,8 @@ angular.module('frontierApp')
 
     $scope.selectedCollection = null;
 
-    $scope.url = 'https://api.github.com/users/thomastuts'; // TODO: remember last request
+    $scope.url = 'https://api.github.com/users/' + storage.get('module-github').username; // TODO: remember last request
+//    $scope.url = 'http://localhost/ads/api/index.php/users';
 
     $scope.module = {
       meta: {
@@ -72,7 +73,7 @@ angular.module('frontierApp')
         window.open(url);
       }
       else {
-        console.log(url);
+        // console.log(url);
         $scope.url = url;
         $scope.exploreApi('GET', url);
       }
@@ -100,7 +101,7 @@ angular.module('frontierApp')
     };
 
     $scope.debug = function () {
-      console.log($scope.module.postParameters);
+      // console.log($scope.module.postParameters);
     };
 
     $scope.addToCollection = function () {
@@ -129,20 +130,20 @@ angular.module('frontierApp')
     };
 
     $scope.showNewLink = function (collection) {
-      console.log(collection);
+      // console.log(collection);
       $scope.data.newLink = collection;
       viewer.goToView($scope, 'views/modules/api/newlink.html');
     };
 
     $scope.showEditLink = function (collection, link, $index) {
-      console.log(collection);
+      // console.log(collection);
       $scope.data.editLink = collection;
       $scope.tempData.editLink = link;
       viewer.goToView($scope, 'views/modules/api/editlink.html');
     };
 
     $scope.saveEditedCollection = function () {
-      console.log($scope.data.edit);
+      // console.log($scope.data.edit);
       for (var i = 0; i < $scope.data.collections.collections.length; i++) {
         if ($scope.data.collections.collections[i].id === $scope.data.edit.id) {
           $scope.data.collections.collections[i] = $scope.data.edit;
@@ -169,28 +170,31 @@ angular.module('frontierApp')
           $scope.module.methods.currentMethod.data = {};
 
           if (url) {
-            console.log('Exploring ' + url);
+            // console.log('Exploring ' + url);
             $scope.url = url;
             $.get($scope.url, function (data) {
               $scope.$apply(function () {
-                data = JSON.stringify(data, null, 4);
+                data = JSON.stringify(data, null, 2);
+                $scope.module.apiHistory.push(data);
                 $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
-//            console.log($scope.data.explorer);
+//            // console.log($scope.data.explorer);
                 $('.api .code').html($scope.data.explorer);
               });
             });
           }
 
           else {
-            console.log($scope.url);
+            // console.log($scope.url);
             url = $('#api-url').val();
             $scope.url = url;
 
             $.get(url, function (data) {
+
               $scope.$apply(function () {
-                data = JSON.stringify(data, null, 4);
+                data = JSON.stringify(data, null, 2);
+                $scope.module.apiHistory.push(data);
                 $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
-//                console.log($scope.data.explorer);
+//                // console.log($scope.data.explorer);
                 $('.api .code').html($scope.data.explorer);
               });
             });
@@ -202,9 +206,10 @@ angular.module('frontierApp')
           }
 
           if (!postData) {
+            postData = {};
             for (var j = 0; j < $scope.module.postParameters.length; j++) {
-              var key = $scope.module.postParameters[i].key;
-              var value = $scope.module.postParameters[i].value;
+              var key = $scope.module.postParameters[j].key;
+              var value = $scope.module.postParameters[j].value;
               if (!isNaN(parseInt(value))) {
                 value = parseInt(value);
               }
@@ -220,14 +225,14 @@ angular.module('frontierApp')
 
             $.post(url, postData)
             .done(function (data) {
-              $scope.apply(function () {
-                data = JSON.stringify(data, null, 4);
+                // console.log(data);
+                data = JSON.stringify(data, null, 2);
+                $scope.module.apiHistory.push(data);
                 $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
                 $('.api .code').html($scope.data.explorer);
-              })
             })
             .fail(function (data) {
-              data = JSON.stringify(data, null, 4);
+              data = JSON.stringify(data, null, 2);
               $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
               $('.api .code').html($scope.data.explorer);
             });
@@ -241,13 +246,7 @@ angular.module('frontierApp')
       }
 
       $('#api-method').val(method);
-      $scope.module.apiHistory.push({
-        url: url,
-        method: {
-          type: method,
-          data: postData
-        }
-      });
+
 
 
     };
@@ -255,26 +254,20 @@ angular.module('frontierApp')
     $scope.previousApiCall = function () {
       if ($scope.module.apiHistory.length > 0) {
 
-        var method;
-        var url;
-        var postData;
+        var data;
 
         if ($scope.module.apiHistory.length === 1) {
-          method = $scope.module.apiHistory[($scope.module.apiHistory.length - 1 )].method.type;
-          url = $scope.module.apiHistory[($scope.module.apiHistory.length - 1 )].url;
-          postData = $scope.module.apiHistory[($scope.module.apiHistory.length - 1 )].postData;
+          data = $scope.module.apiHistory[($scope.module.apiHistory.length - 1 )];
         }
         else {
-          method = $scope.module.apiHistory[($scope.module.apiHistory.length - 2 )].method.type;
-          url = $scope.module.apiHistory[($scope.module.apiHistory.length - 2 )].url;
-          postData = $scope.module.apiHistory[($scope.module.apiHistory.length - 2 )].postData;
+          data = $scope.module.apiHistory[($scope.module.apiHistory.length - 2 )];
         }
-
-        // remove last request from array
 
         $scope.module.apiHistory.pop();
 
-        $scope.exploreApi(method, url, postData);
+//        data = JSON.stringify(data, null, 4);
+        $scope.data.explorer = utility.replaceURLWithHTMLLinks(data);
+        $('.api .code').html($scope.data.explorer);
       }
     };
 
@@ -297,8 +290,8 @@ angular.module('frontierApp')
 
     $scope.removeLink = function ($event, collection, $index) {
       $event.stopPropagation();
-      console.log('Removing a link');
-      console.log(collection);
+      // console.log('Removing a link');
+      // console.log(collection);
       if (confirm("Are you sure you want to delete this link?")) {
         for (var i = 0; i < $scope.data.collections.collections.length; i++) {
           if ($scope.data.collections.collections[i].id === collection.id) {
@@ -337,7 +330,7 @@ angular.module('frontierApp')
     };
 
     $scope.saveNew = function () {
-      console.log($scope.data.new);
+      // console.log($scope.data.new);
       $scope.data.new.api_calls = [];
 
       var collectionId;
@@ -403,11 +396,22 @@ angular.module('frontierApp')
         }
       }
 
-      console.log($scope.tempData.newLink);
+      // console.log($scope.tempData.newLink);
     };
 
     $scope.showAddToCurrent = function () {
       $('#addToExistingCollection').fadeToggle();
+    };
+
+    $scope.parseToConsole = function () {
+      if ($scope.module.apiHistory.length > 0) {
+        if ($scope.module.apiHistory.length === 1) {
+          console.log(JSON.parse($scope.module.apiHistory[0]));
+        }
+        else {
+          console.log(JSON.parse($scope.module.apiHistory[$scope.module.apiHistory.length - 1]));
+        }
+      }
     };
 
   });

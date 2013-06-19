@@ -2,7 +2,17 @@
 @import "../mixins";
 
 .github {
+
+  table {
+    td {
+      padding: 10px;
+    }
+  }
+
   .avatar {
+
+    padding-top: 10px;
+    padding-bottom: 5px;
 
     img {
       border-radius: 500px;
@@ -16,9 +26,37 @@
     }
   }
 
-  tr:hover {
-    background-color: #F5F5F5;
+  .table-hover {
+    tbody {
+      tr:hover {
+        border-left: 4px solid $blue;
 
-    cursor: pointer;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .table-small {
+    font-size: 12px;
+  }
+
+  .issues {
+
+    h3 {
+      font-family: $osb;
+      text-transform: none;
+      font-weight: normal;
+      font-size: 14px;
+    }
+
+    p {
+      color: $medgrey;
+      font-size: 12px;
+    }
+
+    .icon-chevron-sign-right {
+      line-height: 56px;
+      //margin-right: 10px;
+    }
   }
 }
